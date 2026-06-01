@@ -1,0 +1,11 @@
+# Temporary Reports & Private docs
+relocation_report.txt
+
+# OS system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
