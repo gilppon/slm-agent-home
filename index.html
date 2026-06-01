@@ -4,55 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KODARI Systems - Trinity RAG OS Suite</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #030712;
-            --card-bg: rgba(15, 23, 42, 0.65);
-            --card-border: rgba(56, 189, 248, 0.15);
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --primary: #38bdf8;
-            --secondary: #a78bfa;
-            --accent: #34d399;
-            --glow: rgba(56, 189, 248, 0.25);
-            --neon-green: rgba(52, 211, 153, 0.25);
+            --background: #f9f9ff;
+            --surface: #ffffff;
+            --primary: #003366; /* Deep Trust Blue */
+            --secondary: #4a5568; /* Slate Grey */
+            --tertiary: #f7fafc; /* Ice Grey */
+            --text-main: #161c27; /* Dark Charcoal */
+            --text-muted: #43474f; /* Muted Slate */
+            --border-color: #c3c6d1; /* Low-contrast outline */
+            --accent: #ba1a1a; /* Semantic highlight */
+            --glow: rgba(0, 51, 102, 0.03);
+            --neon-green: rgba(52, 211, 153, 0.1);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            border-radius: 0px !important; /* Sharp Corner Policy: Strictly Enforced */
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--background);
             color: var(--text-main);
-            font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(167, 139, 250, 0.05) 0%, transparent 45%);
+                radial-gradient(circle at 10% 20%, rgba(0, 51, 102, 0.02) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(74, 85, 104, 0.02) 0%, transparent 45%);
             line-height: 1.6;
         }
 
         /* Container & Grid */
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1280px; /* Stitch 1280px Container standard */
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 48px; /* Desktop margin 48px */
         }
 
         /* Header / Navbar */
         header {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--border-color);
             padding: 20px 0;
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
-            background-color: rgba(3, 7, 18, 0.8);
+            background-color: rgba(255, 255, 255, 0.95);
         }
 
         .nav-wrapper {
@@ -62,9 +64,10 @@
         }
 
         .logo {
-            font-weight: 800;
+            font-family: 'IBM Plex Serif', serif;
+            font-weight: 700;
             font-size: 1.5rem;
-            letter-spacing: 1.5px;
+            letter-spacing: 0.5px;
             color: var(--primary);
             text-decoration: none;
             display: flex;
@@ -74,16 +77,16 @@
 
         .logo span {
             color: var(--secondary);
+            font-weight: 400;
         }
 
         /* Language Switcher */
         .lang-selector {
             display: flex;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            padding: 3px;
-            gap: 3px;
+            background: var(--tertiary);
+            border: 1px solid var(--border-color);
+            padding: 2px;
+            gap: 2px;
         }
 
         .lang-btn {
@@ -94,49 +97,46 @@
             font-size: 0.8rem;
             font-weight: 700;
             cursor: pointer;
-            border-radius: 50px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease-in-out;
         }
 
         .lang-btn.active {
             background: var(--primary);
-            color: #030712;
-            box-shadow: 0 0 15px var(--primary);
+            color: #ffffff;
+            box-shadow: none;
         }
 
         /* Hero Section */
         .hero {
-            padding: 100px 0 80px 0;
+            padding: 120px 0 80px 0;
             text-align: center;
             position: relative;
         }
 
         .badge-premium {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #030712;
+            background: var(--primary);
+            color: #ffffff;
             display: inline-block;
             padding: 6px 18px;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
             margin-bottom: 24px;
-            box-shadow: 0 4px 20px var(--glow);
+            border: 1px solid var(--primary);
         }
 
         .hero h1 {
+            font-family: 'IBM Plex Serif', serif;
             font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.25;
-            background: linear-gradient(to right, #ffffff, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--primary);
             margin-bottom: 24px;
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--text-muted);
             max-width: 800px;
             margin: 0 auto 40px auto;
@@ -151,33 +151,34 @@
         .btn {
             display: inline-block;
             padding: 16px 36px;
-            border-radius: 50px;
-            font-weight: 700;
+            font-weight: 600;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease-in-out;
         }
 
         .btn-primary {
             background: var(--primary);
-            color: #030712;
-            box-shadow: 0 0 20px var(--glow);
+            color: #ffffff;
+            border: 1px solid var(--primary);
         }
 
         .btn-primary:hover {
-            box-shadow: 0 0 30px var(--primary);
-            transform: translateY(-2px);
+            background: #002244;
+            border-color: #002244;
+            transform: translateY(-1px);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--surface);
             color: var(--text-main);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
+            background: var(--tertiary);
+            border-color: var(--secondary);
+            transform: translateY(-1px);
         }
 
         /* 3 Corps Section */
@@ -187,17 +188,17 @@
         }
 
         .section-title h2 {
+            font-family: 'IBM Plex Serif', serif;
             font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(to right, #fff, var(--primary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: -0.01em;
         }
 
         .section-title p {
             color: var(--text-muted);
             margin-top: 10px;
+            font-size: 1.05rem;
         }
 
         .corps-grid {
@@ -208,39 +209,42 @@
         }
 
         .corps-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
+            background: var(--surface);
+            border: 1px solid var(--border-color);
+            border-top: 4px solid var(--primary); /* Deep Trust Blue Accent Top Border */
             padding: 40px;
-            backdrop-filter: blur(20px);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
         }
 
         .corps-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-4px);
             border-color: var(--primary);
-            box-shadow: 0 10px 40px var(--glow);
+            box-shadow: 0 8px 24px rgba(22, 28, 39, 0.06);
         }
 
         .corps-icon {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 20px;
+            color: var(--primary);
         }
 
         .corps-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
             margin-bottom: 12px;
-            color: #ffffff;
+            color: var(--primary);
         }
 
         .corps-price {
-            font-weight: 800;
-            color: var(--primary);
+            font-weight: 700;
+            color: var(--secondary);
             margin-bottom: 16px;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            border-bottom: 1px solid var(--tertiary);
+            padding-bottom: 12px;
         }
 
         .corps-card p {
@@ -251,12 +255,11 @@
 
         /* Interactive ROI Calculator */
         .calculator-sec {
-            background: rgba(17, 24, 39, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 32px;
+            background: var(--surface);
+            border: 1px solid var(--border-color);
             padding: 48px;
             margin: 80px 0;
-            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
         }
 
         .calc-wrapper {
@@ -267,10 +270,11 @@
         }
 
         .calc-input-area h3 {
+            font-family: 'IBM Plex Serif', serif;
             font-size: 1.8rem;
-            font-weight: 800;
+            font-weight: 600;
             margin-bottom: 16px;
-            color: #ffffff;
+            color: var(--primary);
         }
 
         .calc-input-area p {
@@ -287,14 +291,15 @@
             margin-bottom: 8px;
             font-weight: 600;
             font-size: 0.9rem;
-            color: var(--primary);
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .range-slider {
             width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
+            height: 4px;
+            background: var(--border-color);
             outline: none;
             -webkit-appearance: none;
             appearance: none;
@@ -302,49 +307,49 @@
 
         .range-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
+            width: 16px;
+            height: 16px;
             background: var(--primary);
             cursor: pointer;
-            box-shadow: 0 0 10px var(--primary);
+            box-shadow: none;
         }
 
         .calc-val {
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
             margin-top: 8px;
             display: inline-block;
         }
 
         .calc-result-area {
-            background: rgba(3, 7, 18, 0.8);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
+            background: var(--tertiary);
+            border: 1px solid var(--border-color);
             padding: 40px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .calc-result-title {
-            color: var(--text-muted);
+            color: var(--secondary);
             font-size: 0.95rem;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
 
         .calc-result-main {
+            font-family: 'IBM Plex Serif', serif;
             font-size: 3rem;
-            font-weight: 800;
-            color: var(--accent);
-            text-shadow: 0 0 20px var(--neon-green);
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: none;
             margin: 16px 0;
         }
 
         .calc-result-desc {
             color: var(--text-muted);
             font-size: 0.9rem;
+            line-height: 1.6;
         }
 
         /* 10-Stage Verify Gate Tracker */
@@ -360,30 +365,30 @@
         }
 
         .gate-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
+            background: var(--surface);
+            border: 1px solid var(--border-color);
             padding: 20px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease-in-out;
         }
 
         .gate-item.active {
-            border-color: var(--accent);
-            background: rgba(52, 211, 153, 0.03);
-            box-shadow: 0 0 15px rgba(52, 211, 153, 0.1);
+            border-color: var(--primary);
+            background: var(--tertiary);
         }
 
         .gate-num {
-            font-weight: 800;
-            color: var(--accent);
+            font-family: 'IBM Plex Serif', serif;
+            font-weight: 700;
+            color: var(--primary);
             margin-bottom: 8px;
+            font-size: 1.15rem;
         }
 
         .gate-item h4 {
             font-size: 0.85rem;
-            font-weight: 700;
-            color: #ffffff;
+            font-weight: 600;
+            color: var(--text-main);
         }
 
         /* Pricing Section */
@@ -392,11 +397,10 @@
         }
 
         .pricing-table-wrapper {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 28px;
+            background: var(--surface);
+            border: 1px solid var(--border-color);
             padding: 40px;
-            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.01);
         }
 
         .price-table {
@@ -407,12 +411,19 @@
         .price-table th, .price-table td {
             padding: 20px;
             text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .price-table th {
             color: var(--primary);
+            font-family: 'IBM Plex Serif', serif;
             font-weight: 700;
+            font-size: 1.05rem;
+            background: var(--tertiary);
+        }
+
+        .price-table tr:nth-child(even) {
+            background-color: var(--tertiary); /* Zebra-stripe Pattern */
         }
 
         .tax-disclaimer {
@@ -425,21 +436,32 @@
 
         /* Footer */
         footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid var(--border-color);
             padding: 40px 0;
             text-align: center;
             color: var(--text-muted);
             font-size: 0.9rem;
+            background-color: var(--surface);
         }
 
         footer p {
             margin-top: 10px;
         }
 
+        .deck-card {
+            display: block;
+            text-decoration: none;
+            background: var(--surface);
+            border: 1px solid var(--border-color);
+            border-top: 3px solid var(--secondary) !important;
+            padding: 24px;
+            transition: all 0.2s ease-in-out;
+        }
+
         .deck-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             border-color: var(--primary) !important;
-            box-shadow: 0 8px 30px var(--glow);
+            box-shadow: 0 6px 16px rgba(22, 28, 39, 0.05);
         }
     </style>
 </head>
@@ -485,17 +507,17 @@
                 <p id="c1-d">BOS 정렬 하네스로 인퍼런스 환각율 95% 감소. 5대 회고 각도로 1개 지식을 10배 품질로 자율 증강(Extender). GGUF 안전 컴파일 가드로 OOM 원천 방어.</p>
             </div>
             <!-- 2nd Corps -->
-            <div class="corps-card" style="border-color: rgba(52, 211, 153, 0.3);">
+            <div class="corps-card">
                 <div class="corps-icon">🛡️</div>
                 <h3 id="c2-h">제2군단 [비밀 금고형 RAG SW]</h3>
-                <div class="corps-price" id="c2-p" style="color: var(--accent);">1,000만 원 (소비세/부가세 별도)</div>
+                <div class="corps-price" id="c2-p">1,000만 원 (소비세/부가세 별도)</div>
                 <p id="c2-d">130MB 초경량 로컬 임베딩 구동. 【개인정보 원천 차단 가드(이중 PII 필터)】 및 【오프라인 3중 자율 라이선스 락】 기본 무상 제공으로 완벽한 기밀 유출 차단.</p>
             </div>
             <!-- 3rd Corps -->
-            <div class="corps-card" style="border-color: rgba(167, 139, 250, 0.3);">
+            <div class="corps-card">
                 <div class="corps-icon">🌀</div>
                 <h3 id="c3-h">제3군단 [자율 청소 지식 OS SW]</h3>
-                <div class="corps-price" id="c3-p" style="color: var(--secondary);">800만 원 (소비세/부가세 별도)</div>
+                <div class="corps-price" id="c3-p">800만 원 (소비세/부가세 별도)</div>
                 <p id="c3-d">신구 지식의 논리적/수치적 모순 발생 시 자율 삭제 Eviction 및 Multi-LoRA LRU 어댑터 동적 핫스왑 가동으로 상시 100% 무결성 데이터베이스 자율 유지.</p>
             </div>
         </div>
@@ -559,57 +581,57 @@
         </div>
         <div class="decks-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px;">
             <!-- Deck 1 -->
-            <a href="./slides/slides_all_in_one.html" target="_blank" class="deck-card" style="display: block; text-decoration: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 24px; transition: all 0.3s ease; backdrop-filter: blur(20px);">
-                <div style="font-size: 2rem; margin-bottom: 12px;">🌟</div>
-                <h3 id="d1-title" style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">삼위일체 통합 비즈니스 제안</h3>
+            <a href="./slides/slides_all_in_one.html" target="_blank" class="deck-card">
+                <div style="font-size: 2.2rem; margin-bottom: 12px;">🌟</div>
+                <h3 id="d1-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">삼위일체 통합 비즈니스 제안</h3>
                 <p id="d1-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">3대 RAG 연합군 통합 패키지의 비즈니스 혜택 및 ROI 명세</p>
             </a>
             <!-- Deck 2 -->
-            <a href="./slides/slides_all_in_one_tech.html" target="_blank" class="deck-card" style="display: block; text-decoration: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 24px; transition: all 0.3s ease; backdrop-filter: blur(20px);">
-                <div style="font-size: 2rem; margin-bottom: 12px;">⚙️</div>
-                <h3 id="d2-title" style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">삼위일체 통합 기술 명세</h3>
+            <a href="./slides/slides_all_in_one_tech.html" target="_blank" class="deck-card">
+                <div style="font-size: 2.2rem; margin-bottom: 12px;">⚙️</div>
+                <h3 id="d2-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">삼위일체 통합 기술 명세</h3>
                 <p id="d2-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">CTO 및 보안 책임자용 아키텍처 및 6대 하네스 설명</p>
             </a>
             <!-- Deck 3 -->
-            <a href="./slides/slides_corps1_builder.html" target="_blank" class="deck-card" style="display: block; text-decoration: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 24px; transition: all 0.3s ease; backdrop-filter: blur(20px);">
-                <div style="font-size: 2rem; margin-bottom: 12px;">🧠</div>
-                <h3 id="d3-title" style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">제1군단 비즈니스 제안</h3>
+            <a href="./slides/slides_corps1_builder.html" target="_blank" class="deck-card">
+                <div style="font-size: 2.2rem; margin-bottom: 12px;">🧠</div>
+                <h3 id="d3-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">제1군단 비즈니스 제안</h3>
                 <p id="d3-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">환각률 극감 로컬 AI 비서 제작 패키지 핵심 가치</p>
             </a>
             <!-- Deck 4 -->
-            <a href="./slides/slides_corps1_builder_tech.html" target="_blank" class="deck-card" style="display: block; text-decoration: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 24px; transition: all 0.3s ease; backdrop-filter: blur(20px);">
-                <div style="font-size: 2rem; margin-bottom: 12px;">💻</div>
-                <h3 id="d4-title" style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">제1군단 빌더 기술 슬라이드</h3>
+            <a href="./slides/slides_corps1_builder_tech.html" target="_blank" class="deck-card">
+                <div style="font-size: 2.2rem; margin-bottom: 12px;">💻</div>
+                <h3 id="d4-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">제1군단 빌더 기술 슬라이드</h3>
                 <p id="d4-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">GGUF 세이프 컴파일 및 BOS 정렬 하네스 상세 구현</p>
             </a>
             <!-- Deck 5 -->
-            <a href="./slides/slides_corps2_agent.html" target="_blank" class="deck-card" style="display: block; text-decoration: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 24px; transition: all 0.3s ease; backdrop-filter: blur(20px);">
-                <div style="font-size: 2rem; margin-bottom: 12px;">🔒</div>
-                <h3 id="d5-title" style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">제2군단 비즈니스 제안</h3>
+            <a href="./slides/slides_corps2_agent.html" target="_blank" class="deck-card">
+                <div style="font-size: 2.2rem; margin-bottom: 12px;">🔒</div>
+                <h3 id="d5-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">제2군단 비즈니스 제안</h3>
                 <p id="d5-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">기밀 유출 원천 차단 RAG 엔진 및 UUID 락 혜택</p>
             </a>
             <!-- Deck 6 -->
-            <a href="./slides/slides_corps2_agent_tech.html" target="_blank" class="deck-card" style="display: block; text-decoration: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 24px; transition: all 0.3s ease; backdrop-filter: blur(20px);">
-                <div style="font-size: 2rem; margin-bottom: 12px;">🛡️</div>
-                <h3 id="d6-title" style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">제2군단 보안 기술 슬라이드</h3>
+            <a href="./slides/slides_corps2_agent_tech.html" target="_blank" class="deck-card">
+                <div style="font-size: 2.2rem; margin-bottom: 12px;">🛡️</div>
+                <h3 id="d6-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">제2군단 보안 기술 슬라이드</h3>
                 <p id="d6-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">개인정보 이중 PII 필터링 및 샌드박스 보안 설계</p>
             </a>
             <!-- Deck 7 -->
-            <a href="./slides/slides_corps3_healer.html" target="_blank" class="deck-card" style="display: block; text-decoration: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 24px; transition: all 0.3s ease; backdrop-filter: blur(20px);">
-                <div style="font-size: 2rem; margin-bottom: 12px;">🌀</div>
-                <h3 id="d7-title" style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">제3군단 비즈니스 제안</h3>
+            <a href="./slides/slides_corps3_healer.html" target="_blank" class="deck-card">
+                <div style="font-size: 2.2rem; margin-bottom: 12px;">🌀</div>
+                <h3 id="d7-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">제3군단 비즈니스 제안</h3>
                 <p id="d7-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">자율 청소 지식 OS 및 무중단 자가 치유 복구 혜택</p>
             </a>
             <!-- Deck 8 -->
-            <a href="./slides/slides_corps3_healer_tech.html" target="_blank" class="deck-card" style="display: block; text-decoration: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 24px; transition: all 0.3s ease; backdrop-filter: blur(20px);">
-                <div style="font-size: 2rem; margin-bottom: 12px;">🔥</div>
-                <h3 id="d8-title" style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">제3군단 오퍼레이션 기술 슬라이드</h3>
+            <a href="./slides/slides_corps3_healer_tech.html" target="_blank" class="deck-card">
+                <div style="font-size: 2.2rem; margin-bottom: 12px;">🔥</div>
+                <h3 id="d8-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">제3군단 오퍼레이션 기술 슬라이드</h3>
                 <p id="d8-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">에빅션 루프와 Multi-LoRA LRU 핫스왑의 자율 운용</p>
             </a>
             <!-- Deck 9 -->
-            <a href="./slides/slides_network_connection.html" target="_blank" class="deck-card" style="display: block; text-decoration: none; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 24px; transition: all 0.3s ease; backdrop-filter: blur(20px);">
-                <div style="font-size: 2rem; margin-bottom: 12px;">🔌</div>
-                <h3 id="d9-title" style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">망분리 네트워크 구성</h3>
+            <a href="./slides/slides_network_connection.html" target="_blank" class="deck-card">
+                <div style="font-size: 2.2rem; margin-bottom: 12px;">🔌</div>
+                <h3 id="d9-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">망분리 네트워크 구성</h3>
                 <p id="d9-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">완전 오프라인 보안 인프라 노드 설계도 및 확장 명세</p>
             </a>
         </div>
