@@ -36,6 +36,7 @@
                 radial-gradient(circle at 10% 20%, rgba(0, 51, 102, 0.02) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(74, 85, 104, 0.02) 0%, transparent 45%);
             line-height: 1.6;
+            text-align: center; /* Center-align text globally */
         }
 
         /* Container & Grid */
@@ -44,6 +45,9 @@
             max-width: 1280px; /* Stitch 1280px Container standard */
             margin: 0 auto;
             padding: 0 48px; /* Desktop margin 48px */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center-align children */
         }
 
         /* Header / Navbar */
@@ -55,12 +59,15 @@
             top: 0;
             z-index: 100;
             background-color: rgba(255, 255, 255, 0.95);
+            width: 100%;
         }
 
         .nav-wrapper {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between !important;
+            flex-direction: row !important;
             align-items: center;
+            width: 100%;
         }
 
         .logo {
@@ -111,6 +118,7 @@
             padding: 120px 0 80px 0;
             text-align: center;
             position: relative;
+            width: 100%;
         }
 
         .badge-premium {
@@ -185,6 +193,7 @@
         .section-title {
             text-align: center;
             margin-bottom: 60px;
+            width: 100%;
         }
 
         .section-title h2 {
@@ -206,6 +215,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
             margin-bottom: 80px;
+            width: 100%;
         }
 
         .corps-card {
@@ -216,6 +226,10 @@
             transition: all 0.3s ease;
             position: relative;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center components in cards */
+            text-align: center;
         }
 
         .corps-card:hover {
@@ -228,6 +242,7 @@
             font-size: 2.2rem;
             margin-bottom: 20px;
             color: var(--primary);
+            text-align: center;
         }
 
         .corps-card h3 {
@@ -245,6 +260,8 @@
             font-size: 1.05rem;
             border-bottom: 1px solid var(--tertiary);
             padding-bottom: 12px;
+            width: 100%;
+            text-align: center;
         }
 
         .corps-card p {
@@ -260,12 +277,21 @@
             padding: 48px;
             margin: 80px 0;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+            width: 100%;
         }
 
         .calc-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 48px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .calc-input-area {
+            text-align: center; /* Symmetrical design center alignment */
+            display: flex;
+            flex-direction: column;
             align-items: center;
         }
 
@@ -284,6 +310,11 @@
 
         .form-group {
             margin-bottom: 24px;
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .form-group label {
@@ -294,6 +325,7 @@
             color: var(--secondary);
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            text-align: center;
         }
 
         .range-slider {
@@ -320,6 +352,7 @@
             color: var(--primary);
             margin-top: 8px;
             display: inline-block;
+            text-align: center;
         }
 
         .calc-result-area {
@@ -327,6 +360,10 @@
             border: 1px solid var(--border-color);
             padding: 40px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .calc-result-title {
@@ -335,6 +372,7 @@
             font-weight: 600;
             letter-spacing: 0.05em;
             text-transform: uppercase;
+            text-align: center;
         }
 
         .calc-result-main {
@@ -344,17 +382,20 @@
             color: var(--primary);
             text-shadow: none;
             margin: 16px 0;
+            text-align: center;
         }
 
         .calc-result-desc {
             color: var(--text-muted);
             font-size: 0.9rem;
             line-height: 1.6;
+            text-align: center;
         }
 
         /* 10-Stage Verify Gate Tracker */
         .gate-sec {
             margin: 80px 0;
+            width: 100%;
         }
 
         .gate-grid {
@@ -362,6 +403,7 @@
             grid-template-columns: repeat(5, 1fr);
             gap: 16px;
             margin-top: 40px;
+            width: 100%;
         }
 
         .gate-item {
@@ -370,6 +412,10 @@
             padding: 20px;
             text-align: center;
             transition: all 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .gate-item.active {
@@ -383,17 +429,20 @@
             color: var(--primary);
             margin-bottom: 8px;
             font-size: 1.15rem;
+            text-align: center;
         }
 
         .gate-item h4 {
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--text-main);
+            text-align: center;
         }
 
         /* Pricing Section */
         .pricing-sec {
             margin: 100px 0;
+            width: 100%;
         }
 
         .pricing-table-wrapper {
@@ -401,6 +450,7 @@
             border: 1px solid var(--border-color);
             padding: 40px;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.01);
+            width: 100%;
         }
 
         .price-table {
@@ -410,7 +460,7 @@
 
         .price-table th, .price-table td {
             padding: 20px;
-            text-align: left;
+            text-align: center; /* Symmetrical center alignment */
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -420,6 +470,7 @@
             font-weight: 700;
             font-size: 1.05rem;
             background: var(--tertiary);
+            text-align: center;
         }
 
         .price-table tr:nth-child(even) {
@@ -427,7 +478,7 @@
         }
 
         .tax-disclaimer {
-            text-align: right;
+            text-align: center; /* Center-aligned B2B disclaimer */
             color: var(--secondary);
             font-size: 0.85rem;
             font-weight: 600;
@@ -442,14 +493,19 @@
             color: var(--text-muted);
             font-size: 0.9rem;
             background-color: var(--surface);
+            width: 100%;
         }
 
         footer p {
             margin-top: 10px;
+            text-align: center;
         }
 
         .deck-card {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Symmetrical deck styling */
+            text-align: center;
             text-decoration: none;
             background: var(--surface);
             border: 1px solid var(--border-color);
