@@ -958,7 +958,11 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
         }
 
         // Initialize table content
-        switchLang('ko');
+        // URL Parameter Lang Check and Initialization
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        const defaultLang = (urlLang && i18n[urlLang]) ? urlLang : 'ko';
+        switchLang(defaultLang);
 
         // Navigation scripts
         const slides = document.querySelectorAll('.slide');

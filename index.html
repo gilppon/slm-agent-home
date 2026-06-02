@@ -2,61 +2,104 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KODARI Systems - Trinity RAG OS Suite</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    
+    <!-- SEO Meta Tags -->
+    <title>Trinity RAG OS Suite (v10.3) - 로컬 AI 비서 빌더 & 자율 치유 OS</title>
+    <meta name="description" content="외부 인터넷을 완전히 격리 차단해도 사내 기밀 유출률 0%로 동작하는 무결점 로컬 온프레미스 AI 패키지. 삼위일체 아키텍처와 10단계 검증 파이프라인.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --background: #f9f9ff;
-            --surface: #ffffff;
-            --primary: #003366; /* Deep Trust Blue */
-            --secondary: #4a5568; /* Slate Grey */
-            --tertiary: #f7fafc; /* Ice Grey */
-            --text-main: #161c27; /* Dark Charcoal */
-            --text-muted: #43474f; /* Muted Slate */
-            --border-color: #c3c6d1; /* Low-contrast outline */
-            --accent: #ba1a1a; /* Semantic highlight */
-            --glow: rgba(0, 51, 102, 0.03);
-            --neon-green: rgba(52, 211, 153, 0.1);
+            --bg-base: #080B10;
+            --bg-surface: rgba(15, 22, 36, 0.7);
+            --bg-surface-opaque: #0F1624;
+            --border-glow: rgba(56, 189, 248, 0.15);
+            --border-muted: rgba(255, 255, 255, 0.08);
+            
+            --primary: #38BDF8;      /* Neon Blue */
+            --primary-glow: rgba(56, 189, 248, 0.4);
+            --secondary: #A855F7;    /* Purple */
+            --secondary-glow: rgba(168, 85, 247, 0.4);
+            --tertiary: #10B981;     /* Emerald Green */
+            --accent: #F43F5E;       /* Rose Red */
+            
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --text-dark: #6B7280;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            border-radius: 0px !important; /* Sharp Corner Policy: Strictly Enforced */
         }
 
         body {
-            background-color: var(--background);
+            background-color: var(--bg-base);
             color: var(--text-main);
-            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            font-family: 'Space Grotesk', 'Noto Sans KR', sans-serif;
             overflow-x: hidden;
+            line-height: 1.5;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 51, 102, 0.02) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(74, 85, 104, 0.02) 0%, transparent 45%);
-            line-height: 1.6;
-            text-align: center; /* Center-align text globally */
+                radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.08) 0%, transparent 45%);
+            background-attachment: fixed;
         }
 
-        /* Container & Grid */
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(8, 11, 16, 0.5);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Container */
         .container {
             width: 100%;
-            max-width: 1280px; /* Stitch 1280px Container standard */
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 48px; /* Desktop margin 48px */
+            padding: 0 24px;
         }
 
-        /* Header / Navbar */
+        /* Glassmorphism utility */
+        .glass-card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-muted);
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .glass-card:hover {
+            border-color: var(--primary-glow);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.1);
+        }
+
+        /* Header Navigation */
         header {
-            border-bottom: 1px solid var(--border-color);
-            padding: 20px 0;
-            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
-            background-color: rgba(255, 255, 255, 0.95);
-            width: 100%;
+            background: rgba(8, 11, 16, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-muted);
+            padding: 16px 0;
         }
 
         .nav-wrapper {
@@ -65,454 +108,744 @@
             align-items: center;
         }
 
-        .logo {
-            font-family: 'IBM Plex Serif', serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: 0.5px;
-            color: var(--primary);
-            text-decoration: none;
+        .logo-area {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .logo span {
-            color: var(--secondary);
-            font-weight: 400;
+        .logo-icon {
+            font-size: 1.8rem;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-muted);
+            padding: 4px;
+            border-radius: 30px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 8px 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: inherit;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .tab-btn.active {
+            color: var(--bg-base);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.35);
         }
 
         /* Language Switcher */
         .lang-selector {
             display: flex;
-            background: var(--tertiary);
-            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-muted);
             padding: 2px;
-            gap: 2px;
+            border-radius: 8px;
         }
 
         .lang-btn {
             background: transparent;
             border: none;
-            color: var(--text-muted);
-            padding: 6px 16px;
+            color: var(--text-dark);
+            padding: 6px 12px;
             font-size: 0.8rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s ease-in-out;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn:hover {
+            color: var(--text-muted);
         }
 
         .lang-btn.active {
-            background: var(--primary);
-            color: #ffffff;
-            box-shadow: none;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--primary);
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 80px 0;
+        /* Layout & Content Section */
+        main {
+            padding: 40px 0 80px 0;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Hero / Headline Block in Dashboard */
+        .dashboard-hero {
             text-align: center;
-            position: relative;
-            width: 100%;
+            margin-bottom: 48px;
         }
 
-        .badge-premium {
-            background: var(--primary);
-            color: #ffffff;
-            display: inline-block;
-            padding: 6px 18px;
-            font-weight: 600;
+        .premium-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--primary-glow);
+            color: var(--primary);
+            padding: 6px 16px;
             font-size: 0.8rem;
-            letter-spacing: 0.05em;
-            margin-bottom: 24px;
-            border: 1px solid var(--primary);
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
-        .hero h1 {
-            font-family: 'IBM Plex Serif', serif;
-            font-size: 3.5rem;
+        .dashboard-hero h1 {
+            font-size: 3rem;
             font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            color: var(--primary);
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .dashboard-hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* Grid Layouts */
+        .dash-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        /* Live Monitor Panel */
+        .monitor-panel {
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-muted);
+            padding-bottom: 12px;
+        }
+
+        .panel-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--tertiary);
+            background: rgba(16, 185, 129, 0.1);
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--tertiary);
+            border-radius: 50%;
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        /* Status Cards */
+        .status-cards-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
             margin-bottom: 24px;
         }
 
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-        }
-
-        .cta-group {
+        .status-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-muted);
+            padding: 16px;
+            border-radius: 8px;
             display: flex;
-            justify-content: center;
-            gap: 16px;
+            flex-direction: column;
+            gap: 8px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 16px 36px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: #ffffff;
-            border: 1px solid var(--primary);
-        }
-
-        .btn-primary:hover {
-            background: #002244;
-            border-color: #002244;
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background: var(--surface);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--tertiary);
-            border-color: var(--secondary);
-            transform: translateY(-1px);
-        }
-
-        /* 3 Corps Section */
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            width: 100%;
-        }
-
-        .section-title h2 {
-            font-family: 'IBM Plex Serif', serif;
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: var(--primary);
-            letter-spacing: -0.01em;
-        }
-
-        .section-title p {
+        .status-card-label {
+            font-size: 0.75rem;
             color: var(--text-muted);
-            margin-top: 10px;
-            font-size: 1.05rem;
+            text-transform: uppercase;
+        }
+
+        .status-card-val {
+            font-size: 1.35rem;
+            font-weight: 700;
+            font-family: 'Geist Mono', monospace;
+            color: var(--primary);
+        }
+
+        .status-card-footer {
+            font-size: 0.7rem;
+            color: var(--text-dark);
+        }
+
+        /* Live Terminal Console */
+        .terminal-container {
+            background: #05070B;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.85rem;
+            height: 280px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .term-line {
+            line-height: 1.4;
+            animation: textReveal 0.2s ease forwards;
+        }
+
+        .term-tag-info { color: var(--primary); }
+        .term-tag-success { color: var(--tertiary); }
+        .term-tag-warning { color: #F59E0B; }
+        .term-tag-error { color: var(--accent); }
+        .term-timestamp { color: var(--text-dark); margin-right: 6px; }
+
+        /* Stats Panel */
+        .stats-panel {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .chart-box {
+            height: 180px;
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-muted);
+        }
+
+        .chart-bar-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .chart-bar {
+            width: 100%;
+            background: linear-gradient(180deg, var(--secondary), var(--primary));
+            border-radius: 4px 4px 0 0;
+            transition: height 1s ease-in-out;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+        }
+
+        .chart-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* 3-Corps View */
+        .corps-view-header {
+            text-align: center;
+            margin-bottom: 40px;
         }
 
         .corps-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
-            margin-bottom: 80px;
-            width: 100%;
+            margin-bottom: 40px;
         }
 
-        .corps-card {
-            background: var(--surface);
-            border: 1px solid var(--border-color);
-            border-top: 4px solid var(--primary); /* Deep Trust Blue Accent Top Border */
-            padding: 40px;
-            transition: all 0.3s ease;
-            position: relative;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
+        .corps-detail-card {
+            padding: 32px;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center components in cards */
-            text-align: center;
+            justify-content: space-between;
+            position: relative;
         }
 
-        .corps-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 8px 24px rgba(22, 28, 39, 0.06);
+        .corps-detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .c1-card::before { background: var(--primary); }
+        .c2-card::before { background: var(--secondary); }
+        .c3-card::before { background: var(--tertiary); }
+
+        .corps-header {
+            margin-bottom: 20px;
         }
 
         .corps-icon {
             font-size: 2.2rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            text-align: center;
+            margin-bottom: 16px;
         }
 
-        .corps-card h3 {
-            font-family: 'IBM Plex Serif', serif;
-            font-size: 1.35rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--primary);
-        }
-
-        .corps-price {
+        .corps-name {
+            font-size: 1.3rem;
             font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 16px;
-            font-size: 1.05rem;
-            border-bottom: 1px solid var(--tertiary);
-            padding-bottom: 12px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .corps-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Interactive ROI Calculator */
-        .calculator-sec {
-            background: var(--surface);
-            border: 1px solid var(--border-color);
-            padding: 48px;
-            margin: 80px 0;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
-            width: 100%;
-        }
-
-        .calc-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            align-items: center;
-            width: 100%;
-        }
-
-        .calc-input-area {
-            text-align: center; /* Symmetrical design center alignment */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .calc-input-area h3 {
-            font-family: 'IBM Plex Serif', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-            color: var(--primary);
-        }
-
-        .calc-input-area p {
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-            width: 100%;
-            max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .form-group label {
-            display: block;
+            color: #ffffff;
             margin-bottom: 8px;
+        }
+
+        .corps-price-tag {
+            font-family: 'Geist Mono', monospace;
+            color: var(--primary);
             font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            text-align: center;
+            font-size: 1.05rem;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-muted);
         }
 
-        .range-slider {
-            width: 100%;
-            height: 4px;
-            background: var(--border-color);
+        .c2-card .corps-price-tag { color: var(--secondary); }
+        .c3-card .corps-price-tag { color: var(--tertiary); }
+
+        .corps-body {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        /* Demo Simulator Panel */
+        .simulator-panel {
+            padding: 32px;
+            margin-top: 40px;
+        }
+
+        .sim-input-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .sim-input {
+            flex-grow: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-muted);
+            color: #ffffff;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .sim-input:focus {
             outline: none;
-            -webkit-appearance: none;
-            appearance: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
         }
 
-        .range-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 16px;
-            height: 16px;
-            background: var(--primary);
+        .btn-run {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--bg-base);
+            border: none;
+            padding: 16px 36px;
+            font-weight: 700;
+            border-radius: 8px;
             cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-run:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
+        }
+
+        .btn-run:disabled {
+            background: var(--text-dark);
+            cursor: not-allowed;
+            transform: none;
             box-shadow: none;
         }
 
-        .calc-val {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-top: 8px;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .calc-result-area {
-            background: var(--tertiary);
-            border: 1px solid var(--border-color);
-            padding: 40px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .calc-result-title {
-            color: var(--secondary);
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        .calc-result-main {
-            font-family: 'IBM Plex Serif', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-shadow: none;
-            margin: 16px 0;
-            text-align: center;
-        }
-
-        .calc-result-desc {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            text-align: center;
-        }
-
-        /* 10-Stage Verify Gate Tracker */
-        .gate-sec {
-            margin: 80px 0;
-            width: 100%;
-        }
-
-        .gate-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 16px;
-            margin-top: 40px;
-            width: 100%;
-        }
-
-        .gate-item {
-            background: var(--surface);
-            border: 1px solid var(--border-color);
+        /* Sim Console output */
+        .sim-console {
+            background: #05070B;
+            border: 1px solid var(--border-muted);
+            border-radius: 8px;
             padding: 20px;
-            text-align: center;
-            transition: all 0.2s ease-in-out;
+            height: 300px;
+            overflow-y: auto;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.9rem;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            gap: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.9);
         }
 
-        .gate-item.active {
-            border-color: var(--primary);
-            background: var(--tertiary);
-        }
-
-        .gate-num {
-            font-family: 'IBM Plex Serif', serif;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
-            font-size: 1.15rem;
+        /* Integrity Gate 10-Stages */
+        .gate-view-header {
             text-align: center;
+            margin-bottom: 40px;
         }
 
-        .gate-item h4 {
-            font-size: 0.85rem;
+        .gate-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .gate-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .gate-stage-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 16px 24px;
+            cursor: pointer;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-muted);
+            transition: all 0.25s;
+        }
+
+        .gate-stage-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--primary-glow);
+        }
+
+        .gate-stage-card.active {
+            background: rgba(56, 189, 248, 0.08);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+        }
+
+        .stage-num {
+            font-family: 'Geist Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            width: 32px;
+        }
+
+        .gate-stage-card.active .stage-num {
+            color: var(--primary);
+        }
+
+        .stage-title {
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--text-main);
+            flex-grow: 1;
+        }
+
+        .stage-status-badge {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--tertiary);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .gate-detail-panel {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .gate-log-header {
+            font-size: 1.15rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-muted);
+            padding-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gate-terminal-view {
+            flex-grow: 1;
+            background: #05070B;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.85rem;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+        }
+
+        /* ROI Calculator */
+        .roi-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: stretch;
+        }
+
+        .roi-controls {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .slider-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slider-label {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .slider-val {
+            font-family: 'Geist Mono', monospace;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+            transition: transform 0.1s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .roi-results-card {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             text-align: center;
+            border: 1px solid var(--primary-glow);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.05);
         }
 
-        /* Pricing Section */
-        .pricing-sec {
-            margin: 100px 0;
+        .roi-big-result {
+            padding: 32px 0;
+        }
+
+        .roi-big-val {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'Geist Mono', monospace;
+            animation: pulse-glow 2s infinite alternate;
+        }
+
+        .pricing-table-container {
+            margin-top: 40px;
             width: 100%;
+            overflow-x: auto;
         }
 
-        .pricing-table-wrapper {
-            background: var(--surface);
-            border: 1px solid var(--border-color);
-            padding: 40px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.01);
-            width: 100%;
-        }
-
-        .price-table {
+        .pricing-table {
             width: 100%;
             border-collapse: collapse;
+            text-align: left;
         }
 
-        .price-table th, .price-table td {
-            padding: 20px;
-            text-align: center; /* Symmetrical center alignment */
-            border-bottom: 1px solid var(--border-color);
+        .pricing-table th, .pricing-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-muted);
         }
 
-        .price-table th {
-            color: var(--primary);
-            font-family: 'IBM Plex Serif', serif;
-            font-weight: 700;
-            font-size: 1.05rem;
-            background: var(--tertiary);
-            text-align: center;
-        }
-
-        .price-table tr:nth-child(even) {
-            background-color: var(--tertiary); /* Zebra-stripe Pattern */
-        }
-
-        .tax-disclaimer {
-            text-align: center; /* Center-aligned B2B disclaimer */
-            color: var(--secondary);
-            font-size: 0.85rem;
+        .pricing-table th {
+            background: rgba(255, 255, 255, 0.02);
             font-weight: 600;
-            margin-top: 15px;
+            color: var(--text-main);
         }
 
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border-color);
-            padding: 40px 0;
-            text-align: center;
+        .pricing-table td {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            background-color: var(--surface);
-            width: 100%;
+            font-size: 0.95rem;
         }
 
-        footer p {
-            margin-top: 10px;
-            text-align: center;
+        /* Pitch Decks Grid */
+        .decks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 24px;
         }
 
         .deck-card {
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Symmetrical deck styling */
-            text-align: center;
-            text-decoration: none;
-            background: var(--surface);
-            border: 1px solid var(--border-color);
-            border-top: 3px solid var(--secondary) !important;
-            padding: 24px;
-            transition: all 0.2s ease-in-out;
+            justify-content: space-between;
+            height: 180px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .deck-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary) !important;
-            box-shadow: 0 6px 16px rgba(22, 28, 39, 0.05);
+        .deck-card::after {
+            content: '→';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            transition: all 0.3s;
+        }
+
+        .deck-card:hover::after {
+            color: var(--primary);
+            transform: translateX(4px);
+        }
+
+        .deck-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .deck-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Footer stamp */
+        footer {
+            border-top: 1px solid var(--border-muted);
+            padding: 40px 0;
+            margin-top: 80px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse-glow {
+            from { text-shadow: 0 0 10px rgba(56, 189, 248, 0.2); }
+            to { text-shadow: 0 0 25px rgba(56, 189, 248, 0.6), 0 0 40px rgba(168, 85, 247, 0.4); }
+        }
+
+        @keyframes pulse-dot {
+            0% { transform: scale(0.9); opacity: 0.4; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.4; }
+        }
+
+        @keyframes textReveal {
+            from { opacity: 0; transform: translateX(-5px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive Layouts */
+        @media (max-width: 1024px) {
+            .dash-grid, .corps-grid, .gate-layout, .roi-wrapper, .decks-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -521,219 +854,399 @@
     <!-- Header / Navbar -->
     <header>
         <div class="container nav-wrapper">
-            <a href="#" class="logo">KODARI <span>SYSTEMS</span></a>
+            <div class="logo-area">
+                <span class="logo-icon">🌀</span>
+                <span class="logo-text">Trinity RAG OS Suite (v10.3)</span>
+            </div>
+            
+            <nav class="nav-tabs">
+                <button class="tab-btn active" data-target="dashboard">Dashboard</button>
+                <button class="tab-btn" data-target="corps">AI 3-Corps</button>
+                <button class="tab-btn" data-target="gate">Integrity Gate</button>
+                <button class="tab-btn" data-target="roi">ROI Calculator</button>
+                <button class="tab-btn" data-target="decks">Pitch Decks</button>
+            </nav>
+
             <div class="lang-selector">
-                <button class="lang-btn active" onclick="switchLang('ko', event)">KO</button>
-                <button class="lang-btn" onclick="switchLang('ja', event)">JA</button>
-                <button class="lang-btn" onclick="switchLang('en', event)">EN</button>
+                <button class="lang-btn active" onclick="switchLang('ko')">KO</button>
+                <button class="lang-btn" onclick="switchLang('ja')">JA</button>
+                <button class="lang-btn" onclick="switchLang('en')">EN</button>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <span class="badge-premium" id="hero-badge">PREMIUM B2B AI PLATFORM</span>
-            <h1 id="hero-title">로컬 AI 비서 빌더 & 자율 치유 OS<br>Trinity RAG OS Suite (v10.3)</h1>
-            <p id="hero-desc">외부 인터넷을 완전히 격리 차단해도 사내 기밀 유출률 0%로 동작하는 무결점 로컬 온프레미스 AI 패키지. 매달 청구되는 비싼 토큰 요금 고지서를 찢어버리십시오.</p>
-            <div class="cta-group">
-                <a href="#" class="btn btn-primary" id="hero-btn-demo">1:1 데모 신청하기</a>
-                <a href="#" class="btn btn-secondary" id="hero-btn-spec">제품 상세 명세서</a>
-            </div>
-        </div>
-    </section>
+    <!-- Main Workspace -->
+    <main class="container">
 
-    <!-- 3 Corps Allied Forces -->
-    <section class="container">
-        <div class="section-title">
-            <h2 id="corps-title">RAG 연합군 3대 군단 삼위일체 아키텍처</h2>
-            <p id="corps-subtitle">단순히 묻고 지식을 대답하는 것을 넘어, 스스로 지식을 정제하고 복제를 철저히 영구 방어합니다.</p>
-        </div>
-        <div class="corps-grid">
-            <!-- 1st Corps -->
-            <div class="corps-card">
-                <div class="corps-icon">🧠</div>
-                <h3 id="c1-h">제1군단 [로컬 AI 비서 제조 SW]</h3>
-                <div class="corps-price" id="c1-p">1,200만 원 (소비세/부가세 별도)</div>
-                <p id="c1-d">BOS 정렬 하네스로 인퍼런스 환각율 95% 감소. 5대 회고 각도로 1개 지식을 10배 품질로 자율 증강(Extender). GGUF 안전 컴파일 가드로 OOM 원천 방어.</p>
+        <!-- TAB 1: DASHBOARD -->
+        <section id="dashboard" class="tab-content active">
+            <div class="dashboard-hero">
+                <span class="premium-badge" id="hero-badge">PREMIUM B2B AI PLATFORM</span>
+                <h1 id="hero-title">로컬 AI 비서 빌더 & 자율 치유 OS<br>Trinity RAG OS Suite (v10.3)</h1>
+                <p id="hero-desc">외부 인터넷을 완전히 격리 차단해도 사내 기밀 유출률 0%로 동작하는 무결점 로컬 온프레미스 AI 패키지. 매달 청구되는 비싼 토큰 요금 고지서를 찢어버리십시오.</p>
+                
+                <!-- CTA buttons inside Dashboard Hero to fix JS innerText references -->
+                <div class="cta-group" style="display: flex; justify-content: center; gap: 16px; margin-top: 32px;">
+                    <a href="javascript:void(0)" class="btn-run" id="hero-btn-demo" style="text-decoration: none; padding: 12px 28px;">1:1 데모 신청하기</a>
+                    <a href="javascript:void(0)" class="btn-secondary" id="hero-btn-spec" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: 8px; border: 1px solid var(--border-muted); color: var(--text-main); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border-muted)'">제품 상세 명세서</a>
+                </div>
             </div>
-            <!-- 2nd Corps -->
-            <div class="corps-card">
-                <div class="corps-icon">🛡️</div>
-                <h3 id="c2-h">제2군단 [비밀 금고형 RAG SW]</h3>
-                <div class="corps-price" id="c2-p">1,000만 원 (소비세/부가세 별도)</div>
-                <p id="c2-d">130MB 초경량 로컬 임베딩 구동. 【개인정보 원천 차단 가드(이중 PII 필터)】 및 【오프라인 3중 자율 라이선스 락】 기본 무상 제공으로 완벽한 기밀 유출 차단.</p>
-            </div>
-            <!-- 3rd Corps -->
-            <div class="corps-card">
-                <div class="corps-icon">🌀</div>
-                <h3 id="c3-h">제3군단 [자율 청소 지식 OS SW]</h3>
-                <div class="corps-price" id="c3-p">800만 원 (소비세/부가세 별도)</div>
-                <p id="c3-d">신구 지식의 논리적/수치적 모순 발생 시 자율 삭제 Eviction 및 Multi-LoRA LRU 어댑터 동적 핫스왑 가동으로 상시 100% 무결성 데이터베이스 자율 유지.</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- Interactive ROI Calculator -->
-    <section class="container">
-        <div class="calculator-sec">
-            <div class="calc-wrapper">
-                <div class="calc-input-area">
-                    <h3 id="calc-h">Interactive ROI 계산기</h3>
-                    <p id="calc-desc">사내 규모와 월간 문서 처리량을 조절하여, Trinity RAG OS 도입 시의 손익분기점(BEP) 돌파 및 3개년 비용 절감액을 실시간으로 확인해 보십시오.</p>
+            <div class="dash-grid">
+                <!-- Live Monitor -->
+                <div class="glass-card monitor-panel">
+                    <div class="panel-header">
+                        <div class="panel-title">🛡️ System Core Live Monitor</div>
+                        <div class="live-indicator">
+                            <span class="live-dot"></span>LIVE STATE
+                        </div>
+                    </div>
                     
-                    <div class="form-group">
-                        <label id="calc-label-users">사내 AI 사용자 수 (Seats)</label>
-                        <input type="range" class="range-slider" id="slider-users" min="10" max="200" value="50" oninput="calculateROI()">
-                        <span class="calc-val" id="val-users">50 명</span>
+                    <div class="status-cards-row">
+                        <div class="status-card">
+                            <span class="status-card-label">Corps 1 Status</span>
+                            <span class="status-card-val" style="color: var(--primary);">ACTIVE</span>
+                            <span class="status-card-footer">Hallucination 95% Reduced</span>
+                        </div>
+                        <div class="status-card">
+                            <span class="status-card-label">Corps 2 Security</span>
+                            <span class="status-card-val" style="color: var(--secondary);">AIR-GAPPED</span>
+                            <span class="status-card-footer">Double PII Filter Masking</span>
+                        </div>
+                        <div class="status-card">
+                            <span class="status-card-label">Corps 3 DB Status</span>
+                            <span class="status-card-val" style="color: var(--tertiary);">0.00% ANOMALY</span>
+                            <span class="status-card-footer">LRU Eviction Active</span>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label id="calc-label-pages">월간 신규 지식 갱신량 (Pages)</label>
-                        <input type="range" class="range-slider" id="slider-pages" min="500" max="20000" value="5000" oninput="calculateROI()">
-                        <span class="calc-val" id="val-pages">5,000 페이지</span>
+                    <div class="terminal-container" id="system-log-terminal">
+                        <!-- Filled by JavaScript -->
                     </div>
                 </div>
 
-                <div class="calc-result-area">
-                    <div class="calc-result-title" id="calc-res-t">도입비 투자 회수 기간 (BEP)</div>
-                    <div class="calc-result-main" id="calc-res-main">4.8 개월</div>
-                    <div class="calc-result-desc" id="calc-res-d">※ 타사 대비 월간 운영 요금(OpenAI API 및 인건비)을 93.8% 아껴 도입 비용 JPY 250만 엔 / KRW 2,500만 원을 초고속 회수하고 매년 순부가가치를 창출합니다.</div>
+                <!-- Live Metrics Summary -->
+                <div class="glass-card stats-panel">
+                    <div>
+                        <div class="panel-title" style="margin-bottom: 8px;">📊 Resource Allocation</div>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Real-time memory allocation map of dynamic Multi-LoRA adapters in Corps 3 database node.</p>
+                    </div>
+                    <div class="chart-box">
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="height: 75%;"></div>
+                            <span class="chart-label">L1</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="height: 42%; background: var(--secondary);"></div>
+                            <span class="chart-label">L2</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="height: 90%; background: var(--tertiary);"></div>
+                            <span class="chart-label">L3</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="height: 15%; background: var(--accent);"></div>
+                            <span class="chart-label">Swap</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.75rem; color: var(--text-dark); margin-top: 12px; text-align: center;">
+                        Memory Eviction Rate: 0.01s interval | Cache Hit Ratio: 99.85%
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 10-Stage Verify Gate Tracker -->
-    <section class="container gate-sec">
-        <div class="section-title">
-            <h2 id="gate-h">10단계 무결성 검증 파이프라인 (verify.py)</h2>
-            <p id="gate-d">CMMI-PMO 하네스 규율에 의거하여 단 1줄의 버그나 OOM 크래시도 허용하지 않는 검증 스테이지 동작 추적</p>
-        </div>
-        <div class="gate-grid">
-            <div class="gate-item active"><div class="gate-num">01</div><h4 id="g1">Auto Binding</h4></div>
-            <div class="gate-item active"><div class="gate-num">02</div><h4 id="g2">Second Launch</h4></div>
-            <div class="gate-item active"><div class="gate-num">03</div><h4 id="g3">Clone Block</h4></div>
-            <div class="gate-item active"><div class="gate-num">04</div><h4 id="g4">Bypass Guard</h4></div>
-            <div class="gate-item active"><div class="gate-num">05</div><h4 id="g5">Deduplication</h4></div>
-            <div class="gate-item active"><div class="gate-num">06</div><h4 id="g6">Embedding</h4></div>
-            <div class="gate-item active"><div class="gate-num">07</div><h4 id="g7">BOS Alignment</h4></div>
-            <div class="gate-item active"><div class="gate-num">08</div><h4 id="g8">5-Angle Extender</h4></div>
-            <div class="gate-item active"><div class="gate-num">09</div><h4 id="g9">LRU Eviction</h4></div>
-            <div class="gate-item active"><div class="gate-num">10</div><h4 id="g10">Twin-Build</h4></div>
-        </div>
-    </section>
 
-    <!-- B2B Pitch Decks Portal Section -->
-    <section class="container pitch-decks-sec" id="pitch-decks-section" style="margin: 80px 0;">
-        <div class="section-title">
-            <h2 id="decks-title">B2B 공식 온라인 제안 슬라이드 (B2B Pitch Decks)</h2>
-            <p id="decks-subtitle">각 비즈니스 역할 및 CTO/IT 기술 부서를 위한 9종의 대화형 프리젠테이션 자료를 즉시 열람하십시오.</p>
-        </div>
-        <div class="decks-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px;">
-            <!-- Deck 1 -->
-            <a href="./slides/slides_all_in_one.html" target="_blank" class="deck-card">
-                <div style="font-size: 2.2rem; margin-bottom: 12px;">🌟</div>
-                <h3 id="d1-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">삼위일체 통합 비즈니스 제안</h3>
-                <p id="d1-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">3대 RAG 연합군 통합 패키지의 비즈니스 혜택 및 ROI 명세</p>
-            </a>
-            <!-- Deck 2 -->
-            <a href="./slides/slides_all_in_one_tech.html" target="_blank" class="deck-card">
-                <div style="font-size: 2.2rem; margin-bottom: 12px;">⚙️</div>
-                <h3 id="d2-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">삼위일체 통합 기술 명세</h3>
-                <p id="d2-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">CTO 및 보안 책임자용 아키텍처 및 6대 하네스 설명</p>
-            </a>
-            <!-- Deck 3 -->
-            <a href="./slides/slides_corps1_builder.html" target="_blank" class="deck-card">
-                <div style="font-size: 2.2rem; margin-bottom: 12px;">🧠</div>
-                <h3 id="d3-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">제1군단 비즈니스 제안</h3>
-                <p id="d3-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">환각률 극감 로컬 AI 비서 제작 패키지 핵심 가치</p>
-            </a>
-            <!-- Deck 4 -->
-            <a href="./slides/slides_corps1_builder_tech.html" target="_blank" class="deck-card">
-                <div style="font-size: 2.2rem; margin-bottom: 12px;">💻</div>
-                <h3 id="d4-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">제1군단 빌더 기술 슬라이드</h3>
-                <p id="d4-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">GGUF 세이프 컴파일 및 BOS 정렬 하네스 상세 구현</p>
-            </a>
-            <!-- Deck 5 -->
-            <a href="./slides/slides_corps2_agent.html" target="_blank" class="deck-card">
-                <div style="font-size: 2.2rem; margin-bottom: 12px;">🔒</div>
-                <h3 id="d5-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">제2군단 비즈니스 제안</h3>
-                <p id="d5-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">기밀 유출 원천 차단 RAG 엔진 및 UUID 락 혜택</p>
-            </a>
-            <!-- Deck 6 -->
-            <a href="./slides/slides_corps2_agent_tech.html" target="_blank" class="deck-card">
-                <div style="font-size: 2.2rem; margin-bottom: 12px;">🛡️</div>
-                <h3 id="d6-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">제2군단 보안 기술 슬라이드</h3>
-                <p id="d6-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">개인정보 이중 PII 필터링 및 샌드박스 보안 설계</p>
-            </a>
-            <!-- Deck 7 -->
-            <a href="./slides/slides_corps3_healer.html" target="_blank" class="deck-card">
-                <div style="font-size: 2.2rem; margin-bottom: 12px;">🌀</div>
-                <h3 id="d7-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">제3군단 비즈니스 제안</h3>
-                <p id="d7-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">자율 청소 지식 OS 및 무중단 자가 치유 복구 혜택</p>
-            </a>
-            <!-- Deck 8 -->
-            <a href="./slides/slides_corps3_healer_tech.html" target="_blank" class="deck-card">
-                <div style="font-size: 2.2rem; margin-bottom: 12px;">🔥</div>
-                <h3 id="d8-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">제3군단 오퍼레이션 기술 슬라이드</h3>
-                <p id="d8-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">에빅션 루프와 Multi-LoRA LRU 핫스왑의 자율 운용</p>
-            </a>
-            <!-- Deck 9 -->
-            <a href="./slides/slides_network_connection.html" target="_blank" class="deck-card">
-                <div style="font-size: 2.2rem; margin-bottom: 12px;">🔌</div>
-                <h3 id="d9-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary);">망분리 네트워크 구성</h3>
-                <p id="d9-desc" style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5;">완전 오프라인 보안 인프라 노드 설계도 및 확장 명세</p>
-            </a>
-        </div>
-    </section>
+        <!-- TAB 2: AI 3-CORPS -->
+        <section id="corps" class="tab-content">
+            <div class="corps-view-header">
+                <h2 id="corps-title" style="font-size: 2.2rem; font-weight: 700; margin-bottom: 8px;">RAG 연합군 3대 군단 삼위일체 아키텍처</h2>
+                <p id="corps-subtitle" style="color: var(--text-muted);">단순히 묻고 지식을 대답하는 것을 넘어, 스스로 지식을 정제하고 복제를 철저히 영구 방어합니다.</p>
+            </div>
 
-    <!-- Product Pricing Packages -->
-    <section class="container pricing-sec">
-        <div class="section-title">
-            <h2 id="price-h">SW 정식 라이선스 요금 및 비즈니스 특약 패키지</h2>
-            <p id="price-d">고객사 예산 사정에 맞춰 선택 도입이 가능한 유연한 영구 라이선스 요금 명세</p>
-        </div>
-        <div class="pricing-table-wrapper">
-            <table class="price-table">
-                <thead>
-                    <tr id="th-wrapper">
-                        <th>패키지 및 모듈 명칭</th>
-                        <th>상세 혜택 및 포함 내역</th>
-                        <th>SW 영구 라이선스 요금</th>
-                    </tr>
-                </thead>
-                <tbody id="table-body">
-                    <tr>
-                        <td style="font-weight: 700; color: #fff;">🎁 3대 군단 올인원 통합 SW 패키지</td>
-                        <td>제1군단 + 제2군단 + 제3군단 정식 SW 라이선스 일괄 계약 (이중 PII 필터 및 복제방지 락 기본 무상 제공)</td>
-                        <td style="font-weight: 700; color: var(--primary);">JPY 2,500,000 / KRW 2,500만 원</td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: 700; color: #fff;">🖥️ H/W 조달 대행 & 검증 세팅 서비스</td>
-                        <td>고사양 AI 미니 PC(Ryzen 9, RTX 4060 Ti, RAM 64GB) 사전 완벽 세팅 및 verify 10단계 검증 출하 대행 용역</td>
-                        <td style="font-weight: 700; color: var(--accent);">JPY 400,000 / KRW 400만 원</td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: 700; color: #fff;">🛡️ [유상 옵션] 안심 보안 & 외부 지식 수혈 모듈</td>
-                        <td>② 해킹 방어 샌드박스(+50만 엔/500만 원) | ③ 노션 커넥터(+50만 엔/500만 원) | ④ 일본 법률/특허 지식 팩(+30만 엔/300만 원)</td>
-                        <td style="font-weight: 700; color: var(--secondary);">모듈별 별도 개별 합산 과금</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="tax-disclaimer" id="tax-d">※ 모든 라이선스 요금은 공급가액 기준이며, 부가세/소비세 10% 별도 청구됩니다 (VAT/消費税10%別途)</div>
-        </div>
-    </section>
+            <div class="corps-grid">
+                <!-- 1st Corps -->
+                <div class="glass-card corps-detail-card c1-card">
+                    <div class="corps-header">
+                        <div class="corps-icon">🧠</div>
+                        <h3 class="corps-name" id="c1-h">제1군단 [로컬 AI 비서 제조 SW]</h3>
+                        <div class="corps-price-tag" id="c1-p">1,200만 원 (부가세 별도)</div>
+                    </div>
+                    <p class="corps-body" id="c1-d">BOS 정렬 하네스로 인퍼런스 환각율 95% 감소. 5대 회고 각도로 1개 지식을 10배 품질로 자율 증강(Extender). GGUF 안전 컴파일 가드로 OOM 원천 방어.</p>
+                </div>
 
-    <!-- Footer -->
+                <!-- 2nd Corps -->
+                <div class="glass-card corps-detail-card c2-card">
+                    <div class="corps-header">
+                        <div class="corps-icon">🛡️</div>
+                        <h3 class="corps-name" id="c2-h">제2군단 [비밀 금고형 RAG SW]</h3>
+                        <div class="corps-price-tag" id="c2-p">1,000만 원 (부가세 별도)</div>
+                    </div>
+                    <p class="corps-body" id="c2-d">130MB 초경량 로컬 임베딩 구동. 【개인정보 원천 차단 가드(이중 PII 필터)】 및 【오프라인 3중 자율 라이선스 락】 기본 무상 제공.</p>
+                </div>
+
+                <!-- 3rd Corps -->
+                <div class="glass-card corps-detail-card c3-card">
+                    <div class="corps-header">
+                        <div class="corps-icon">🌀</div>
+                        <h3 class="corps-name" id="c3-h">제3군단 [자율 청소 지식 OS SW]</h3>
+                        <div class="corps-price-tag" id="c3-p">800만 원 (부가세 별도)</div>
+                    </div>
+                    <p class="corps-body" id="c3-d">신구 지식의 모순 검출 시 자동 수거(Eviction) 및 Multi-LoRA LRU 아답터 실시간 핫스왑 지원. 영구 청정 사내 지식 스토어 자율 유지.</p>
+                </div>
+            </div>
+
+            <!-- Interative Simulation Sandbox -->
+            <div class="glass-card simulator-panel">
+                <div class="panel-header" style="margin-bottom: 24px;">
+                    <div class="panel-title">⚙️ Trinity Alliance Operation Sandbox (실시간 시뮬레이터)</div>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">로그인이 필요 없는 즉시 테스트 콘솔</span>
+                </div>
+                
+                <div class="sim-input-row">
+                    <input type="text" class="sim-input" id="simulator-prompt" placeholder="사내 문서 주제를 입력해보세요 (예: 스타트업 기업 기밀 보안 지식 베이스 구축)">
+                    <button class="btn-run" id="btn-run-simulation" onclick="runSimulation()">
+                        <span>Run Simulation</span> 🚀
+                    </button>
+                </div>
+
+                <div class="sim-console" id="simulator-console">
+                    <span style="color: var(--text-dark);">// 시뮬레이션 대기 중. 프롬프트 입력 후 'Run Simulation'을 누르세요.</span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- TAB 3: INTEGRITY GATE -->
+        <section id="gate" class="tab-content">
+            <div class="gate-view-header">
+                <h2 id="gate-h" style="font-size: 2.2rem; font-weight: 700; margin-bottom: 8px;">10단계 무결성 검증 파이프라인 (verify.py)</h2>
+                <p id="gate-d" style="color: var(--text-muted);">CMMI-PMO 하네스 규율에 입각해, 한 글자의 버그도 허용치 않는 10단계 보안 스테이지 가동 상태 추적</p>
+            </div>
+
+            <div class="gate-layout">
+                <!-- Timeline List -->
+                <div class="gate-timeline">
+                    <div class="gate-stage-card active" onclick="selectGateStage(1, this)">
+                        <span class="stage-num">01</span>
+                        <span class="stage-title" id="g1">Auto Binding</span>
+                        <span class="stage-status-badge">PASSED</span>
+                    </div>
+                    <div class="gate-stage-card" onclick="selectGateStage(2, this)">
+                        <span class="stage-num">02</span>
+                        <span class="stage-title" id="g2">Second Launch</span>
+                        <span class="stage-status-badge">PASSED</span>
+                    </div>
+                    <div class="gate-stage-card" onclick="selectGateStage(3, this)">
+                        <span class="stage-num">03</span>
+                        <span class="stage-title" id="g3">Clone Block</span>
+                        <span class="stage-status-badge">PASSED</span>
+                    </div>
+                    <div class="gate-stage-card" onclick="selectGateStage(4, this)">
+                        <span class="stage-num">04</span>
+                        <span class="stage-title" id="g4">Bypass Guard</span>
+                        <span class="stage-status-badge">PASSED</span>
+                    </div>
+                    <div class="gate-stage-card" onclick="selectGateStage(5, this)">
+                        <span class="stage-num">05</span>
+                        <span class="stage-title" id="g5">Deduplication</span>
+                        <span class="stage-status-badge">PASSED</span>
+                    </div>
+                    <div class="gate-stage-card" onclick="selectGateStage(6, this)">
+                        <span class="stage-num">06</span>
+                        <span class="stage-title" id="g6">Embedding</span>
+                        <span class="stage-status-badge">PASSED</span>
+                    </div>
+                    <div class="gate-stage-card" onclick="selectGateStage(7, this)">
+                        <span class="stage-num">07</span>
+                        <span class="stage-title" id="g7">BOS Alignment</span>
+                        <span class="stage-status-badge">PASSED</span>
+                    </div>
+                    <div class="gate-stage-card" onclick="selectGateStage(8, this)">
+                        <span class="stage-num">08</span>
+                        <span class="stage-title" id="g8">5-Angle Extender</span>
+                        <span class="stage-status-badge">PASSED</span>
+                    </div>
+                    <div class="gate-stage-card" onclick="selectGateStage(9, this)">
+                        <span class="stage-num">09</span>
+                        <span class="stage-title" id="g9">LRU Eviction</span>
+                        <span class="stage-status-badge">PASSED</span>
+                    </div>
+                    <div class="gate-stage-card" onclick="selectGateStage(10, this)">
+                        <span class="stage-num">10</span>
+                        <span class="stage-title" id="g10">Twin-Build</span>
+                        <span class="stage-status-badge">PASSED</span>
+                    </div>
+                </div>
+
+                <!-- Detail terminal -->
+                <div class="glass-card gate-detail-panel">
+                    <div class="gate-log-header">
+                        <span>🔍 Gate Stage Verification Log</span>
+                        <span style="font-family: 'Geist Mono', monospace; font-size: 0.8rem; color: var(--primary);" id="stage-selected-title">Stage 01: Auto Binding</span>
+                    </div>
+                    <div class="gate-terminal-view" id="gate-terminal-content">
+                        <!-- Dynamic output -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- TAB 4: ROI CALCULATOR -->
+        <section id="roi" class="tab-content">
+            <div class="corps-view-header">
+                <h2 id="calc-h" style="font-size: 2.2rem; font-weight: 700; margin-bottom: 8px;">Interactive ROI 계산기</h2>
+                <p id="calc-desc" style="color: var(--text-muted);">사내 임직원 규모와 지식 업데이트량을 바탕으로, 클라우드 API 호출 대비 절감되는 ROI 및 BEP 회수 기간을 시뮬레이션 하십시오.</p>
+            </div>
+
+            <div class="roi-wrapper">
+                <!-- Sliders -->
+                <div class="glass-card roi-controls">
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <span class="slider-label" id="label-users">사내 AI 사용자 수 (Seats)</span>
+                            <span class="slider-val" id="val-users">50 명</span>
+                        </div>
+                        <input type="range" id="slider-users" min="5" max="500" value="50" oninput="calculateROI()">
+                    </div>
+
+                    <div class="slider-group">
+                        <div class="slider-header">
+                            <span class="slider-label" id="label-pages">월간 신규 지식 업데이트 (Pages)</span>
+                            <span class="slider-val" id="val-pages">5,000 페이지</span>
+                        </div>
+                        <input type="range" id="slider-pages" min="500" max="50000" step="500" value="5000" oninput="calculateROI()">
+                    </div>
+                </div>
+
+                <!-- ROI Display Card -->
+                <div class="glass-card roi-results-card">
+                    <div>
+                        <h3 id="res-title" style="font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 12px;">투자 비용 회수 기간 (BEP)</h3>
+                        <p id="res-desc" style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">클라우드 AI 대비 월간 운영 요금을 93.8% 이상 절감하여, 정식 라이선스 도입 비용을 고속 회수합니다.</p>
+                    </div>
+                    
+                    <div class="roi-big-result">
+                        <span class="roi-big-val" id="calc-res-main">3.2 개월</span>
+                    </div>
+
+                    <div style="font-size: 0.75rem; color: var(--text-dark);">
+                        * 당사 솔루션 평생 라이선스 비용 JPY 2,500,000 / KRW 2,500만 원 기준
+                    </div>
+                </div>
+            </div>
+
+            <!-- Licensing Price Table -->
+            <div class="glass-card pricing-table-container" style="padding: 24px;">
+                <h2 id="price-h" style="font-size: 1.4rem; margin-bottom: 8px; color: #ffffff;">SW 정식 라이선스 요금 및 비즈니스 특약 패키지</h2>
+                <p id="price-d" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">바이어측의 시스템 규모 및 규제 요구에 적합한 삼위일체 영구 라이선스 팩</p>
+                
+                <table class="pricing-table">
+                    <thead>
+                        <tr id="th-wrapper">
+                            <th>패키지/모듈명</th>
+                            <th>상세 스펙 및 제공 범위</th>
+                            <th>SW 라이선스 비용</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Dynamic localization body -->
+                    </tbody>
+                </table>
+                <div id="tax-d" style="font-size: 0.75rem; color: var(--text-dark); margin-top: 12px; text-align: right;">
+                    * 모든 요금은 부가세 10% 별도 공급가액 기준입니다.
+                </div>
+            </div>
+        </section>
+
+
+        <!-- TAB 5: PITCH DECKS -->
+        <section id="decks" class="tab-content">
+            <div class="corps-view-header">
+                <h2 id="decks-title" style="font-size: 2.2rem; font-weight: 700; margin-bottom: 8px;">B2B 공식 온라인 제안 슬라이드 (B2B Pitch Decks)</h2>
+                <p id="decks-subtitle" style="color: var(--text-muted);">바이어측 실무 총괄 및 CTO/인프라 보안 부서를 위한 대화형 정밀 제안 프레젠테이션 자료 일체</p>
+            </div>
+
+            <div class="decks-grid">
+                <!-- deck cards linked with standard ./slides/ relative paths -->
+                <a href="./slides/slides_all_in_one.html" class="glass-card deck-card" target="_blank">
+                    <div>
+                        <h3 id="d1-title">🌟 삼위일체 통합 비즈니스 제안</h3>
+                        <p id="d1-desc">3대 RAG 연합군 통합 패키지 도입에 따른 비용 절감 및 비즈니스 가치 총괄</p>
+                    </div>
+                </a>
+
+                <a href="./slides/slides_all_in_one_tech.html" class="glass-card deck-card" target="_blank">
+                    <div>
+                        <h3 id="d2-title">⚙️ 삼위일체 통합 기술 명세</h3>
+                        <p id="d2-desc">IT 인프라 및 정보보안 부서 대상 아키텍처 및 6대 하네스 상세 설명</p>
+                    </div>
+                </a>
+
+                <a href="./slides/slides_corps1_builder.html" class="glass-card deck-card" target="_blank">
+                    <div>
+                        <h3 id="d3-title">🧠 제1군단 비즈니스 제안</h3>
+                        <p id="d3-desc">로컬 AI 비서 제작 패키지의 도입 가치 및 환각율 95% 개선 메커니즘</p>
+                    </div>
+                </a>
+
+                <a href="./slides/slides_corps1_builder_tech.html" class="glass-card deck-card" target="_blank">
+                    <div>
+                        <h3 id="d4-title">💻 제1군단 빌더 기술 슬라이드</h3>
+                        <p id="d4-desc">GGUF 세이프 컴파일 및 BOS 정렬 하네스의 구체적 소스 수준 구현 방식</p>
+                    </div>
+                </a>
+
+                <a href="./slides/slides_corps2_agent.html" class="glass-card deck-card" target="_blank">
+                    <div>
+                        <h3 id="d5-title">🔒 제2군단 비즈니스 제안</h3>
+                        <p id="d5-desc">개인정보 차단 필터 및 오프라인 UUID 3중 안전 고정 메커니즘 개요</p>
+                    </div>
+                </a>
+
+                <a href="./slides/slides_corps2_agent_tech.html" class="glass-card deck-card" target="_blank">
+                    <div>
+                        <h3 id="d6-title">🛡️ 제2군단 보안 기술 슬라이드</h3>
+                        <p id="d6-desc">이중 PII 마스킹 하중 필터 및 샌드박스 망분리 보안 아키텍처 구조</p>
+                    </div>
+                </a>
+
+                <a href="./slides/slides_corps3_healer.html" class="glass-card deck-card" target="_blank">
+                    <div>
+                        <h3 id="d7-title">🌀 제3군단 비즈니스 제안</h3>
+                        <p id="d7-desc">자율 청소 지식 OS 및 무중단 정합성 검출 기반 자가복구 구조</p>
+                    </div>
+                </a>
+
+                <a href="./slides/slides_corps3_healer_tech.html" class="glass-card deck-card" target="_blank">
+                    <div>
+                        <h3 id="d8-title">🔥 제3군단 오퍼레이션 기술 슬라이드</h3>
+                        <p id="d8-desc">에빅션 루프와 Multi-LoRA LRU 캐시 어댑터 스위칭 알고리즘 구현부</p>
+                    </div>
+                </a>
+
+                <a href="./slides/slides_network_connection.html" class="glass-card deck-card" target="_blank">
+                    <div>
+                        <h3 id="d9-title">🔌 망분리 네트워크 구성</h3>
+                        <p id="d9-desc">물리적 망분리 인프라 내부 AI 인퍼런스 서버 노드 통신 규격 설계도</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer stamp -->
     <footer>
-        <div class="container">
-            <p>&copy; 2026 KODARI SYSTEMS Co., Ltd. All Rights Reserved.</p>
-            <p style="font-size: 0.8rem; color: var(--text-muted);" id="footer-stamp">Distribution Class: B2B Official Proposal Material | Authored by RAG Alliance Strategy Group</p>
+        <div class="container" id="footer-stamp">
+            Distribution Class: B2B Official Proposal Material | Authored by RAG Alliance Strategy Group
         </div>
     </footer>
 
+    <!-- Translation / Interactive Logic Script -->
     <script>
+        // i18n data
         const i18n = {
             ko: {
                 badge: "PREMIUM B2B AI PLATFORM",
@@ -744,49 +1257,49 @@
                 corps_title: "RAG 연합군 3대 군단 삼위일체 아키텍처",
                 corps_subtitle: "단순히 묻고 지식을 대답하는 것을 넘어, 스스로 지식을 정제하고 복제를 철저히 영구 방어합니다.",
                 c1_h: "🧠 제1군단 [로컬 AI 비서 제조 SW]",
-                c1_p: "JPY 1,200,000 (120만 엔) / KRW 1,200만 원",
+                c1_p: "1,200만 원 (부가세 별도)",
                 c1_d: "BOS 정렬 하네스로 인퍼런스 환각율 95% 감소. 5대 회고 각도로 1개 지식을 10배 품질로 자율 증강(Extender). GGUF 안전 컴파일 가드로 OOM 원천 방어.",
                 c2_h: "🛡️ 제2군단 [비밀 금고형 RAG SW]",
-                c2_p: "JPY 1,000,000 (100만 엔) / KRW 1,000만 원",
-                c2_d: "130MB 초경량 로컬 임베딩 구동. 【개인정보 원천 차단 가드(이중 PII 필터)】 및 【오프라인 3중 자율 라이선스 락】 기본 무상 제공으로 완벽한 기밀 유출 차단.",
+                c2_p: "1,000만 원 (부가세 별도)",
+                c2_d: "130MB 초경량 로컬 임베딩 구동. 【개인정보 원천 차단 가드(이중 PII 필터)】 및 【오프라인 3중 자율 라이선스 락】 기본 무상 제공.",
                 c3_h: "🌀 제3군단 [자율 청소 지식 OS SW]",
-                c3_p: "JPY 800,000 (80만 엔) / KRW 800만 원",
-                c3_d: "신구 지식의 논리적/수치적 모순 발생 시 자율 삭제 Eviction 및 Multi-LoRA LRU 어댑터 동적 핫스왑 가동으로 상시 100% 무결성 데이터베이스 자율 유지.",
+                c3_p: "800만 원 (부가세 별도)",
+                c3_d: "신구 지식의 모순 검출 시 자동 수거(Eviction) 및 Multi-LoRA LRU 아답터 실시간 핫스왑 지원. 영구 청정 사내 지식 스토어 자율 유지.",
                 calc_h: "Interactive ROI 계산기",
-                calc_desc: "사내 규모와 월간 문서 처리량을 조절하여, Trinity RAG OS 도입 시의 손익분기점(BEP) 돌파 및 3개년 비용 절감액을 실시간으로 확인해 보십시오.",
+                calc_desc: "사내 임직원 규모와 지식 업데이트량을 바탕으로, 클라우드 API 호출 대비 절감되는 ROI 및 BEP 회수 기간을 시뮬레이션 하십시오.",
                 label_users: "사내 AI 사용자 수 (Seats)",
-                label_pages: "월간 신규 지식 갱신량 (Pages)",
-                res_title: "도입비 투자 회수 기간 (BEP)",
-                res_desc: "※ 타사 대비 월간 운영 요금(OpenAI API 및 인건비)을 93.8% 아껴 도입 비용 JPY 250만 엔 / KRW 2,500만 원을 초고속 회수하고 매년 순부가가치를 창출합니다.",
+                label_pages: "월간 신규 지식 업데이트 (Pages)",
+                res_title: "투자 비용 회수 기간 (BEP)",
+                res_desc: "클라우드 AI 대비 월간 운영 요금을 93.8% 이상 절감하여, 정식 라이선스 도입 비용을 고속 회수합니다.",
                 gate_h: "10단계 무결성 검증 파이프라인 (verify.py)",
-                gate_d: "CMMI-PMO 하네스 규율에 의거하여 단 1줄의 버그나 OOM 크래시도 허용하지 않는 검증 스테이지 동작 추적",
+                gate_d: "CMMI-PMO 하네스 규율에 입각해, 한 글자의 버그도 허용치 않는 10단계 보안 스테이지 가동 상태 추적",
                 price_h: "SW 정식 라이선스 요금 및 비즈니스 특약 패키지",
-                price_d: "고객사 예산 사정에 맞춰 선택 도입이 가능한 유연한 영구 라이선스 요금 명세",
-                th_package: "패키지 및 모듈 명칭",
-                th_scope: "상세 혜택 및 포함 내역",
-                th_price: "SW 영구 라이선스 요금",
-                tax_d: "※ 모든 라이선스 요금은 공급가액 기준이며, 부가세/소비세 10% 별도 청구됩니다 (VAT/消費税10%別途)",
+                price_d: "바이어측의 시스템 규모 및 규제 요구에 적합한 삼위일체 영구 라이선스 팩",
+                th_package: "패키지 및 모듈명",
+                th_scope: "상세 스펙 및 제공 범위",
+                th_price: "SW 라이선스 비용",
+                tax_d: "* 모든 요금은 부가세 10% 별도 공급가액 기준입니다.",
                 footer_stamp: "Distribution Class: B2B Official Proposal Material | Authored by RAG Alliance Strategy Group",
                 decks_title: "B2B 공식 온라인 제안 슬라이드 (B2B Pitch Decks)",
-                decks_subtitle: "각 비즈니스 역할 및 CTO/IT 기술 부서를 위한 9종의 대화형 프리젠테이션 자료를 즉시 열람하십시오.",
+                decks_subtitle: "바이어측 실무 총괄 및 CTO/인프라 보안 부서를 위한 대화형 정밀 제안 프레젠테이션 자료 일체",
                 d1_title: "🌟 삼위일체 통합 비즈니스 제안",
-                d1_desc: "3대 RAG 연합군 통합 패키지의 비즈니스 혜택 및 ROI 명세",
+                d1_desc: "3대 RAG 연합군 통합 패키지 도입에 따른 비용 절감 및 비즈니스 가치 총괄",
                 d2_title: "⚙️ 삼위일체 통합 기술 명세",
-                d2_desc: "CTO 및 보안 책임자용 아키텍처 및 6대 하네스 설명",
+                d2_desc: "IT 인프라 및 정보보안 부서 대상 아키텍처 및 6대 하네스 상세 설명",
                 d3_title: "🧠 제1군단 비즈니스 제안",
-                d3_desc: "환각률 극감 로컬 AI 비서 제작 패키지 핵심 가치",
+                d3_desc: "로컬 AI 비서 제작 패키지의 도입 가치 및 환각율 95% 개선 메커니즘",
                 d4_title: "💻 제1군단 빌더 기술 슬라이드",
-                d4_desc: "GGUF 세이프 컴파일 및 BOS 정렬 하네스 상세 구현",
+                d4_desc: "GGUF 세이프 컴파일 및 BOS 정렬 하네스의 구체적 소스 수준 구현 방식",
                 d5_title: "🔒 제2군단 비즈니스 제안",
-                d5_desc: "기밀 유출 원천 차단 RAG 엔진 및 UUID 락 혜택",
+                d5_desc: "개인정보 차단 필터 및 오프라인 UUID 3중 안전 고정 메커니즘 개요",
                 d6_title: "🛡️ 제2군단 보안 기술 슬라이드",
-                d6_desc: "개인정보 이중 PII 필터링 및 샌드박스 보안 설계",
+                d6_desc: "이중 PII 마스킹 하중 필터 및 샌드박스 망분리 보안 아키텍처 구조",
                 d7_title: "🌀 제3군단 비즈니스 제안",
-                d7_desc: "자율 청소 지식 OS 및 무중단 자가 치유 복구 혜택",
+                d7_desc: "자율 청소 지식 OS 및 무중단 정합성 검출 기반 자가복구 구조",
                 d8_title: "🔥 제3군단 오퍼레이션 기술 슬라이드",
-                d8_desc: "에빅션 루프와 Multi-LoRA LRU 핫스왑의 자율 운용",
+                d8_desc: "에빅션 루프와 Multi-LoRA LRU 캐시 어댑터 스위칭 알고리즘 구현부",
                 d9_title: "🔌 망분리 네트워크 구성",
-                d9_desc: "완전 오프라인 보안 인프라 노드 설계도 및 확장 명세"
+                d9_desc: "물리적 망분리 인프라 내부 AI 인퍼런스 서버 노드 통신 규격 설계도"
             },
             ja: {
                 badge: "PREMIUM B2B AI PLATFORM",
@@ -795,81 +1308,148 @@
                 btn_demo: "1:1 デモを申し込む",
                 btn_spec: "製品詳細スペックシート",
                 corps_title: "RAG連合軍 3大軍団 三位一体アーキテクチャ",
-                corps_subtitle: "単なる知識의 回答を超え、自ら矛盾を清掃し無断複製を原点遮断する社内頭脳。",
+                corps_subtitle: "単なる知識の回答を超え、自ら矛盾を排除し無断複製を永久防衛する社内頭脳。",
                 c1_h: "🧠 第1軍団 [ローカルAIアシスタント製造SW]",
-                c1_p: "JPY 1,200,000 (120万円) / KRW 1,200万円",
-                c1_d: "BOS整列ハーネスで推論幻覚率95%削減。5大回顧観点プロトコルで1つの知識を10倍の品質へ自動増強(Extender)。GGUF安全コンパイルでOOMを原点防衛。",
+                c1_p: "JPY 1,200,000 (消費税別)",
+                c1_d: "BOS整列ハーネスで推論幻覚率95%削減. 5大回顧観点プロトコルで1つの知識を10倍の品質へ自動増強(Extender). GGUF安全コンパイルでOOMを原点防衛.",
                 c2_h: "🛡️ 第2軍団 [秘密金庫型RAG SW]",
-                c2_p: "JPY 1,000,000 (100万円) / KRW 1,000万円",
+                c2_p: "JPY 1,000,000 (消費税別)",
                 c2_d: "130MB超軽量ローカル埋め込みエンジン駆動。【個人情報原点遮断フィルタ（二重PIIマスク）】及び【オフライン3重自律ライセンスロック】を基本無償提供。",
                 c3_h: "🌀 第3軍団 [自律清掃ナレッジOS SW]",
-                c3_p: "JPY 800,000 (80万円) / KRW 800万円",
+                c3_p: "JPY 800,000 (消費税別)",
                 c3_d: "新旧知識の論理的/数値的矛盾の検知時、自律パージ(Eviction)及びMulti-LoRA LRUアダプタ動的ホットスワップを起動。常に無欠陥DBを自律維持。",
                 calc_h: "Interactive ROI 計算機",
-                calc_desc: "社内規模と月間ドキュメント処理量を調整し、Trinity RAG OS導入時の損益分岐点(BEP)突破および3年間のコスト削減額をリアルタイムで確認してください。",
+                calc_desc: "社内規模と月間ドキュメント処理量を調整し、Trinity RAG OS導入時の損益分岐点（BEP）突破および3年間のコスト削減額をリアルタイムで確認いただけます。",
                 label_users: "社内AIユーザー数 (Seats)",
                 label_pages: "月間新規知識更新量 (Pages)",
                 res_title: "導入費用の投資回収期間 (BEP)",
-                res_desc: "※ 他社に比べ月間運営コスト（OpenAI APIおよび人件費）を93.8%節約し、導入費用 JPY 250万円 / KRW 2,500万円を超高速回収して毎年純付加価値を創出します。",
+                res_desc: "※ 他社に比べ月間運営コスト（OpenAI APIおよび人件費）を93.8%節約し、導入費用 JPY 2,500,000を超高速で回収、毎年高い純付加価値を創出します。",
                 gate_h: "10段階無欠陥検証パイプライン (verify.py)",
-                gate_d: "CMMI-PMOハーネス規律に基づき、単1行 of バグやOOMクラッシュも許容しない検証ステージ動作追跡",
+                gate_d: "CMMI-PMOハーネス規律に基づき、わずか1行のバグやOOMクラッシュも許容しない検証ステージ動作追跡",
                 price_h: "SW正規ライセンス料金表およびビジネス特約パッケージ",
                 price_d: "バイヤー側の導入予算とビジネス目的に適合するモジュール別導入永久ライセンス料金明細",
                 th_package: "パッケージおよびモジュール名称",
                 th_scope: "詳細な特典および提供範囲",
                 th_price: "SW永久ライセンス料金",
-                tax_d: "※ すべてのライセンス料金は消費税10%別途基準です。(VAT/消費税10%別途)",
-                footer_stamp: "Distribution Class: B2B Official Proposal Material | Authored by RAG Alliance Strategy Group"
+                tax_d: "※ すべてのライセンス料金は供給価額基準であり、消費税10%が別途請求されます。 (VAT/消費税10%別途)",
+                footer_stamp: "Distribution Class: B2B Official Proposal Material | Authored by RAG Alliance Strategy Group",
+                decks_title: "B2B 公式オンライン提案スライド (B2B Pitch Decks)",
+                decks_subtitle: "各ビジネス役割およびCTO/IT技術部門のための9種の対話型プレゼンテーション資料を即時閲覧いただけます。",
+                d1_title: "🌟 三位一体統合ビジネス提案",
+                d1_desc: "3大RAG連合軍統合パッケージのビジネスメリット及びROI明細",
+                d2_title: "⚙️ 三位一体統合技術スペック",
+                d2_desc: "CTO及びセキュリティ責任者用アーキテクチャ 및 6대 하네스 설명",
+                d3_title: "🧠 第1軍団 ビジネス提案",
+                d3_desc: "幻覚率極減ローカルAIアシスタント製作パッケージ核心価値",
+                d4_title: "💻 第1軍団 ビルダー技術スライド",
+                d4_desc: "GGUFセーフコンパイル及びBOS整列ハーネス詳細実装",
+                d5_title: "🔒 第2軍団 ビジネス提案",
+                d5_desc: "機密漏洩原点遮断RAGエンジン及びUUIDロックメリット",
+                d6_title: "🛡️ 第2軍団 セキュリティ技術スライド",
+                d6_desc: "個人情報二重PIIフィルタリング及びサンドボックスセキュリティ設計",
+                d7_title: "🌀 第3軍団 ビジネス提案",
+                d7_desc: "自律清掃ナレッジOS及び無停止自己治療復旧メリット",
+                d8_title: "🔥 第3軍団 オペレーション技術スライド",
+                d8_desc: "エビクションループとMulti-LoRA LRUホットスワップの自律運用",
+                d9_title: "🔌 網分離ネットワーク構成",
+                d9_desc: "完全オフラインセキュリティインフラノード設計図及び拡張スペック"
             },
             en: {
                 badge: "PREMIUM B2B AI PLATFORM",
                 title: "Local AI Secretary Builder & Self-Healing OS<br>Trinity RAG OS Suite (v10.3)",
-                desc: "Flawless local on-premises AI package running with 0% corporate data leak under isolated nets. Say goodbye to expensive cloud token invoices.",
+                desc: "Flawless local on-premises AI package running with 0% data leaks under air-gapped nets. Tear up those costly cloud token utility bills.",
                 btn_demo: "Request 1:1 Live Demo",
                 btn_spec: "Product Detailed Specification",
                 corps_title: "Trinity Architecture: 3 Corps Allied Forces",
                 corps_subtitle: "An intranet brain that sweeps semantic anomalies and locks unauthorized duplication.",
                 c1_h: "🧠 Corps 1 [Local AI Builder SW]",
-                c1_p: "JPY 1,200,000 (1.2M Yen) / KRW 12,000,000",
+                c1_p: "USD 12,000 (excl. VAT)",
                 c1_d: "Tokenizer BOS Alignment limits hallucination. Kodari Extender generates 10x deep QAs from 1 fact. GGUF Safe Compiler blocks VRAM Out-of-Memory.",
                 c2_h: "🛡️ Corps 2 [Air-Gap RAG SW]",
-                c2_p: "JPY 1,000,000 (1.0M Yen) / KRW 10,000,000",
+                c2_p: "USD 10,000 (excl. VAT)",
                 c2_d: "130MB lightweight embeddings. 【Customer PII Auto-Masking Filters】 and 【Air-Gap UUID 3-Layer Lock】 bundled for FREE.",
                 c3_h: "🌀 Corps 3 [AI Knowledge Sweeper OS SW]",
-                c3_p: "JPY 800,000 (0.8M Yen) / KRW 8,000,000",
+                c3_p: "USD 8,000 (excl. VAT)",
                 c3_d: "Autonomously sweeps semantic conflicts via self-healer eviction loop. Hot-swaps multi-LoRA adapters via LRU cache safely.",
                 calc_h: "Interactive ROI Calculator",
                 calc_desc: "Adjust the corporate size and monthly document processing volume to check the Break-Even Point (BEP) and 3-year cost savings in real-time.",
                 label_users: "Internal AI Seats",
                 label_pages: "Monthly Doc Changes (Pages)",
-                res_title: "investment Payback Period (BEP)",
-                res_desc: "* Saving 93.8% on monthly operations (OpenAI API & labor) to rapidly recover JPY 2.5M / KRW 25M license fee and drive pure business value annually.",
+                res_title: "Investment Payback Period (BEP)",
+                res_desc: "* Saving 93.8% on monthly operations (OpenAI API & labor) to rapidly recover USD 25,000 license fee and drive pure business value annually.",
                 gate_h: "10-Stage Integrity Verification Pipeline (verify.py)",
                 gate_d: "Tracking E2E verify stages under strict CMMI-PMO guidelines allowing zero bugs or memory leak crashes.",
                 price_h: "Standard Software Licensing & Optional Packages",
                 price_d: "Flexible perpetual licensing schedule matching the buyer's budget and target B2B regulations.",
-                th_package: "License / Add-on Title",
-                th_scope: "Included Deliverables & Values",
-                th_price: "SW perpetual License Fee",
-                tax_d: "* All pricing is net, exclusive of local VAT/Consumption Tax (10% separate).",
-                footer_stamp: "Distribution Class: B2B Official Proposal Material | Authored by RAG Alliance Strategy Group"
+                th_package: "Package & Module",
+                th_scope: "Details & Scope",
+                th_price: "SW Perpetual License",
+                tax_d: "* All license fees are based on supply value; local VAT/Tax (10%) is excluded.",
+                footer_stamp: "Distribution Class: B2B Official Proposal Material | Authored by RAG Alliance Strategy Group",
+                decks_title: "B2B Official Proposal Slides (B2B Pitch Decks)",
+                decks_subtitle: "Access 9 interactive B2B slides designed for CTOs, CISOs, and business leads immediately.",
+                d1_title: "🌟 Trinity Integrated Business Proposal",
+                d1_desc: "Business benefits and ROI specification of the 3-Corps All-in-One package",
+                d2_title: "⚙️ Trinity Integrated Tech Specifications",
+                d2_desc: "Architecture & 6-Harness explanation for CTO and Security Leaders",
+                d3_title: "🧠 Corps 1 Business Proposal",
+                d3_desc: "Core values of Local SLM package with minimal hallucination",
+                d4_title: "💻 Corps 1 Builder Technical Slide",
+                d4_desc: "Detailed implementation of GGUF Safe Compile and BOS Alignment Harness",
+                d5_title: "🔒 Corps 2 Business Proposal",
+                d5_desc: "Obvious benefits of PII-masked RAG and offline UUID lock",
+                d6_title: "🛡️ Corps 2 Security Technical Slide",
+                d6_desc: "Sandbox security design and double PII auto-masking architecture",
+                d7_title: "🌀 Corps 3 Business Proposal",
+                d7_desc: "Self-healing eviction loop and dynamic multi-LoRA hot-swapping benefits",
+                d8_title: "🔥 Corps 3 Operations Technical Slide",
+                d8_desc: "Autonomous operations of eviction loop and multi-LoRA LRU caching",
+                d9_title: "🔌 Isolated Network Topology",
+                d9_desc: "Air-gapped secure infrastructure node blueprint and scaling specification"
             }
         };
 
-        function switchLang(lang, event) {
-            if(event) {
-                const btns = document.querySelectorAll('.lang-btn');
-                btns.forEach(btn => btn.classList.remove('active'));
-                event.target.classList.add('active');
-            }
+        // Current Language
+        let currentLang = 'ko';
 
+        // Tab Switching Logic
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                tab.classList.add('active');
+                const target = tab.getAttribute('data-target');
+                document.getElementById(target).classList.add('active');
+            });
+        });
+
+        // Language Translation Handler
+        function switchLang(lang) {
+            currentLang = lang;
             const data = i18n[lang];
 
+            // Toggle active classes on buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.innerText.toLowerCase() === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Translate elements
             document.getElementById('hero-badge').innerText = data.badge;
             document.getElementById('hero-title').innerHTML = data.title;
             document.getElementById('hero-desc').innerText = data.desc;
-            document.getElementById('hero-btn-demo').innerText = data.btn_demo;
-            document.getElementById('hero-btn-spec').innerText = data.btn_spec;
+            
+            // Safe innerText binding with existence check
+            const btnDemo = document.getElementById('hero-btn-demo');
+            if (btnDemo) btnDemo.innerText = data.btn_demo;
+            const btnSpec = document.getElementById('hero-btn-spec');
+            if (btnSpec) btnSpec.innerText = data.btn_spec;
 
             document.getElementById('corps-title').innerText = data.corps_title;
             document.getElementById('corps-subtitle').innerText = data.corps_subtitle;
@@ -888,10 +1468,10 @@
 
             document.getElementById('calc-h').innerText = data.calc_h;
             document.getElementById('calc-desc').innerText = data.calc_desc;
-            document.getElementById('calc-label-users').innerText = data.label_users;
-            document.getElementById('calc-label-pages').innerText = data.label_pages;
-            document.getElementById('calc-res-t').innerText = data.res_title;
-            document.getElementById('calc-res-d').innerText = data.res_desc;
+            document.getElementById('label-users').innerText = data.label_users;
+            document.getElementById('label-pages').innerText = data.label_pages;
+            document.getElementById('res-title').innerText = data.res_title;
+            document.getElementById('res-desc').innerText = data.res_desc;
 
             document.getElementById('gate-h').innerText = data.gate_h;
             document.getElementById('gate-d').innerText = data.gate_d;
@@ -899,11 +1479,10 @@
             document.getElementById('price-h').innerText = data.price_h;
             document.getElementById('price-d').innerText = data.price_d;
             document.getElementById('tax-d').innerText = data.tax_d;
-            document.getElementById('footer-stamp').innerText = data.footer_stamp;
 
-            // Pitch Decks i18n
             document.getElementById('decks-title').innerText = data.decks_title;
             document.getElementById('decks-subtitle').innerText = data.decks_subtitle;
+
             document.getElementById('d1-title').innerText = data.d1_title;
             document.getElementById('d1-desc').innerText = data.d1_desc;
             document.getElementById('d2-title').innerText = data.d2_title;
@@ -923,49 +1502,41 @@
             document.getElementById('d9-title').innerText = data.d9_title;
             document.getElementById('d9-desc').innerText = data.d9_desc;
 
-            // table headers
-            const tableHeader = document.getElementById('th-wrapper');
-            tableHeader.innerHTML = `
+            document.getElementById('footer-stamp').innerText = data.footer_stamp;
+
+            // Header columns
+            const thWrapper = document.getElementById('th-wrapper');
+            thWrapper.innerHTML = `
                 <th>${data.th_package}</th>
                 <th>${data.th_scope}</th>
                 <th>${data.th_price}</th>
             `;
 
-            // table body re-mapping to reflect i18n
+            // Table body
             const tableBody = document.getElementById('table-body');
             if (lang === 'ja') {
                 tableBody.innerHTML = `
                     <tr>
-                        <td style="font-weight: 700; color: #fff;">🎁 3大軍団 オールインワン統合SWパッケージ</td>
+                        <td style="font-weight: 700; color: var(--primary);">🎁 3大軍団 オールインワン統合SWパッケージ</td>
                         <td>第1軍団 ＋ 第2軍団 ＋ 第3軍団 SW正規ライセンス一括契約 (個人情報保護二重マスク及び物理コピー防止ロック基本無償搭載)</td>
-                        <td style="font-weight: 700; color: var(--primary);">JPY 2,500,000 <br><span style='color: var(--accent); font-size: 0.75rem;'>(一括契約時、50万円の特別セット割引！)</span></td>
+                        <td style="font-weight: 700; color: var(--primary);">JPY 2,500,000 <br><span style='color: var(--accent); font-size: 0.75rem;'>(一括契約時、50万円の特別セット割引!)</span></td>
                     </tr>
                     <tr>
-                        <td style="font-weight: 700; color: #fff;">🖥️ H/W調達代行および検証セットアップパック</td>
-                        <td>ソフトウェア正規版を高性能ミニPCへセットアップし、完全検証して出荷する調達代行技術支援</td>
-                        <td style="font-weight: 700; color: var(--accent);">JPY 400,000</td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: 700; color: #fff;">🛡️ [選択オプション] あんしんセキュリティ & 外部知識注入パック</td>
-                        <td>② 不正コマンド遮단「透明監獄」(+50万円) | ③ ノーションコネクタ(+50万円) | ④ 日本ローカル法制パック(+30万円)</td>
+                        <td style="font-weight: 700; color: var(--primary);">🛡️ [選択オプション] あんしんセキュリティ & 外部知識注入パック</td>
+                        <td>② 不正コマンド遮断「透明監獄」(+50万円) | ③ ノーションコネクタ(+50万円) | ➃ 日本ローカル法制パック(+30万円)</td>
                         <td style="font-weight: 700; color: var(--secondary);">選択モジュールごとの個別合算課金</td>
                     </tr>
                 `;
             } else if (lang === 'en') {
                 tableBody.innerHTML = `
                     <tr>
-                        <td style="font-weight: 700; color: #fff;">🎁 3-Corps All-in-One Integrated Suite</td>
+                        <td style="font-weight: 700; color: var(--primary);">🎁 3-Corps All-in-One Integrated Suite</td>
                         <td>Complete SW licenses for Corps 1, Corps 2, and Corps 3 (PII filter and 3-Layer UUID copy-protection lock bundled for FREE)</td>
                         <td style="font-weight: 700; color: var(--primary);">JPY 2,500,000 / KRW 25,000,000 <br><span style='color: var(--accent); font-size: 0.75rem;'>(Enjoy JPY 500,000 / KRW 5M special bundle discount!)</span></td>
                     </tr>
                     <tr>
-                        <td style="font-weight: 700; color: #fff;">🖥️ H/W Procurement & Setup Tech Support Pack</td>
-                        <td>Workstation procurement, SW setup, and 10-stage verify E2E verification prior to delivery</td>
-                        <td style="font-weight: 700; color: var(--accent);">JPY 400,000 / KRW 4,000,000</td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: 700; color: #fff;">🛡️ [Optional Add-on] Shield Security & Tech Pack</td>
-                        <td>② Secure Audit Logger Sandbox (+500K Yen) | ③ Notion Connector (+500K Yen) | ④ Japan JPO Legal Pack (+300K Yen)</td>
+                        <td style="font-weight: 700; color: var(--primary);">🛡️ [Optional Add-on] Shield Security & Tech Pack</td>
+                        <td>② Secure Audit Logger Sandbox (+500K Yen) | ③ Notion Connector (+500K Yen) | ➃ Japan JPO Legal Pack (+300K Yen)</td>
                         <td style="font-weight: 700; color: var(--secondary);">Billed separately based on selected modules</td>
                     </tr>
                 `;
@@ -973,32 +1544,265 @@
                 // ko
                 tableBody.innerHTML = `
                     <tr>
-                        <td style="font-weight: 700; color: #fff;">🎁 3대 군단 올인원 통합 SW 패키지</td>
+                        <td style="font-weight: 700; color: var(--primary);">🎁 3대 군단 올인원 통합 SW 패키지</td>
                         <td>제1군단 + 제2군단 + 제3군단 정식 SW 라이선스 일괄 계약 (이중 PII 필터 및 복제방지 락 기본 무상 제공)</td>
                         <td style="font-weight: 700; color: var(--primary);">JPY 2,500,000 / KRW 2,500만 원 <br><span style='color: var(--accent); font-size: 0.75rem;'>(일괄 계약 시 무려 JPY 500,000 / 500만 원 특별 결합 할인!)</span></td>
                     </tr>
                     <tr>
-                        <td style="font-weight: 700; color: #fff;">🖥️ H/W 조달 대행 & 검증 세팅 서비스</td>
-                        <td>고사양 AI 미니 PC(Ryzen 9, RTX 4060 Ti, RAM 64GB) 사전 완벽 세팅 및 verify 10단계 검증 출하 대행 용역</td>
-                        <td style="font-weight: 700; color: var(--accent);">JPY 400,000 / KRW 400만 원</td>
-                    </tr>
-                    <tr>
-                        <td style="font-weight: 700; color: #fff;">🛡️ [유상 옵션] 안심 보안 & 외부 지식 수혈 모듈</td>
-                        <td>② 해킹 방어 샌드박스(+50만 엔/500만 원) | ③ 노션 커넥터(+50만 엔/500만 원) | ④ 일본 법률/특허 지식 팩(+30만 엔/300만 원)</td>
+                        <td style="font-weight: 700; color: var(--primary);">🛡️ [유상 옵션] 안심 보안 & 외부 지식 수혈 모듈</td>
+                        <td>② 해킹 방어 샌드박스(+50만 엔/500만 원) | ③ 노션 커넥터(+50만 엔/500만 원) | ➃ 일본 법률/특허 지식 팩(+30만 엔/300만 원)</td>
                         <td style="font-weight: 700; color: var(--secondary);">모듈별 별도 개별 합산 과금</td>
                     </tr>
                 `;
             }
+
+            // Update Pitch Deck Hrefs
+            const deckLinks = document.querySelectorAll('.deck-card');
+            deckLinks.forEach(card => {
+                const baseHref = card.getAttribute('href').split('?')[0];
+                card.setAttribute('href', `${baseHref}?lang=${lang}`);
+            });
+
             calculateROI();
+            updateSelectedGateLog();
         }
 
-        // Interactive ROI Calculation Logic
+        // Live System Logging logic (Dashboard Terminal)
+        const logLinesKo = [
+            "Initializing Trinity Core OS...",
+            "Loading local inference engine: TinyLlama-1.1B (Air-Gapped Version)",
+            "[제1군단] BOS 토큰 정렬 완료... 환각 제어 시퀀스 정상 작동 중",
+            "[제2군단] 이중 PII 필터링 가드 스캔 개시... 민감 정보 검수 모드 ON",
+            "[제3군단] 지식 모순성 감지 데몬 기동... Eviction Queue 준비 완료",
+            "Local sandbox security verification passed. Status: SECURE",
+            "[제1군단] 5대 회고 각도 자율 지식 Extender 가동 중...",
+            "[제3군단] LRU 다중 LoRA 아답터 동적 스왑 유닛 감지... 캐시 히트율 99.8%",
+            "Integrity Gate heartbeat ping: SUCCESS (verify.py OK)",
+            "System status nominal. Resource allocation fully optimized."
+        ];
+        const logLinesJa = [
+            "Initializing Trinity Core OS...",
+            "Loading local inference engine: TinyLlama-1.1B (Air-Gapped Version)",
+            "[第1軍団] BOS整列完了... 幻覚制御ハーネス正常動作中",
+            "[第2軍団] 二重PIIフィルタリングスキャン起動... 機密情報監査モード ON",
+            "[第3軍団] ナレッジ矛盾検知デーモン起動... エビクションキュー準備完了",
+            "Local sandbox security verification passed. Status: SECURE",
+            "[第1軍団] 5大回顧プロトコル自律ナレッジ拡張エンジン駆動中...",
+            "[第3軍団] Multi-LoRA LRUホットスワップキャッシュ検知... ヒット率 99.8%",
+            "Integrity Gate heartbeat ping: SUCCESS (verify.py OK)",
+            "System status nominal. Resource allocation fully optimized."
+        ];
+        const logLinesEn = [
+            "Initializing Trinity Core OS...",
+            "Loading local inference engine: TinyLlama-1.1B (Air-Gapped Version)",
+            "[Corps 1] Tokenizer BOS Alignment complete... Hallucination filter ON",
+            "[Corps 2] Secure PII scanner initialized... Sensitive data screening mode ACTIVE",
+            "[Corps 3] Semantic contradiction checker started... Eviction queue ready",
+            "Local sandbox security verification passed. Status: SECURE",
+            "[Corps 1] 5-Angle Extender running... 10x semantic augmentation active",
+            "[Corps 3] Multi-LoRA LRU adapter hot-swap cache operational... Hit Ratio 99.8%",
+            "Integrity Gate heartbeat ping: SUCCESS (verify.py OK)",
+            "System status nominal. Resource allocation fully optimized."
+        ];
+
+        const terminal = document.getElementById('system-log-terminal');
+        let logIndex = 0;
+
+        function addTerminalLog() {
+            const timestamp = new Date().toISOString().split('T')[1].substring(0, 8);
+            const activeLines = currentLang === 'ja' ? logLinesJa : (currentLang === 'en' ? logLinesEn : logLinesKo);
+            
+            const line = activeLines[logIndex % activeLines.length];
+            const p = document.createElement('div');
+            p.className = 'term-line';
+            
+            let lineClass = 'term-tag-info';
+            if (line.includes('warning') || line.includes('PII')) lineClass = 'term-tag-warning';
+            else if (line.includes('SUCCESS') || line.includes('완료') || line.includes('正常') || line.includes('complete')) lineClass = 'term-tag-success';
+            else if (line.includes('error') || line.includes('fail')) lineClass = 'term-tag-error';
+
+            p.innerHTML = `<span class="term-timestamp">[${timestamp}]</span> <span class="${lineClass}">${line}</span>`;
+            terminal.appendChild(p);
+            terminal.scrollTop = terminal.scrollHeight;
+            logIndex++;
+        }
+
+        // Add initial logs
+        for(let i=0; i<4; i++) {
+            addTerminalLog();
+        }
+        setInterval(addTerminalLog, 4500);
+
+        // Simulation Sandbox Logic
+        let simInterval = null;
+        function runSimulation() {
+            const prompt = document.getElementById('simulator-prompt').value.trim();
+            const consoleBox = document.getElementById('simulator-console');
+            const runBtn = document.getElementById('btn-run-simulation');
+
+            if (!prompt) {
+                alert(currentLang === 'ja' ? 'プロンプトを入力してください。' : (currentLang === 'en' ? 'Please enter a prompt.' : '체험 주제 및 문서를 입력해주세요.'));
+                return;
+            }
+
+            // Disable UI
+            runBtn.disabled = true;
+            consoleBox.innerHTML = '';
+            
+            const simStepsKo = [
+                { text: "[SYSTEM] 모의 시뮬레이터 가동... 사용자 컨셉 로드 완료", color: 'var(--primary)' },
+                { text: `[SYSTEM] 입력 분석: "${prompt}"`, color: 'var(--text-main)' },
+                { text: "[제1군단] BOS Alignment 적용... 환각 제거 모듈 주입 중...", color: 'var(--primary)' },
+                { text: "[제1군단] 5대 회고 각도 텍스트 자율 학습 및 10배 지식 확장 개시", color: 'var(--primary)' },
+                { text: "[제2군단] 이중 PII 필터 통과... 임계값 검수 결과 개인정보 0건 유출 안전 확인", color: 'var(--secondary)' },
+                { text: "[제2군단] 3중 오프라인 UUID 기기 복제방지 락 바인딩", color: 'var(--secondary)' },
+                { text: "[제3군단] 지식베이스 신규 주입 완료... 동기화 확인", color: 'var(--tertiary)' },
+                { text: "[제3군단] 실시간 Eviction 스캔: 모순성 검증 통과 (모순성 0.00%)", color: 'var(--tertiary)' },
+                { text: "[GATE] 10-Stage verify.py 검증 체크 기동: PASS", color: 'var(--tertiary)' },
+                { text: "🌟 [COMPLETED] 로컬망 지식 베이스 격리 구축에 완벽히 성공했습니다!", color: 'var(--tertiary)' }
+            ];
+
+            const simStepsJa = [
+                { text: "[SYSTEM] シミュレーター起動... ユーザーコンセプト読み込み完了", color: 'var(--primary)' },
+                { text: `[SYSTEM] 入力分析: "${prompt}"`, color: 'var(--text-main)' },
+                { text: "[第1軍団] BOS整列適用... 幻覚除去モジュール注入中...", color: 'var(--primary)' },
+                { text: "[第1軍団] 5大回顧プロトコル テキスト自律学習及び10倍知識拡張開始", color: 'var(--primary)' },
+                { text: "[第2軍団] 二重PIIフィルタ通過... 個人情報漏洩検出 0件（安全確認）", color: 'var(--secondary)' },
+                { text: "[第2軍団] 3重オフラインUUIDデバイス複製防止ロックバインド完了", color: 'var(--secondary)' },
+                { text: "[第3軍団] ナレッジベース新規注入完了... 同期を確認", color: 'var(--tertiary)' },
+                { text: "[第3軍団] リアルタイムパージスキャン：矛盾検証通過 (矛盾率 0.00%)", color: 'var(--tertiary)' },
+                { text: "[GATE] 10-Stage verify.py 検証チェック：PASS", color: 'var(--tertiary)' },
+                { text: "🌟 [COMPLETED] ローカル隔離知識ベースの構築に完全に成功しました！", color: 'var(--tertiary)' }
+            ];
+
+            const simStepsEn = [
+                { text: "[SYSTEM] Simulator active... User concept loaded.", color: 'var(--primary)' },
+                { text: `[SYSTEM] Analyzing input: "${prompt}"`, color: 'var(--text-main)' },
+                { text: "[Corps 1] BOS Alignment active...Hallucination blocker injected.", color: 'var(--primary)' },
+                { text: "[Corps 1] 5-Angle Extender: Performing 10x semantic augmentation...", color: 'var(--primary)' },
+                { text: "[Corps 2] Double PII Filter passed... 0 sensitive tokens leaked.", color: 'var(--secondary)' },
+                { text: "[Corps 2] 3-Layer Air-Gap UUID duplication lock bound successfully.", color: 'var(--secondary)' },
+                { text: "[Corps 3] Ingesting new knowledge assets... Synchronization check OK.", color: 'var(--tertiary)' },
+                { text: "[Corps 3] Eviction Loop Scan: Contradiction Check OK (0.00% anomaly).", color: 'var(--tertiary)' },
+                { text: "[GATE] Running 10-Stage verify.py tests: PASS", color: 'var(--tertiary)' },
+                { text: "🌟 [COMPLETED] Secure local-network knowledge base successfully deployed!", color: 'var(--tertiary)' }
+            ];
+
+            const activeSteps = currentLang === 'ja' ? simStepsJa : (currentLang === 'en' ? simStepsEn : simStepsKo);
+            let stepIdx = 0;
+
+            simInterval = setInterval(() => {
+                if (stepIdx < activeSteps.length) {
+                    const step = activeSteps[stepIdx];
+                    const div = document.createElement('div');
+                    div.style.color = step.color;
+                    div.className = 'term-line';
+                    div.innerText = step.text;
+                    consoleBox.appendChild(div);
+                    consoleBox.scrollTop = consoleBox.scrollHeight;
+                    stepIdx++;
+                } else {
+                    clearInterval(simInterval);
+                    runBtn.disabled = false;
+                }
+            }, 1200);
+        }
+
+        // Integrity Gate Stage details
+        const stageLogs = {
+            1: {
+                title: "Stage 01: Auto Binding",
+                ko: "[OK] Auto Binding: 로컬 슬롯 포트 결합 스캔 완료\n-> Port: 8080 binding detected.\n-> Host: localhost local-loopback\n-> Status: PASS",
+                ja: "[OK] Auto Binding: ローカルスロットポートバインドスキャン完了\n-> Port: 8080 binding detected.\n-> Host: localhost local-loopback\n-> Status: PASS",
+                en: "[OK] Auto Binding: Local slot port binding scan completed.\n-> Port: 8080 binding detected.\n-> Host: localhost local-loopback\n-> Status: PASS"
+            },
+            2: {
+                title: "Stage 02: Second Launch",
+                ko: "[OK] Second Launch: 중복 실행 가드 검사 완료\n-> No active processes detected on port 8080.\n-> Spawn test succeeded.\n-> Status: PASS",
+                ja: "[OK] Second Launch: 重複実行ガード検証完了\n-> No active processes detected on port 8080.\n-> Spawn test succeeded.\n-> Status: PASS",
+                en: "[OK] Second Launch: Double launch protection verified.\n-> No active processes detected on port 8080.\n-> Spawn test succeeded.\n-> Status: PASS"
+            },
+            3: {
+                title: "Stage 03: Clone Block",
+                ko: "[OK] Clone Block: 빌드 복제 방지 검증 완료\n-> UUID check: E4B9C8F0-3A2B-4C6D-9E8F-7A6B5C4D3E2F\n-> Hardware key lock validated.\n-> Status: PASS",
+                ja: "[OK] Clone Block: ビルド複製保護検証完了\n-> UUID check: E4B9C8F0-3A2B-4C6D-9E8F-7A6B5C4D3E2F\n-> Hardware key lock validated.\n-> Status: PASS",
+                en: "[OK] Clone Block: Replication prevention verify completed.\n-> UUID check: E4B9C8F0-3A2B-4C6D-9E8F-7A6B5C4D3E2F\n-> Hardware key lock validated.\n-> Status: PASS"
+            },
+            4: {
+                title: "Stage 04: Bypass Guard",
+                ko: "[OK] Bypass Guard: 망분리 보호막 차단 바이패스 검증\n-> Outbound internet block check: BLOCKED (0.00% leak)\n-> Safe sandboxed execution mode validated.\n-> Status: PASS",
+                ja: "[OK] Bypass Guard: 隔離境界防壁バイパス防止検証\n-> Outbound internet block check: BLOCKED (0.00% leak)\n-> Safe sandboxed execution mode validated.\n-> Status: PASS",
+                en: "[OK] Bypass Guard: Isolated firewall bypass protection verified.\n-> Outbound internet block check: BLOCKED (0.00% leak)\n-> Safe sandboxed execution mode validated.\n-> Status: PASS"
+            },
+            5: {
+                title: "Stage 05: Deduplication",
+                ko: "[OK] Deduplication: 중복 지식 정제 필터 검증 완료\n-> Scanning semantic overlap ratio: 0.12% (threshold: 30%)\n-> Duplicate purge loop active.\n-> Status: PASS",
+                ja: "[OK] Deduplication: 重複知識パージフィルタ検証完了\n-> Scanning semantic overlap ratio: 0.12% (threshold: 30%)\n-> Duplicate purge loop active.\n-> Status: PASS",
+                en: "[OK] Deduplication: Redundant knowledge deduplication checked.\n-> Scanning semantic overlap ratio: 0.12% (threshold: 30%)\n-> Duplicate purge loop active.\n-> Status: PASS"
+            },
+            6: {
+                title: "Stage 06: Embedding",
+                ko: "[OK] Embedding: 초경량 130MB 로컬 임베딩 검증\n-> Model: local-bge-m3 loaded.\n-> Vectorizing test document (1,500 chars): 0.04s elapsed.\n-> Status: PASS",
+                ja: "[OK] Embedding: 超軽量130MBローカル埋め込み検証\n-> Model: local-bge-m3 loaded.\n-> Vectorizing test document (1,500 chars): 0.04s elapsed.\n-> Status: PASS",
+                en: "[OK] Embedding: Lightweight 130MB local embedding validated.\n-> Model: local-bge-m3 loaded.\n-> Vectorizing test document (1,500 chars): 0.04s elapsed.\n-> Status: PASS"
+            },
+            7: {
+                title: "Stage 07: BOS Alignment",
+                ko: "[OK] BOS Alignment: BOS 토큰 하네스 무결성 검증\n-> Checksum verification: OK\n-> Hallucination control flags: ENFORCED\n-> Status: PASS",
+                ja: "[OK] BOS Alignment: BOSトークン整列ハーネス検証完了\n-> Checksum verification: OK\n-> Hallucination control flags: ENFORCED\n-> Status: PASS",
+                en: "[OK] BOS Alignment: Tokenizer BOS alignment harness verified.\n-> Checksum verification: OK\n-> Hallucination control flags: ENFORCED\n-> Status: PASS"
+            },
+            8: {
+                title: "Stage 08: 5-Angle Extender",
+                ko: "[OK] 5-Angle Extender: 5대 각도 지식 자율 확장 가동\n-> Logical/Historical/Target/Risk/Value expansion tests passed.\n-> Status: PASS",
+                ja: "[OK] 5-Angle Extender: 5大回顧プロトコル拡張チェック完了\n-> Logical/Historical/Target/Risk/Value expansion tests passed.\n-> Status: PASS",
+                en: "[OK] 5-Angle Extender: 5-Angle semantic expansion tests succeeded.\n-> Logical/Historical/Target/Risk/Value expansion tests passed.\n-> Status: PASS"
+            },
+            9: {
+                title: "Stage 09: LRU Eviction",
+                ko: "[OK] LRU Eviction: 캐시 수거 및 모순 필터 검증\n-> Anomaly threshold: 0.00%\n-> Safe eviction and multi-LoRA switching checked.\n-> Status: PASS",
+                ja: "[OK] LRU Eviction: キャッシュパージ及び矛盾フィルタ検証\n-> Anomaly threshold: 0.00%\n-> Safe eviction and multi-LoRA switching checked.\n-> Status: PASS",
+                en: "[OK] LRU Eviction: Cache eviction and semantic purge verified.\n-> Anomaly threshold: 0.00%\n-> Safe eviction and multi-LoRA switching checked.\n-> Status: PASS"
+            },
+            10: {
+                title: "Stage 10: Twin-Build",
+                ko: "[OK] Twin-Build: 이중 빌드 패키지 무결성 최종 검증\n-> Checksum mismatch test: 0 errors detected.\n-> Package ready for air-gapped installation.\n-> Status: PASS",
+                ja: "[OK] Twin-Build: 二重パッケージ整合性最終検証\n-> Checksum mismatch test: 0 errors detected.\n-> Package ready for air-gapped installation.\n-> Status: PASS",
+                en: "[OK] Twin-Build: Dual package integration checksum verified.\n-> Checksum mismatch test: 0 errors detected.\n-> Package ready for air-gapped installation.\n-> Status: PASS"
+            }
+        };
+
+        let selectedStageNum = 1;
+
+        function selectGateStage(stageNum, cardElement) {
+            // toggle active card
+            document.querySelectorAll('.gate-stage-card').forEach(card => card.classList.remove('active'));
+            cardElement.classList.add('active');
+            
+            selectedStageNum = stageNum;
+            updateSelectedGateLog();
+        }
+
+        function updateSelectedGateLog() {
+            const terminalView = document.getElementById('gate-terminal-content');
+            const selectedStageObj = stageLogs[selectedStageNum];
+            
+            document.getElementById('stage-selected-title').innerText = selectedStageObj.title;
+            
+            const logContent = currentLang === 'ja' ? selectedStageObj.ja : (currentLang === 'en' ? selectedStageObj.en : selectedStageObj.ko);
+            
+            terminalView.innerHTML = `
+                <div class="term-line" style="color: var(--text-dark); margin-bottom: 8px;">// Terminal session loaded...</div>
+                <div class="term-line" style="color: var(--primary); white-space: pre-line;">${logContent}</div>
+            `;
+        }
+
+        // ROI Calculation Logic
         function calculateROI() {
             const users = parseInt(document.getElementById('slider-users').value);
             const pages = parseInt(document.getElementById('slider-pages').value);
 
             // update value badges
-            const currentLang = document.querySelector('.lang-btn.active').innerText.toLowerCase();
             if (currentLang === 'ja') {
                 document.getElementById('val-users').innerText = users + " 名";
                 document.getElementById('val-pages').innerText = pages.toLocaleString() + " ページ";
@@ -1010,11 +1814,9 @@
                 document.getElementById('val-pages').innerText = pages.toLocaleString() + " 페이지";
             }
 
-            // Math: 타사 클라우드 이용 시 월간 예상 비용 = users * $30 + pages * $0.1 (토큰비) + DBA 인건비 $3,000
-            // 당사 로컬형 이용 시 월간 운영 비용 = $0
-            // 라이선스비 일괄 = 2,500만 원 (약 $25,000 / JPY 2,500,000)
-            const monthlySavingUSD = (users * 30) + (pages * 0.15) + 2000; // USD Monthly Saving
-            const licenseFeeUSD = 25000;
+            // Math ROI
+            const monthlySavingUSD = (users * 30) + (pages * 0.15) + 2000;
+            const licenseFeeUSD = 25000; // JPY 2,500,000 ~ USD 25,000
             const bepMonths = licenseFeeUSD / monthlySavingUSD;
 
             const finalBep = bepMonths.toFixed(1);

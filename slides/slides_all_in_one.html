@@ -840,11 +840,6 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                     <td style="font-weight: 700; color: var(--primary);">${data.tb_row1[2]}</td>
                 </tr>
                 <tr>
-                    <td style="font-weight: 700; color: #fff;">${data.tb_row2[0]}</td>
-                    <td>${data.tb_row2[1]}</td>
-                    <td style="font-weight: 700; color: var(--accent);">${data.tb_row2[2]}</td>
-                </tr>
-                <tr>
                     <td style="font-weight: 700; color: #fff;">${data.tb_row3[0]}</td>
                     <td>${data.tb_row3[1]}</td>
                     <td style="font-weight: 700; color: var(--secondary);">${data.tb_row3[2]}</td>
@@ -860,7 +855,11 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
             document.getElementById('s6-footer-logo').innerText = data.s6_footer_logo;
         }
 
-        switchLang('ko');
+        // URL Parameter Lang Check and Initialization
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlLang = urlParams.get('lang');
+        const defaultLang = (urlLang && i18n[urlLang]) ? urlLang : 'ko';
+        switchLang(defaultLang);
 
         const slides = document.querySelectorAll('.slide');
         const prevBtn = document.getElementById('prev-btn');
