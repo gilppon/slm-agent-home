@@ -708,7 +708,8 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
         });
 
         // 다국어 데이터 정의
-                    ko: {
+        const i18n = {
+            ko: {
                 badge: "ALL-IN-ONE SW",
                 s1_title: "로컬 AI 비서 빌더 & 자율 치유 OS<br>순수 SW 라이선스 패키지 (v10.3)",
                 s1_desc: "BOS 가변 정렬, Kodari 회고 증강기, 3중 라이선스 락 등 6대 코어 하네스 융합",
@@ -763,16 +764,16 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 tb_row3: ["🛡️ [유상 옵션] 안심 보안 & 외부 지식 수혈 패키지", "② 해킹 명령 원천 방어막 샌드박스(+50만 엔/500만 원) <br>③ 사내 위키 자동 연동 노션 커넥터(+50만 엔/500만 원) <br>④ 일본 비즈니스 프리패스 지식 팩(+30만 엔/300만 원)", "요청 모듈별 개별 합산 과금 <br><span style='color: var(--primary); font-size: 0.75rem;'>※ 이중 PII 마스킹 모듈은 기본 패키지에 100% 무상 기본 포함!</span>"],
                 s6_h_tag: "Technical Guarantee",
                 s6_top_title: "KODARI SYSTEMS Global Quality Assurance",
-                s6_title: "RAG OS 3대 군단 삼위일체<br>기술 품질 보증서 (v10.3)",
+                s6_title: "RAG OS 3大軍団 三位一体<br>技術品質保証書 (v10.3)",
                 s6_seal: "Verified: v10.3 COMPLETED",
                 s6_desc: "본 플랫폼은 CMMI-PMO 하네스 규율에 의거하여 10단계 E2E 자율 무결성 검증 파이프라인(verify.py)의 무결점 컴파일 통과 및 Twin-Build 물리 에어갭 오딧 검증을 100% 완료한 제로 디펙트 솔루션임을 엄격히 서명 보증합니다.",
                 s6_footer_logo: "KODARI Systems Development Command"
             },
             ja: {
                 badge: "ALL-IN-ONE SW",
-                s1_title: "ローカルAIアシスタントビルダー & 自律治療OS<br>純水SWライセンスパッケージ (v10.3)",
+                s1_title: "ローカルAIアシスタントビルダー & 自律治療OS<br>純粋SWライセンスパッケージ (v10.3)",
                 s1_desc: "BOS可変整列、Kodari回顧増強、3重ライセンスロックなど6大コアハーネス融合",
-                s1_subdesc: "外部インターネットと遮断された物理的エアギャップ環境で監査(Audit)100%通過を保証する純水SWソリューション",
+                s1_subdesc: "外部インターネットと遮断された物理的エアギャップ環境で監査(Audit)100%通過を保証する純粋なSWソリューション",
                 s2_h_tag: "6-Harness Architecture",
                 s2_title: "RAG連合軍 3大軍団 6大コアハーネス",
                 s2_subtitle: "単なる知識の回答を超え、自ら矛盾を清掃し無断複製を原点遮断する社内頭脳",
@@ -803,12 +804,12 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 tco_v1: "3年約 JPY 1,700万円 / KRW 1.7億円",
                 tco_l2: "代替案B. 自社での巨大サーバー構築 (A100 GPUサーバー導入)",
                 tco_v2: "3年約 JPY 4,800万円 / KRW 4.8億円",
-                tco_l3: "代替案C. RAG OS連合軍純水SW (ローカルSLM ＋ 自動掃除OS)",
+                tco_l3: "代替案C. RAG OS連合軍純粋SW (ローカルSLM ＋ 自動掃除OS)",
                 tco_v3: "3年 JPY 392.5万円 / KRW 3,925万円",
                 s4_c_title: "💎 コスト90%以上削減の鍵",
                 s4_c_d: `
                     <p style="font-size: 0.85rem; line-height: 1.6;">• **ハードウェア自社調達**: 数千万円の専用サーバーに代わり、市販の高性能ミニPC1台(約30万円相当)にSWのみワンクリック配備。</p>
-                    <p style="font-size: 0.85rem; line-height: 1.6;">• **月間維持費 0円**: OpenAIなどのトークン従量課金がなく、何回動かしても社内PC의電気代のみ。</p>
+                    <p style="font-size: 0.85rem; line-height: 1.6;">• **月間維持費 0円**: OpenAIなどのトークン従量課金がなく、何回動かしても社内PCの電気代のみ。</p>
                     <p style="font-size: 0.85rem; line-height: 1.6;">• **クレンジング人件費 0円**: データベース管理者による手作業のクレンジング不要、システムが自分で自動治療。</p>
                     <p style="font-size: 0.82rem; margin-top: 10px; color: var(--accent);">※代替案C TCOは、当社SW統合ライセンス費(250万円 / 2,500万円)と顧客側HWインフラ調達費の3年総合算です。(税別)</p>
                 `,
@@ -818,12 +819,12 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 th_package: "導入ソフトウェア / 特約パッケージ名称",
                 th_scope: "提供内容および付帯メリット",
                 th_price: "SW永続ライセンス料金 (税別)",
-                tb_row1: ["🎁 3大軍団 オールインワン統合SWパッケージ", "第1軍団(ビルダー) ＋ 第2軍단(セキュアRAG) ＋ 第3軍団(自動掃除OS) SW正規ライセンス一括契約 (個人情報保護二重マスク及び物理コピー防止ロック基本無償搭載)", "JPY 2,500,000 (250万円) / KRW 2,500万円 <br><span style='color: var(--accent); font-size: 0.75rem;'>(一括契約時、単体購入比50万円/500万円の特別セット割引適用！)</span>"],
+                tb_row1: ["🎁 3大軍団 オールインワン統合SWパッケージ", "第1軍団(ビルダー) ＋ 第2軍団(セキュアRAG) ＋ 第3軍団(自動掃除OS) SW正規ライセンス一括契約 (個人情報保護二重マスク及び物理コピー防止ロック基本無償搭載)", "JPY 2,500,000 (250万円) / KRW 2,500万円 <br><span style='color: var(--accent); font-size: 0.75rem;'>(一括契約時、単体購入比50万円/500万円の特別セット割引適用！)</span>"],
                 tb_row2: ["🖥️ H/W調達代行および検証セットアップパック", "ソフトウェア正規版を高性能ミニPC(Ryzen 9, RTX 4060 Ti, RAM 64GB)へセットアップし、完全検証(verify 10段階)して出荷する調達代行技術支援", "JPY 400,000 (40万円) / KRW 400万円 <br><span style='color: var(--text-muted); font-size: 0.75rem;'>(当社はハードウェアメーカーではなく、純粋な調達代行および導入技術支援です)</span>"],
                 tb_row3: ["🛡️ [選択オプション] あんしんセキュリティ & 外部知識注入パック", "② 不正コマンド実行・漏洩遮断「透明監獄」(+50万円/500万円) <br>③ 社内Wiki自動連携ノーションコネクタ(+50万円/500万円) <br>④ 日本ローカル商取引・特許完全対応法制パック(+30万円/300万円)", "選択モジュールごとの個別合算課金 <br><span style='color: var(--primary); font-size: 0.75rem;'>※ 個人情報保護(PII)マスクフィルタモジュールは基本パッケージへ100%無償同梱！</span>"],
                 s6_h_tag: "Technical Guarantee",
                 s6_top_title: "KODARI SYSTEMS グローバル品質保証",
-                s6_title: "RAG OS 3대 군단 삼위일체<br>기술 품질 보증서 (v10.3)",
+                s6_title: "RAG OS 3大軍団 三位一体<br>技術品質保証書 (v10.3)",
                 s6_seal: "品質適合: v10.3 COMPLETED",
                 s6_desc: "本プラットフォームは、CMMI-PMOハーネス規律に基づき、10段階のE2E自己診断検証パイプライン(verify.py)の適合判定およびTwin-Build物理隔離エアギャップ監査を100%完全通過した、無欠陥のエンタープライズソリューションであることを署名保証いたします。",
                 s6_footer_logo: "KODARI SYSTEMS 開発事業部総括司令"
