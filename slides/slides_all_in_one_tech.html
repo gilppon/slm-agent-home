@@ -197,9 +197,10 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
         }
 
         .card-spec:hover {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.06);
             border-color: var(--primary);
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 0 20px var(--primary);
         }
 
         .card-spec h3 {
@@ -376,6 +377,13 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
             border-radius: 8px;
             transform: rotate(-3deg);
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+            transition: all 0.3s ease;
+        }
+        .seal-stamp:hover {
+            transform: rotate(-1deg) scale(1.05);
+            box-shadow: 0 0 25px var(--primary);
+            border-color: var(--secondary);
+            color: var(--secondary);
         }
     </style>
 </head>
@@ -534,7 +542,7 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                     <div class="card-spec" style="background: rgba(52, 211, 153, 0.02); border-color: rgba(52, 211, 153, 0.15); display: flex; flex-direction: column; justify-content: space-between;">
                         <h3 id="s6-q3-h" style="color: var(--accent); font-size: 1.05rem; margin-bottom: 10px; line-height: 1.3;">Q3. Docker/Cgroup 기반 하드웨어 자원 격리 규격 및 E2E 무결성 검증 스펙은?</h3>
                         <p id="s6-q3-a" style="color: var(--text-muted); font-size: 0.8rem; line-height: 1.6; flex-grow: 1;">
-                            Docker 가상망 및 Linux Cgroup 커널 제어를 통해 단일 GPU/VRAM 물리 사용량을 엄격히 50% 이하로 할당 격리합니다. 또한 8단계 E2E 검증 파이프라인(verify.py)을 가동하여 0.0%의 에러율과 15+ TPS 이상의 모델 처리 성능을 완벽히 입증합니다.
+                            Docker 가상망 및 Linux Cgroup 커널 제어를 통해 단일 GPU/VRAM 물리 사용량을 엄격히 50% 이하로 할당 격리합니다. 또한 10단계 E2E 자율 무결성 검증 파이프라인(verify.py)을 가동하여 0.0%의 에러율과 15+ TPS 이상의 모델 처리 성능을 완벽히 입증합니다.
                         </p>
                     </div>
                 </div>
@@ -557,7 +565,7 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                     <h1 style="font-size: 2.8rem; margin: 15px 0;" id="s7-title">RAG OS 3대 군단 삼위일체<br>기술 품질 보증서</h1>
                     <div class="seal-stamp" id="s7-seal">Verified: v7.0 COMPLETED</div>
                     <p style="max-width: 600px; margin: 0 auto; color: var(--text-muted); font-size: 0.95rem; line-height: 1.7;" id="s7-desc">
-                        본 플랫폼은 CMMI-PMO 하네스 규율에 의거하여 8단계 E2E 자가진단 검증 스크립트(verify.py)의 무결성 컴파일 통과를 직접 확인 완료한 무결점 엔터프라이즈 솔루션임을 서명 보증합니다.
+                        본 플랫폼은 CMMI-PMO 하네스 규율에 의거하여 10단계 E2E 자율 무결성 검증 파이프라인(verify.py)의 무결성 컴파일 통과를 직접 확인 완료한 무결점 엔터프라이즈 솔루션임을 서명 보증합니다.
                     </p>
                 </div>
             </div>
@@ -587,13 +595,13 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 s2_title: "RAG 연합군 3대 군단 6대 코어 하네스",
                 s2_subtitle: "단순히 지식을 대답하는 것을 넘어, 스스로 모순을 청소하고 무단 복제를 원천 차단하는 사내 두뇌",
                 s2_c1_h: "🧠 제1군단 [로컬 AI 비서 제조 SW]",
-                s2_c1_sub: "120만 엔 (JPY 1.2M) / KRW 1,200만 원 (부가세/소비세 별도)",
+                s2_c1_sub: "KRW 1,200만 원 (부가세 별도)",
                 s2_c1_d: "BOS 정렬 하네스로 인퍼런스 환각율 95% 감소. 5대 회고 각도로 1개 지식을 10배 품질로 자율 증강(Extender). GGUF 안전 컴파일 가드로 OOM 원천 방어.",
                 s2_c2_h: "🛡️ 제2군단 [비밀 금고형 RAG SW]",
-                s2_c2_sub: "100만 엔 (JPY 1.0M) / KRW 1,000만 원 (부가세/소비세 별도)",
+                s2_c2_sub: "KRW 1,000만 원 (부가세 별도)",
                 s2_c2_d: "130MB 초경량 로컬 임베딩 구동. 【개인정보 원천 차단 가드(이중 PII 필터)】 및 【오프라인 3중 자율 라이선스 락】 기본 무상 제공으로 완벽한 기밀 유출 차단.",
                 s2_c3_h: "🌀 제3군단 [자율 청소 지식 OS SW]",
-                s2_c3_sub: "80만 엔 (JPY 0.8M) / KRW 800만 원 (부가세/소비세 별도)",
+                s2_c3_sub: "KRW 800만 원 (부가세 별도)",
                 s2_c3_d: "신구 지식의 논리적/수치적 모순 발생 시 자율 삭제 Eviction 및 Multi-LoRA LRU 어댑터 동적 핫스왑 가동으로 상시 100% 무결성 데이터베이스 자율 유지.",
                 s3_h_tag: "Demo Action Scenario",
                 s3_title: "10분 만에 증명되는 압도적인 신뢰성 데모",
@@ -610,17 +618,17 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 s4_title: "초고가 프라이빗 AI 대비 최대 93.8% 비용 절감",
                 s4_subtitle: "3개년 총보유비용(TCO) 비교 (기밀문서 1만 페이지, 사용자 50명, 매주 10% 지식 갱신 환경 기준)",
                 tco_l1: "대안 A. 퍼블릭 클라우드 API RAG (OpenAI API)",
-                tco_v1: "3년 약 JPY 1,700만 엔 / KRW 1.7억 원",
+                tco_v1: "3년 약 KRW 1.7억 원",
                 tco_l2: "대안 B. 대형 프라이빗 LLM (A100 GPU 서버 자체 구축)",
-                tco_v2: "3년 약 JPY 4,800만 엔 / KRW 4.8억 원",
+                tco_v2: "3년 약 KRW 4.8억 원",
                 tco_l3: "대안 C. RAG OS 연합군 (본 순수 SW + 자체 인프라)",
-                tco_v3: "3년 JPY 392.5만 엔 / KRW 3,925만 원",
+                tco_v3: "3년 KRW 3,925만 원",
                 s4_c_title: "💎 90% 이상 비용 절감의 핵심 요인",
                 s4_c_d: `
-                    <p style="font-size: 0.85rem; line-height: 1.6;">• **하드웨어 자체 조달**: 비싼 전용 서버 필요 없이 고객사 보유 RTX 4060급 PC 1대(30만 엔/300만 원 상당)에 SW만 원클릭 배달 이식.</p>
+                    <p style="font-size: 0.85rem; line-height: 1.6;">• **하드웨어 자체 조달**: 비싼 전용 서버 필요 없이 고객사 보유 RTX 4060급 PC 1대(300만 원 상당)에 SW만 원클릭 배달 이식.</p>
                     <p style="font-size: 0.85rem; line-height: 1.6;">• **월간 Egress 과금 0원**: OpenAI API 사용료나 벡터 DB 매월 정기 구독 요금 없이 100% 로컬 무료 구동.</p>
                     <p style="font-size: 0.85rem; line-height: 1.6;">• **지식 정제비 0원**: DBA 수작업 DB 클렌징 인건비 없이 자율 OS가 스스로 데이터 무결성을 실시간 영구 정화.</p>
-                    <p style="font-size: 0.82rem; margin-top: 10px; color: var(--accent);">※ 대안 C TCO는 당사 SW 통합 라이선스비(250만 엔 / 2,500만 원)와 고객사 자체 HW 인프라 조달 비용의 3년 총합산 기준입니다. (소비세/부가세 별도)</p>
+                    <p style="font-size: 0.82rem; margin-top: 10px; color: var(--accent);">※ 대안 C TCO는 당사 SW 통합 라이선스비(2,500만 원)와 고객사 자체 HW 인프라 조달 비용의 3년 총합산 기준입니다. (소비세/부가세 별도)</p>
                 `,
                 s5_h_tag: "Product Pricing",
                 s5_title: "SW 정식 라이선스 요금 및 비즈니스 특약 패키지",
@@ -628,12 +636,12 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 th_package: "도입 소프트웨어 / 특약 패키지 명칭",
                 th_scope: "구축 혜택 및 포함 내역",
                 th_price: "SW 영구 라이선스 요금 (소비세/부가세 별도)",
-                tb_row1: ["🎁 3대 군단 올인원 통합 SW 패키지", "제1군단(빌더) + 제2군단(RAG) + 제3군단(자가치유) 정식 SW 라이선스 일괄 계약 (이중 PII 가드 및 3중 복제방지 락 기본 무상 탑재)", "JPY 2,500,000 (250만 엔) / KRW 2,500만 원 <br><span style='color: var(--accent); font-size: 0.75rem;'>(개별 구매 대비 JPY 500,000 / 500만 원 특별 결합 할인 적용!)</span>"],
-                tb_row2: ["🖥️ H/W 조달 대행 및 세팅 기술 지원 팩", "소프트웨어 구동을 위한 고사양 AI 미니 PC(Ryzen 9, RTX 4060 Ti, RAM 64GB) 사전 완벽 세팅 및 verify 10단계 E2E 검증 출하 대행 용역", "JPY 400,000 (40만 엔) / KRW 400만 원 <br><span style='color: var(--text-muted); font-size: 0.75rem;'>(당사가 HW를 제조/판매하지 않으며 순수 조달/세팅 기술 용역)</span>"],
-                tb_row3: ["🛡️ [유상 옵션] 안심 보안 & 외부 지식 수혈 패키지", "② 해킹 명령 원천 방어막 샌드박스(+50만 엔/500만 원) <br>③ 사내 위키 자동 연동 노션 커넥터(+50만 엔/500만 원) <br>④ 일본 비즈니스 프리패스 지식 팩(+30만 엔/300만 원)", "요청 모듈별 개별 합산 과금 <br><span style='color: var(--primary); font-size: 0.75rem;'>※ 이중 PII 마스킹 모듈은 기본 패키지에 100% 무상 기본 포함!</span>"],
+                tb_row1: ["🎁 3대 군단 올인원 통합 SW 패키지", "제1군단(빌더) + 제2군단(RAG) + 제3군단(자가치유) 정식 SW 라이선스 일괄 계약 (이중 PII 가드 및 3중 복제방지 락 기본 무상 탑재)", "KRW 2,500만 원 <br><span style='color: var(--accent); font-size: 0.75rem;'>(개별 구매 대비 500만 원 특별 결합 할인 적용!)</span>"],
+                tb_row2: ["🖥️ H/W 조달 대행 및 세팅 기술 지원 팩", "소프트웨어 구동을 위한 고사양 AI 미니 PC(Ryzen 9, RTX 4060 Ti, RAM 64GB) 사전 완벽 세팅 및 verify 10단계 E2E 검증 출하 대행 용역", "KRW 400만 원 <br><span style='color: var(--text-muted); font-size: 0.75rem;'>(당사가 HW를 제조/판매하지 않으며 순수 조달/세팅 기술 용역)</span>"],
+                tb_row3: ["🛡️ [유상 옵션] 안심 보안 & 외부 지식 수혈 패키지", "② 해킹 명령 원천 방어막 샌드박스(+500만 원) <br>③ 사내 위키 자동 연동 노션 커넥터(+500만 원) <br>④ 일본 비즈니스 프리패스 지식 팩(+300만 원)", "요청 모듈별 개별 합산 과금 <br><span style='color: var(--primary); font-size: 0.75rem;' >※ 이중 PII 마스킹 모듈은 기본 패키지에 100% 무상 기본 포함!</span>"],
                 s6_h_tag: "Technical Guarantee",
                 s6_top_title: "KODARI SYSTEMS Global Quality Assurance",
-                s6_title: "RAG OS 3大軍団 三位一体<br>技術品質保証書 (v10.3)",
+                s6_title: "RAG OS 3대 군단 삼위일체<br>기술품질보증서 (v10.3)",
                 s6_seal: "Verified: v10.3 COMPLETED",
                 s6_desc: "본 플랫폼은 CMMI-PMO 하네스 규율에 의거하여 10단계 E2E 자율 무결성 검증 파이프라인(verify.py)의 무결점 컴파일 통과 및 Twin-Build 물리 에어갭 오딧 검증을 100% 완료한 제로 디펙트 솔루션임을 엄격히 서명 보증합니다.",
                 s6_footer_logo: "KODARI Systems Development Command"
@@ -647,13 +655,13 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 s2_title: "RAG連合軍 3大軍団 6大コアハーネス",
                 s2_subtitle: "単なる知識の回答を超え、自ら矛盾を清掃し無断複製を原点遮断する社内頭脳",
                 s2_c1_h: "🧠 第1軍団 [ローカルAIアシスタント製造SW]",
-                s2_c1_sub: "JPY 1,200,000 (120万円) / KRW 1,200万円 (消費税/VAT別途)",
+                s2_c1_sub: "JPY 1,200,000 (120万円) (消費税別)",
                 s2_c1_d: "BOS整列ハーネスで推論幻覚率95%削減。5大回顧観点プロトコルで1つの知識を10倍の品質へ自動増強(Extender)。GGUF安全コンパイルでOOMを原点防衛。",
                 s2_c2_h: "🛡️ 第2軍団 [秘密金庫型RAG SW]",
-                s2_c2_sub: "JPY 1,000,000 (100万円) / KRW 1,000万円 (消費税/VAT別途)",
+                s2_c2_sub: "JPY 1,000,000 (100万円) (消費税別)",
                 s2_c2_d: "130MB超軽量ローカル埋め込みエンジン駆動。【個人情報原点遮断ガード(二重PIIフィルタ)】及び【オフライン3重自律ライセンスロック】を基本無償提供。",
                 s2_c3_h: "🌀 第3軍団 [自律清掃ナレッジOS SW]",
-                s2_c3_sub: "JPY 800,000 (80万円) / KRW 800万円 (消費税/VAT別途)",
+                s2_c3_sub: "JPY 800,000 (80万円) (消費税別)",
                 s2_c3_d: "新旧知識の論理的/数値的矛盾の検知時、自律パージ(Eviction)及びMulti-LoRA LRUアダプタ動的ホットスワップを起動。常に無欠陥DBを自律維持。",
                 s3_h_tag: "Demo Action Scenario",
                 s3_title: "わずか10分で実証される、圧倒的な信頼性デモ",
@@ -670,17 +678,17 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 s4_title: "高額なクラウド利用料に比べ、最大93.8%の大幅コスト削減",
                 s4_subtitle: "3年間の総保有コスト(TCO)定量分析基準 (機密文書1万枚、ユーザー50人、毎週10%データ更新環境)",
                 tco_l1: "代替案A. パブリッククラウドAIのレンタル (OpenAI API)",
-                tco_v1: "3年約 JPY 1,700万円 / KRW 1.7億円",
+                tco_v1: "3年約 JPY 1,700万円",
                 tco_l2: "代替案B. 自社での巨大サーバー構築 (A100 GPUサーバー導入)",
-                tco_v2: "3年約 JPY 4,800万円 / KRW 4.8億円",
+                tco_v2: "3年約 JPY 4,800万円",
                 tco_l3: "代替案C. RAG OS連合軍純粋SW (ローカルSLM ＋ 自動掃除OS)",
-                tco_v3: "3年 JPY 392.5万円 / KRW 3,925万円",
+                tco_v3: "3年 JPY 392.5万円",
                 s4_c_title: "💎 コスト90%以上削減の鍵",
                 s4_c_d: `
                     <p style="font-size: 0.85rem; line-height: 1.6;">• **ハードウェア自社調達**: 数千万円の専用サーバーに代わり、市販の高性能ミニPC1台(約30万円相当)にSWのみワンクリック配備。</p>
                     <p style="font-size: 0.85rem; line-height: 1.6;">• **月間維持費 0円**: OpenAIなどのトークン従量課金がなく、何回動かしても社内PCの電気代のみ。</p>
                     <p style="font-size: 0.85rem; line-height: 1.6;">• **クレンジング人件費 0円**: データベース管理者による手作業のクレンジング不要、システムが自分で自動治療。</p>
-                    <p style="font-size: 0.82rem; margin-top: 10px; color: var(--accent);">※代替案C TCOは、当社SW統合ライセンス費(250万円 / 2,500万円)と顧客側HWインフラ調達費の3年総合算です。(税別)</p>
+                    <p style="font-size: 0.82rem; margin-top: 10px; color: var(--accent);">※代替案C TCOは、当社SW統合ライセンス費(250万円)と顧客側HWインフラ調達費の3年総合算です。(税別)</p>
                 `,
                 s5_h_tag: "Product Pricing",
                 s5_title: "SW正規ライセンス料金表およびビジネス特約パッケージ",
@@ -688,9 +696,9 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 th_package: "導入ソフトウェア / 特約パッケージ名称",
                 th_scope: "提供内容および付帯メリット",
                 th_price: "SW永続ライセンス料金 (税別)",
-                tb_row1: ["🎁 3大軍団 オールインワン統合SWパッケージ", "第1軍団(ビルダー) ＋ 第2軍団(セキュアRAG) ＋ 第3軍団(自動掃除OS) SW正規ライセンス一括契約 (個人情報保護二重マスク及び物理コピー防止ロック基本無償搭載)", "JPY 2,500,000 (250万円) / KRW 2,500万円 <br><span style='color: var(--accent); font-size: 0.75rem;'>(一括契約時、単体購入比50万円/500万円の特別セット割引適用！)</span>"],
-                tb_row2: ["🖥️ H/W調達代行および検証セットアップパック", "ソフトウェア正規版を高性能ミニPC(Ryzen 9, RTX 4060 Ti, RAM 64GB)へセットアップし、完全検証(verify 10段階)して出荷する調達代行技術支援", "JPY 400,000 (40万円) / KRW 400万円 <br><span style='color: var(--text-muted); font-size: 0.75rem;'>(当社はハードウェアメーカーではなく、純粋な調達代行および導入技術支援です)</span>"],
-                tb_row3: ["🛡️ [選択オプション] あんしんセキュリティ & 外部知識注入パック", "② 不正コマンド実行・漏洩遮断「透明監獄」(+50万円/500万円) <br>③ 社内Wiki自動連携ノーションコネクタ(+50万円/500万円) <br>④ 日本ローカル商取引・特許完全対応法制パック(+30万円/300万円)", "選択モジュールごとの個別合算課金 <br><span style='color: var(--primary); font-size: 0.75rem;'>※ 個人情報保護(PII)マスクフィルタモジュールは基本パッケージへ100%無償同梱！</span>"],
+                tb_row1: ["🎁 3大軍団 オールインワン統合SWパッケージ", "第1軍団(ビルダー) ＋ 第2軍団(セキュアRAG) ＋ 第3軍団(自動掃除OS) SW正規ライセンス一括契約 (個人情報保護二重マスク及び物理コピー防止ロック基本無償搭載)", "JPY 2,500,000 (250万円) <br><span style='color: var(--accent); font-size: 0.75rem;' >(一括契約時、単体購入比50万円の特別セット割引適用!)</span>"],
+                tb_row2: ["🖥️ H/W調達代行および検証セットアップパック", "ソフトウェア正規版を高性能ミニPC(Ryzen 9, RTX 4060 Ti, RAM 64GB)へセットアップし、完全検証(verify 10段階)して出荷する調達代行技術支援", "JPY 400,000 (40万円) <br><span style='color: var(--text-muted); font-size: 0.75rem;' >(当社はハードウェアメーカーではなく、純粋な調達代行および導入技術支援です)</span>"],
+                tb_row3: ["🛡️ [選択オプション] あんしんセキュリティ ＆ 外部知識注入パック", "② 不正コマンド実行・漏洩遮断「透明監獄」(+50万円) <br>③ 社内Wiki自動連携ノーションコネクタ(+50万円) <br>④ 日本ローカル商取引・特許完全対応法制パック(+30万円)", "選択モジュールごとの個別合算課金 <br><span style='color: var(--primary); font-size: 0.75rem;' >※ 個人情報保護(PII)マスクフィルタモジュールは基本パッケージへ100%無償同梱！</span>"],
                 s6_h_tag: "Technical Guarantee",
                 s6_top_title: "KODARI SYSTEMS グローバル品質保証",
                 s6_title: "RAG OS 3大軍団 三位一体<br>技術品質保証書 (v10.3)",
@@ -707,13 +715,13 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 s2_title: "Trinity Architecture: 3 Corps 6 Core Harnesses",
                 s2_subtitle: "Enterprise intranet brain that sweeps semantic garbage and locks unauthorized duplication",
                 s2_c1_h: "🧠 Corps 1 [Local AI Builder SW]",
-                s2_c1_sub: "JPY 1,200,000 (1.2M Yen) / KRW 12,000,000 (Tax Excluded)",
+                s2_c1_sub: "USD 12,000 (excl. VAT)",
                 s2_c1_d: "Tokenizer BOS Alignment limits hallucination. Kodari Extender generates 10x deep QAs from 1 fact. GGUF Safe Compiler blocks VRAM Out-of-Memory.",
                 s2_c2_h: "🛡️ Corps 2 [Air-Gap RAG SW]",
-                s2_c2_sub: "JPY 1,000,000 (1.0M Yen) / KRW 10,000,000 (Tax Excluded)",
+                s2_c2_sub: "USD 10,000 (excl. VAT)",
                 s2_c2_d: "130MB lightweight embeddings. 【Customer PII Auto-Masking Filters】 and 【Air-Gap UUID 3-Layer Lock】 bundled for FREE.",
                 s2_c3_h: "🌀 Corps 3 [AI Knowledge Sweeper OS SW]",
-                s2_c3_sub: "JPY 800,000 (0.8M Yen) / KRW 8,000,000 (Tax Excluded)",
+                s2_c3_sub: "USD 8,000 (excl. VAT)",
                 s2_c3_d: "Autonomously sweeps semantic conflicts via self-healer eviction loop. Hot-swaps multi-LoRA adapters via LRU cache safely.",
                 s3_h_tag: "Demo Action Scenario",
                 s3_title: "10-Minute High-Impact Reliability Demo Plan",
@@ -730,17 +738,17 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 s4_title: "Eliminate High Private AI Datacenter Invoices by up to 93.8%",
                 s4_subtitle: "3-Year Total Cost of Ownership (TCO) quantitative analysis (10,000 confidential pages, 50 active seats, weekly 10% document revisions)",
                 tco_l1: "Alt A. Public Cloud API RAG (OpenAI API)",
-                tco_v1: "3-Yr Approx. JPY 17,000,000 / KRW 1.7억 원",
+                tco_v1: "3-Yr Approx. USD 170,000",
                 tco_l2: "Alt B. Heavy Private LLM (Self-hosted A100 GPU Cluster)",
-                tco_v2: "3-Yr Approx. JPY 48,000,000 / KRW 4.8억 원",
+                tco_v2: "3-Yr Approx. USD 480,000",
                 tco_l3: "Alt C. RAG OS Allied Suite (Pure SW + Own Workstation)",
-                tco_v3: "3-Yr Total JPY 3,925,000 / KRW 3,925만 원",
+                tco_v3: "3-Yr Total USD 39,250",
                 s4_c_title: "💎 Critical Cost Efficacy Factors",
                 s4_c_d: `
-                    <p style="font-size: 0.85rem; line-height: 1.6;">• **Own Hardware Optimization**: Runs perfectly on a customer-owned RTX 4060 PC (approx. 300,000 Yen / 3 Million KRW) with simple click-to-deploy.</p>
+                    <p style="font-size: 0.85rem; line-height: 1.6;">• **Own Hardware Optimization**: Runs perfectly on a customer-owned RTX 4060 PC (approx. 3,000 USD) with simple click-to-deploy.</p>
                     <p style="font-size: 0.85rem; line-height: 1.6;">• **Zero Monthly Egress**: Zero token usage bills or vector DB subscription fees. 100% on-premises computing.</p>
                     <p style="font-size: 0.85rem; line-height: 1.6;">• **Zero Cleaning Overheads**: Eliminates manual database administrator cleansing labor via autonomous eviction sweeper.</p>
-                    <p style="font-size: 0.82rem; margin-top: 10px; color: var(--accent);">* Alt C TCO includes our SW license (2.5M Yen / 25M KRW) plus customer's own hardware procurement. (Tax Excluded)</p>
+                    <p style="font-size: 0.82rem; margin-top: 10px; color: var(--accent);">* Alt C TCO includes our SW license (25,000 USD) plus customer's own hardware procurement. (Tax Excluded)</p>
                 `,
                 s5_h_tag: "Product Pricing",
                 s5_title: "Standard Software Licensing & Optional Packages",
@@ -748,9 +756,9 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 th_package: "Software Licenses / Add-on Packages",
                 th_scope: "Included Inclusions & Buyer Value",
                 th_price: "SW Perpetual License (Tax Excluded)",
-                tb_row1: ["🎁 3-Corps All-in-One Integrated Suite", "Complete SW licenses for Corps 1, Corps 2, and Corps 3 (PII filter and 3-Layer UUID copy-protection lock bundled for FREE)", "JPY 2,500,000 (2.5M Yen) / KRW 25,000,000 <br><span style='color: var(--accent); font-size: 0.75rem;'>(Enjoy JPY 500,000 / KRW 5 Million special bundle discount!)</span>"],
-                tb_row2: ["🖥️ H/W Procurement & Setup Tech Support Pack", "Workstation procurement (Ryzen 9, RTX 4060 Ti, RAM 64GB), SW setup, and 10-stage verify E2E verification prior to delivery", "JPY 400,000 (400K Yen) / KRW 4,000,000 <br><span style='color: var(--text-muted); font-size: 0.75rem;'>(Technical service. We are a pure SW vendor, not a HW manufacturer)</span>"],
-                tb_row3: ["🛡️ [Optional Add-on] Shield Security & Tech Pack", "② Secure Audit Logger Sandbox (+500K Yen / 5M KRW) <br>③ Notion & Dynamic Web Crawler Connector (+500K Yen / 5M KRW) <br>④ Japanese JPO Patent & METI Compliance Knowledge Pack (+300K Yen / 3M KRW)", "Billed separately based on selected modules <br><span style='color: var(--primary); font-size: 0.75rem;'>* PII Masking Filter is 100% FREE and included in standard base package!</span>"],
+                tb_row1: ["🎁 3-Corps All-in-One Integrated Suite", "Complete SW licenses for Corps 1, Corps 2, and Corps 3 (PII filter and 3-Layer UUID copy-protection lock bundled for FREE)", "USD 25,000 <br><span style='color: var(--accent); font-size: 0.75rem;'>(Enjoy USD 5,000 special bundle discount!)</span>"],
+                tb_row2: ["🖥️ H/W Procurement & Setup Tech Support Pack", "Workstation procurement (Ryzen 9, RTX 4060 Ti, RAM 64GB), SW setup, and 10-stage verify E2E verification prior to delivery", "USD 4,000 <br><span style='color: var(--text-muted); font-size: 0.75rem;'>(Technical service. We are a pure SW vendor, not a HW manufacturer)</span>"],
+                tb_row3: ["🛡️ [Optional Add-on] Shield Security & Tech Pack", "② Secure Audit Logger Sandbox (+5,000 USD) <br>③ Notion & Dynamic Web Crawler Connector (+5,000 USD) <br>④ Japanese JPO Patent & METI Compliance Knowledge Pack (+3,000 USD)", "Billed separately based on selected modules <br><span style='color: var(--primary); font-size: 0.75rem;'>* PII Masking Filter is 100% FREE and included in standard base package!</span>"],
                 s6_h_tag: "Technical Guarantee",
                 s6_top_title: "KODARI SYSTEMS Global Quality Assurance",
                 s6_title: "Trinity RAG OS Suite<br>Technical Quality Guarantee (v10.3)",

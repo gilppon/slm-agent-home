@@ -1134,8 +1134,8 @@
                         <span class="roi-big-val" id="calc-res-main">3.2 개월</span>
                     </div>
 
-                    <div style="font-size: 0.75rem; color: var(--text-dark);">
-                        * 당사 솔루션 평생 라이선스 비용 JPY 2,500,000 / KRW 2,500만 원 기준
+                    <div style="font-size: 0.75rem; color: var(--text-dark);" id="calc-res-sub">
+                        * 당사 솔루션 평생 라이선스 비용 KRW 2,500만 원 기준
                     </div>
                 </div>
             </div>
@@ -1282,6 +1282,7 @@
                 th_scope: "상세 스펙 및 제공 범위",
                 th_price: "SW 라이선스 비용",
                 tax_d: "* 모든 요금은 부가세 10% 별도 공급가액 기준입니다.",
+                calc_res_sub: "* 당사 솔루션 평생 라이선스 비용 KRW 2,500만 원 기준",
                 footer_stamp: "Distribution Class: B2B Official Proposal Material | Authored by RAG Alliance Strategy Group",
                 decks_title: "B2B 공식 온라인 제안 슬라이드 (B2B Pitch Decks)",
                 decks_subtitle: "바이어측 실무 총괄 및 CTO/인프라 보안 부서를 위한 대화형 정밀 제안 프레젠테이션 자료 일체",
@@ -1334,7 +1335,8 @@
                 th_package: "パッケージおよびモジュール名称",
                 th_scope: "詳細な特典および提供範囲",
                 th_price: "SW永久ライセンス料金",
-                tax_d: "※ すべてのライセンス料金は供給価額基準であり、消費税10%が別途請求されます。 (VAT/消費税10%別途)",
+                tax_d: "※ すべてのライセンス料金は供給価額基準であり、消費税10%が別途請求されます。",
+                calc_res_sub: "* 当社ソリューション永久ライセンス費用 JPY 2,500,000 基準",
                 footer_stamp: "Distribution Class: B2B Official Proposal Material | Authored by RAG Alliance Strategy Group",
                 decks_title: "B2B 公式オンライン提案スライド (B2B Pitch Decks)",
                 decks_subtitle: "各ビジネス役割およびCTO/IT技術部門のための9種の対話型プレゼンテーション資料を即時閲覧いただけます。",
@@ -1354,7 +1356,7 @@
                 d7_desc: "自律清掃ナレッジOS及び無停止自己治療復旧メリット",
                 d8_title: "🔥 第3軍団 オペレーション技術スライド",
                 d8_desc: "エビクションループとMulti-LoRA LRUホットスワップの自律運用",
-                d9_title: "🔌 網分離ネットワーク構成",
+                d9_title: "🔌 物理的隔離ネットワーク構成",
                 d9_desc: "完全オフラインセキュリティインフラノード設計図及び拡張スペック"
             },
             en: {
@@ -1366,20 +1368,20 @@
                 corps_title: "Trinity Architecture: 3 Corps Allied Forces",
                 corps_subtitle: "An intranet brain that sweeps semantic anomalies and locks unauthorized duplication.",
                 c1_h: "🧠 Corps 1 [Local AI Builder SW]",
-                c1_p: "USD 12,000 (excl. VAT)",
+                c1_p: "USD 25,000 (excl. VAT)",
                 c1_d: "Tokenizer BOS Alignment limits hallucination. Kodari Extender generates 10x deep QAs from 1 fact. GGUF Safe Compiler blocks VRAM Out-of-Memory.",
                 c2_h: "🛡️ Corps 2 [Air-Gap RAG SW]",
-                c2_p: "USD 10,000 (excl. VAT)",
+                c2_p: "USD 20,000 (excl. VAT)",
                 c2_d: "130MB lightweight embeddings. 【Customer PII Auto-Masking Filters】 and 【Air-Gap UUID 3-Layer Lock】 bundled for FREE.",
                 c3_h: "🌀 Corps 3 [AI Knowledge Sweeper OS SW]",
-                c3_p: "USD 8,000 (excl. VAT)",
+                c3_p: "USD 15,000 (excl. VAT)",
                 c3_d: "Autonomously sweeps semantic conflicts via self-healer eviction loop. Hot-swaps multi-LoRA adapters via LRU cache safely.",
                 calc_h: "Interactive ROI Calculator",
                 calc_desc: "Adjust the corporate size and monthly document processing volume to check the Break-Even Point (BEP) and 3-year cost savings in real-time.",
                 label_users: "Internal AI Seats",
                 label_pages: "Monthly Doc Changes (Pages)",
                 res_title: "Investment Payback Period (BEP)",
-                res_desc: "* Saving 93.8% on monthly operations (OpenAI API & labor) to rapidly recover USD 25,000 license fee and drive pure business value annually.",
+                res_desc: "* Saving 93.8% on monthly operations (OpenAI API & labor) to rapidly recover license fee and drive pure business value annually.",
                 gate_h: "10-Stage Integrity Verification Pipeline (verify.py)",
                 gate_d: "Tracking E2E verify stages under strict CMMI-PMO guidelines allowing zero bugs or memory leak crashes.",
                 price_h: "Standard Software Licensing & Optional Packages",
@@ -1388,6 +1390,7 @@
                 th_scope: "Details & Scope",
                 th_price: "SW Perpetual License",
                 tax_d: "* All license fees are based on supply value; local VAT/Tax (10%) is excluded.",
+                calc_res_sub: "* Based on our flat lifetime license fee of USD 25,000",
                 footer_stamp: "Distribution Class: B2B Official Proposal Material | Authored by RAG Alliance Strategy Group",
                 decks_title: "B2B Official Proposal Slides (B2B Pitch Decks)",
                 decks_subtitle: "Access 9 interactive B2B slides designed for CTOs, CISOs, and business leads immediately.",
@@ -1448,7 +1451,6 @@
             document.getElementById('hero-title').innerHTML = data.title;
             document.getElementById('hero-desc').innerText = data.desc;
             
-            // Safe innerText binding with existence check
             const btnDemo = document.getElementById('hero-btn-demo');
             if (btnDemo) btnDemo.innerText = data.btn_demo;
             const btnSpec = document.getElementById('hero-btn-spec');
@@ -1482,6 +1484,7 @@
             document.getElementById('price-h').innerText = data.price_h;
             document.getElementById('price-d').innerText = data.price_d;
             document.getElementById('tax-d').innerText = data.tax_d;
+            document.getElementById('calc-res-sub').innerText = data.calc_res_sub;
 
             document.getElementById('decks-title').innerText = data.decks_title;
             document.getElementById('decks-subtitle').innerText = data.decks_subtitle;
@@ -1535,11 +1538,11 @@
                     <tr>
                         <td style="font-weight: 700; color: var(--primary);">🎁 3-Corps All-in-One Integrated Suite</td>
                         <td>Complete SW licenses for Corps 1, Corps 2, and Corps 3 (PII filter and 3-Layer UUID copy-protection lock bundled for FREE)</td>
-                        <td style="font-weight: 700; color: var(--primary);">JPY 2,500,000 / KRW 25,000,000 <br><span style='color: var(--accent); font-size: 0.75rem;'>(Enjoy JPY 500,000 / KRW 5M special bundle discount!)</span></td>
+                        <td style="font-weight: 700; color: var(--primary);">USD 25,000 <br><span style='color: var(--accent); font-size: 0.75rem;'>(Enjoy USD 5,000 special bundle discount!)</span></td>
                     </tr>
                     <tr>
                         <td style="font-weight: 700; color: var(--primary);">🛡️ [Optional Add-on] Shield Security & Tech Pack</td>
-                        <td>② Secure Audit Logger Sandbox (+500K Yen) | ③ Notion Connector (+500K Yen) | ➃ Japan JPO Legal Pack (+300K Yen)</td>
+                        <td>② Secure Audit Logger Sandbox (+5,000 USD) | ③ Notion Connector (+5,000 USD) | ④ Japan JPO Legal Pack (+3,000 USD)</td>
                         <td style="font-weight: 700; color: var(--secondary);">Billed separately based on selected modules</td>
                     </tr>
                 `;
@@ -1549,11 +1552,11 @@
                     <tr>
                         <td style="font-weight: 700; color: var(--primary);">🎁 3대 군단 올인원 통합 SW 패키지</td>
                         <td>제1군단 + 제2군단 + 제3군단 정식 SW 라이선스 일괄 계약 (이중 PII 필터 및 복제방지 락 기본 무상 제공)</td>
-                        <td style="font-weight: 700; color: var(--primary);">JPY 2,500,000 / KRW 2,500만 원 <br><span style='color: var(--accent); font-size: 0.75rem;'>(일괄 계약 시 무려 JPY 500,000 / 500만 원 특별 결합 할인!)</span></td>
+                        <td style="font-weight: 700; color: var(--primary);">KRW 2,500만 원 <br><span style='color: var(--accent); font-size: 0.75rem;'>(일괄 계약 시 무려 500만 원 특별 결합 할인!)</span></td>
                     </tr>
                     <tr>
                         <td style="font-weight: 700; color: var(--primary);">🛡️ [유상 옵션] 안심 보안 & 외부 지식 수혈 모듈</td>
-                        <td>② 해킹 방어 샌드박스(+50만 엔/500만 원) | ③ 노션 커넥터(+50만 엔/500만 원) | ➃ 일본 법률/특허 지식 팩(+30만 엔/300만 원)</td>
+                        <td>② 해킹 방어 샌드박스(+500만 원) | ③ 노션 커넥터(+500만 원) | ➃ 일본 법률/특허 지식 팩(+300만 원)</td>
                         <td style="font-weight: 700; color: var(--secondary);">모듈별 별도 개별 합산 과금</td>
                     </tr>
                 `;
@@ -1833,8 +1836,16 @@
             }
         }
 
-        // Init page
-        switchLang('ko');
+        // Init page with Browser Language Detection
+        let userLang = 'ja'; // 일본 바이어 타겟 디폴트
+        const browserLang = navigator.language || navigator.userLanguage;
+        if (browserLang) {
+            const prefix = browserLang.substring(0, 2).toLowerCase();
+            if (['ko', 'ja', 'en'].includes(prefix)) {
+                userLang = prefix;
+            }
+        }
+        switchLang(userLang);
     </script>
 </body>
 </html>

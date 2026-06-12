@@ -23,7 +23,7 @@
 
 #### 💰 투명한 합리적 요금 체계 (부가세 10% 별도)
 *   **3대 군단 올인원 통합 SW 패키지**: **KRW 2,500만 원** (개별 구매 대비 500만 원 번들 할인 특가!)
-*   **군단별 개별 라이선스**: 빌더(1,200만 원) / RAG(1,000만 원) / 힐러 OS(80만 원) 개별 도입 지원.
+*   **군단별 개별 라이선스**: 빌더(1,200만 원) / RAG(1,000만 원) / 힐러 OS(800만 원) 개별 도입 지원.
 *   **TCO 극대화**: 비싼 전용 서버 필요 없이 자체 조달 RTX 4060 PC(300만 원 상당)에 원클릭 설치 작동.
 
 ---
@@ -91,8 +91,8 @@ Trinity RAG OS Suite (v10.3) perpetual software package is officially launched:
 *   **🌀 Corps 3 [AI Knowledge Sweeper OS SW]**: Detects semantic anomalies and automatically executes physical database sweeps (Eviction) to preserve DB integrity.
 
 #### 💰 perpetual Licensing & Add-on Packages (Local VAT/Tax Excluded)
-*   **3-Corps All-in-One SW Suite**: **JPY 2.5M (2.5M Yen) / KRW 25M** (Enjoy JPY 500K / KRW 5M special bundle discount!)
-*   **Individual SW Modules**: Corps 1 (1.2M Yen) / Corps 2 (1.0M Yen) / Corps 3 (800K Yen)
+*   **3-Corps All-in-One SW Suite**: **USD 25,000** (Enjoy USD 5,000 special bundle discount!)
+*   **Individual SW Modules**: Corps 1 (USD 12,000) / Corps 2 (USD 10,000) / Corps 3 (USD 8,000)
 *   **BYO Hardware (Bring Your Own HW)**: Runs flawlessly on customer's own compact workstation (approx. $2,500 value, Ryzen 9 + RTX 4060 Ti).
 
 ---
