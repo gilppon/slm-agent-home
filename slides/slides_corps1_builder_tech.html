@@ -761,6 +761,8 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 s5_q1_a: "Unsloth manually optimizes backpropagation kernel memory block sizes, cutting VRAM overheads by 60% and speeding up training by 2.1x. This allows under 1-hour 4-bit SFT completions on generic RTX 4060 hardware without running out of memory (OOM).",
                 s5_q2_h: "Q2. Perplexity info loss when merging quantizations into GGUF?",
                 s5_q2_a: "Merging 16-bit floats down to a 4-bit integer format changes mathematical Perplexity by less than 0.5%, keeping performance differences negligible. Compiled GGUF files run natively on local Ollama server managers with zero lag.",
+                s5_q3_h: "Q3. Sync cycle & embedding pipeline structure of Notion/crawler premium add-on?",
+                s5_q3_a: "Integrates Notion API webhooks and polling pipelines to implement incremental sync, extracting only recent modifications. Employs SHA-256 chunk duplicate filtering before loading into the local vector database.",
                 s6_title: "Pricing & Corporate SLA Policies",
                 s6_subtitle: "Save up to 90% TCO compared to high-end private LLM datacenter hostings",
                 th_model: "Tuning Module",
@@ -826,6 +828,8 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
             document.getElementById('s5-q1-a').innerText = data.s5_q1_a;
             document.getElementById('s5-q2-h').innerText = data.s5_q2_h;
             document.getElementById('s5-q2-a').innerText = data.s5_q2_a;
+            document.getElementById('s5-q3-h').innerText = data.s5_q3_h;
+            document.getElementById('s5-q3-a').innerText = data.s5_q3_a;
 
             // Slide 6
             document.getElementById('s6-title').innerText = data.s6_title;

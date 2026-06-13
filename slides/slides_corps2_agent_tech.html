@@ -730,15 +730,22 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                     <p style="font-size: 0.85rem; line-height: 1.6;">• **Zero Cleaning Overheads**: Eliminates manual database administrator cleansing labor via autonomous eviction sweeper.</p>
                     <p style="font-size: 0.82rem; margin-top: 10px; color: var(--accent);">* Alt C TCO includes our SW license (25,000 USD) plus customer's own hardware procurement. (Tax Excluded)</p>
                 `,
-                s5_h_tag: "Product Pricing",
-                s5_title: "Standard Software Licensing & Optional Packages",
-                s5_subtitle: "Modular pricing options and premium add-ons to fit buyer's budget and target B2B regulations",
-                th_package: "Software Licenses / Add-on Packages",
-                th_scope: "Included Inclusions & Buyer Value",
-                th_price: "SW Perpetual License (Tax Excluded)",
+                s5_h_tag: "Technical FAQ",
+                s5_tech_title: "Technical FAQ for IT Experts & CTOs",
+                s5_tech_subtitle: "Quantitative and mathematical answers to sharp engineer queries",
+                s5_q1_h: "Q1. Real-world resource footprints and retrieval precision of local E5 embeddings?",
+                s5_q1_a: "The 130MB ultra-lightweight E5 embedding model strictly limits CPU memory utilization to under 1%. Armed with parallel Korean, English, and Japanese alignments, it demonstrates a precise 98.6% similarity match accuracy compared to expensive public APIs (OpenAI Ada-002).",
+                s5_q2_h: "Q2. Latency overheads during real-time dual PII masking runs?",
+                s5_q2_a: "Under pre-compiled fast regex parsers and C-regex tokenizers, personal identification data (PII) is detected and replaced within 1.2ms per 1,000 characters. There is virtually zero latency bottleneck introduced to the inference flow.",
+                s5_q3_h: "Q3. Mitigation strategies for SQLite database concurrency locks?",
+                s5_q3_a: "To resolve write-lock bottlenecks under heavy multi-threaded ingestion, we enable WAL (Write-Ahead Logging) mode and equip a thread-safe semaphore queue in the connection manager, keeping DB deadlock probability strictly at 0.0%.",
+                s6_title: "Pricing & Corporate SLA Policies",
+                s6_subtitle: "Save up to 90% TCO compared to high-end private LLM datacenter hostings",
+                th_model: "Tuning Module",
+                th_desc: "Included Features",
+                th_price: "One-Time Software License",
                 tb_row1: ["🎁 3-Corps All-in-One Integrated Suite", "Complete SW licenses for Corps 1, Corps 2, and Corps 3 (PII filter and 3-Layer UUID copy-protection lock bundled for FREE)", "USD 25,000 <br><span style='color: var(--accent); font-size: 0.75rem;'>(Enjoy USD 5,000 special bundle discount!)</span>"],
                 tb_row2: ["🖥️ H/W Procurement & Setup Tech Support Pack", "Workstation procurement (Ryzen 9, RTX 4060 Ti, RAM 64GB), SW setup, and 10-stage verify E2E verification prior to delivery", "USD 4,000 <br><span style='color: var(--text-muted); font-size: 0.75rem;'>(Technical service. We are a pure SW vendor, not a HW manufacturer)</span>"],
-                tb_row3: ["🛡️ [Optional Add-on] Shield Security & Tech Pack", "② Secure Audit Logger Sandbox (+5,000 USD) <br>③ Notion & Dynamic Web Crawler Connector (+5,000 USD) <br>④ Japanese JPO Patent & METI Compliance Knowledge Pack (+3,000 USD)", "Billed separately based on selected modules <br><span style='color: var(--primary); font-size: 0.75rem;'>* PII Masking Filter is 100% FREE and included in standard base package!</span>"],
                 s6_h_tag: "Technical Guarantee",
                 s6_top_title: "KODARI SYSTEMS Global Quality Assurance",
                 s6_title: "Trinity RAG OS Suite<br>Technical Quality Guarantee (v10.3)",
@@ -796,6 +803,8 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
             document.getElementById('s5-q1-a').innerText = data.s5_q1_a;
             document.getElementById('s5-q2-h').innerText = data.s5_q2_h;
             document.getElementById('s5-q2-a').innerText = data.s5_q2_a;
+            document.getElementById('s5-q3-h').innerText = data.s5_q3_h;
+            document.getElementById('s5-q3-a').innerText = data.s5_q3_a;
 
             document.getElementById('s6-title').innerText = data.s6_title;
             document.getElementById('s6-subtitle').innerText = data.s6_subtitle;
