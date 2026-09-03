@@ -481,10 +481,10 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 <div class="visual-content">
                     <div class="code-box">
                         <div class="code-title">config.py</div>
-                        <span style="color: #64748b;"># --- [BEFORE] 오직 서버 컴퓨터 내부에서만 접속 ---</span>
+                        <span id="s2-code-before" style="color: #64748b;"># --- [BEFORE] 오직 서버 컴퓨터 내부에서만 접속 ---</span>
                         <div class="code-line-old">host: str = "127.0.0.1"  # Localhost only</div>
                         <br>
-                        <span style="color: #64748b;"># 🚀 [AFTER] 사내 네트워크(LAN망) 내 모든 컴퓨터 접속 허용</span>
+                        <span id="s2-code-after" style="color: #64748b;"># 🚀 [AFTER] 사내 네트워크(LAN망) 내 모든 컴퓨터 접속 허용</span>
                         <div class="code-line-new">host: str = "0.0.0.0"    # Bind to all network adapters</div>
                     </div>
                 </div>
@@ -512,7 +512,7 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
             <div class="slide-body">
                 <div class="text-content">
                     <h2 id="s3-title">2단계: 사내 방화벽 예외 등록 & 런처 가동</h2>
-                    <p class="subtitle" id="s3-subtitle">7860(웹 GUI) / 8000(백엔드 API) 포트 개방</p>
+                    <p class="subtitle" id="s3-subtitle">4대 관제탑 포트 개방: 8000(SLM Bridge), 7860(Builder), 7861(RAG), 7862(Healer)</p>
                     <ul class="desc-list">
                         <li id="s3-li1"><strong>윈도우 방화벽 인바운드 허용</strong>: 전산실 서버의 방화벽 설정에서 <strong>7860번(Gradio 화면)</strong> 및 <strong>8000번(API 서버)</strong> 포트의 인바운드 연결 허용 규칙을 등록합니다.</li>
                         <li id="s3-li2"><strong>서버 기동배치 실행 (따닥!)</strong>: 폴더 루트에 위치한 **`SLM_Launcher.bat`** 배치 파일을 더블클릭하여 임베디드 파이썬 런타임과 로컬 Ollama SLM 브릿지 서버를 원클릭 가동합니다.</li>
@@ -522,10 +522,10 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 <div class="visual-content">
                     <div class="diagram-container">
                         <div class="net-node" style="border-color: var(--secondary);">Windows Defender Firewall</div>
-                        <div class="net-arrow">⬇️ 포트 규칙 오픈 (7860 & 8000)</div>
-                        <div class="net-node" style="border-color: var(--accent);">Double-Click: SLM_Launcher.bat</div>
-                        <div class="net-arrow">⬇️ 1초 만에 기동 완료</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted); font-family: monospace;">[Local RAG Engine Running at port 7860 / 8000]</div>
+                        <div class="net-arrow" id="s3-arrow-ports">⬇️ 4대 관제탑 포트 오픈 (8000, 7860, 7861, 7862)</div>
+                        <div class="net-node" style="border-color: var(--accent);">Double-Click: KODARI_RAG_OS_Launcher.bat</div>
+                        <div class="net-arrow" id="s3-arrow-time">⬇️ 1초 만에 기동 완료</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); font-family: monospace;">[KODARI 4-Tower Grid Running at 8000 / 7860 / 7861 / 7862]</div>
                     </div>
                 </div>
             </div>
@@ -555,23 +555,23 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                     <p class="subtitle" id="s4-subtitle">무설치 에어갭 포터블 브라우저 라이브 채팅</p>
                     <ul class="desc-list">
                         <li id="s4-li1"><strong>사원 체감 난이도 0%</strong>: 일반 임직원 PC에는 파이썬이나 Ollama 등 소프트웨어를 단 1Byte도 새로 설치할 필요가 없습니다.</li>
-                        <li id="s4-li2"><strong>브라우저 주소창 입력 끝</strong>: 사원들은 개인 자리에 앉아 크롬(Chrome)이나 엣지(Edge) 웹 브라우저 주소창에 **`http://[서버IP]:7860`**만 입력하면 끝입니다! (예: <code>http://192.168.0.50:7860</code>)</li>
+                        <li id="s4-li2"><strong>브라우저 주소창 입력 끝</strong>: 사원들은 개인 자리에 앉아 크롬(Chrome)이나 엣지(Edge) 웹 브라우저 주소창에 **`http://[서버IP]:7861`**만 입력하면 끝입니다! (예: <code>http://192.168.0.50:7861</code>)</li>
                         <li id="s4-li3"><strong>크로스 플랫폼 지원</strong>: 윈도우 PC뿐만 아니라 사내에서 쓰는 맥북, 리눅스, 모바일 태블릿, 스마트폰 브라우저에서도 사내 무선 Wi-Fi를 타고 완벽히 대화 및 파싱 기능을 이용할 수 있습니다.</li>
                     </ul>
                 </div>
                 <div class="visual-content">
                     <div class="before-after-box">
                         <div class="ba-column before">
-                            <h4>❌ 과거의 설치 방식</h4>
-                            <p style="font-size: 0.8rem; line-height: 1.5; color: var(--text-muted);">
+                            <h4 id="s4-ba-before-h">❌ 과거의 설치 방식</h4>
+                            <p id="s4-ba-before-p" style="font-size: 0.8rem; line-height: 1.5; color: var(--text-muted);">
                                 - 사원 컴퓨터 50대에 일일이 수작업 설치<br>
                                 - 파이썬, 쿠다 버전 충돌로 수시로 에러 발생<br>
                                 - 라이브러리 용량만 대당 20GB 이상 낭비
                             </p>
                         </div>
                         <div class="ba-column after">
-                            <h4>✅ 혁신적인 1초 접속</h4>
-                            <p style="font-size: 0.8rem; line-height: 1.5; color: var(--text-main);">
+                            <h4 id="s4-ba-after-h">✅ 혁신적인 1초 접속</h4>
+                            <p id="s4-ba-after-p" style="font-size: 0.8rem; line-height: 1.5; color: var(--text-main);">
                                 - 전산실 서버 1대만 켜두면 끝!<br>
                                 - 사원들은 <strong>웹 브라우저 주소창 접속</strong>으로 끝!<br>
                                 - 디바이스 용량 낭비 0% / 충돌 에러 0%
@@ -612,11 +612,11 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 </div>
                 <div class="visual-content">
                     <div class="diagram-container">
-                        <div class="net-node" style="border-color: var(--secondary);">사내 메신저 (슬랙/잔디/자체앱)</div>
-                        <div class="net-arrow">⬇️ API Request (포트 8000번 호출)</div>
-                        <div class="net-node" style="border-color: var(--primary);">로컬 전산실 API 브릿지 서버</div>
-                        <div class="net-arrow">⬇️ 즉시 비식별화 마스킹 후 로컬 추론</div>
-                        <div class="net-node" style="border-color: var(--accent);">이중 PII 마스킹 + 로컬 SLM 답변</div>
+                        <div class="net-node" id="s5-node-messenger" style="border-color: var(--secondary);">사내 메신저 (슬랙/잔디/자체앱)</div>
+                        <div class="net-arrow" id="s5-arrow-api">⬇️ API Request (포트 8000번 호출)</div>
+                        <div class="net-node" id="s5-node-server" style="border-color: var(--primary);">로컬 전산실 API 브릿지 서버</div>
+                        <div class="net-arrow" id="s5-arrow-masking">⬇️ 즉시 비식별화 마스킹 후 로컬 추론</div>
+                        <div class="net-node" id="s5-node-response" style="border-color: var(--accent);">이중 PII 마스킹 + 로컬 SLM 답변</div>
                     </div>
                 </div>
             </div>
@@ -652,8 +652,8 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 </div>
                 <div class="visual-content" style="background: rgba(129, 140, 248, 0.03); flex: 0.9;">
                     <div style="text-align: center; padding: 10px;">
-                        <h3 style="color: var(--primary); font-size: 1.2rem; font-weight: 800; margin-bottom: 15px;">🛡️ 대표님 세일즈 클로징 팁</h3>
-                        <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-main); font-style: italic; max-width: 320px;">
+                        <h3 id="s6-tip-h" style="color: var(--primary); font-size: 1.2rem; font-weight: 800; margin-bottom: 15px;">🛡️ 대표님 세일즈 클로징 팁</h3>
+                        <p id="s6-tip-p" style="font-size: 0.85rem; line-height: 1.6; color: var(--text-main); font-style: italic; max-width: 320px;">
                             "전산실 서버 딱 한 대에 이 압축파일 하나 풀고 더블클릭하십시오. 내일부터 사원들은 자기 자리에서 주소창만 치고 들어와 대기업용 샌드박스 AI를 비용 결제 없이 매일 무제한으로 사용하게 될 것입니다!"
                         </p>
                     </div>
@@ -727,7 +727,7 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 "s4-title": "방법 A: 별도 설치 없는 웹 브라우저 직통 접속",
                 "s4-subtitle": "무설치 에어갭 포터블 브라우저 라이브 채팅",
                 "s4-li1": "<strong>사원 체감 난이도 0%</strong>: 일반 임직원 PC에는 파이썬이나 Ollama 등 소프트웨어를 단 1Byte도 새로 설치할 필요가 없습니다.",
-                "s4-li2": "<strong>브라우저 주소창 입력 끝</strong>: 사원들은 개인 자리에 앉아 크롬(Chrome)이나 엣지(Edge) 웹 브라우저 주소창에 **`http://[서버IP]:7860`**만 입력하면 끝입니다! (예: <code>http://192.168.0.50:7860</code>)",
+                "s4-li2": "<strong>브라우저 주소창 입력 끝</strong>: 사원들은 개인 자리에 앉아 크롬(Chrome)이나 엣지(Edge) 웹 브라우저 주소창에 **`http://[서버IP]:7861`**만 입력하면 끝입니다! (예: <code>http://192.168.0.50:7861</code>)",
                 "s4-li3": "<strong>크로스 플랫폼 지원</strong>: 윈도우 PC뿐만 아니라 사내에서 쓰는 맥북, 리눅스, 모바일 태블릿, 스마트폰 브라우저에서도 사내 무선 Wi-Fi를 타고 완벽히 대화 및 파싱 기능을 이용할 수 있습니다.",
                 "s5-title": "방법 B: 기존 업무 도구와 연결 (API 연동)",
                 "s5-subtitle": "기존 사내 시스템에 AI 두뇌를 이식하는 고급 옵션",
@@ -738,7 +738,23 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 "s6-subtitle": "외부 인터넷과 완전 격리된 사내 전용망에서 AI 서비스를 안전하게 운영",
                 "s6-li1": "<strong>외부 인터넷 접속 차단</strong>: 전산실 AI 서버는 외부 인터넷에 접속하지 않으며, 모든 데이터가 사내망 내부에서만 처리됩니다.",
                 "s6-li2": "<strong>서버 ↔ 사원 PC 연결</strong>: 같은 사내망(인트라넷) 안에서 서버 IP와 포트 번호만으로 접속. 외부 클라우드 의존 없이 완벽한 보안 유지.",
-                "s6-li3": "<strong>제로 트러스트 보증</strong>: 데이터 유출 0%, 외부 API 과금 0원, 인터넷 장애 영향 0% — 물리적 에어갭 환경에서 검증된 완벽한 사내 AI 솔루션."
+                "s6-li3": "<strong>제로 트러스트 보증</strong>: 데이터 유출 0%, 외부 API 과금 0원, 인터넷 장애 영향 0% — 물리적 에어갭 환경에서 검증된 완벽한 사내 AI 솔루션.",
+                "s2-code-before": "# --- [BEFORE] 오직 서버 컴퓨터 내부에서만 접속 ---",
+                "s2-code-after": "# 🚀 [AFTER] 사내 네트워크(LAN망) 내 모든 컴퓨터 접속 허용",
+                "s3-arrow-ports": "⬇️ 4대 관제탑 포트 오픈 (8000, 7860, 7861, 7862)",
+                "s3-arrow-time": "⬇️ 1초 만에 기동 완료",
+                "s4-ba-before-h": "❌ 과거의 설치 방식",
+                "s4-ba-before-p": "- 사원 컴퓨터 50대에 일일이 수작업 설치<br>- 파이썬, 쿠다 버전 충돌로 수시로 에러 발생<br>- 라이브러리 용량만 대당 20GB 이상 낭비",
+                "s4-ba-after-h": "✅ 혁신적인 1초 접속",
+                "s4-ba-after-p": "- 전산실 서버 1대만 켜두면 끝!<br>- 사원들은 <strong>웹 브라우저 주소창 접속</strong>으로 끝!<br>- 디바이스 용량 낭비 0% / 충돌 에러 0%",
+                "s5-node-messenger": "사내 메신저 (슬랙/잔디/자체앱)",
+                "s5-arrow-api": "⬇️ API Request (포트 8000번 호출)",
+                "s5-node-server": "로컬 전산실 API 브릿지 서버",
+                "s5-arrow-masking": "⬇️ 즉시 비식별화 마스킹 후 로컬 추론",
+                "s5-node-response": "이중 PII 마스킹 + 로컬 SLM 답변",
+                "s6-tip-h": "🛡️ 대표님 세일즈 클로징 팁",
+                "s6-tip-p": "\"전산실 서버 딱 한 대에 이 압축파일 하나 풀고 더블클릭하십시오. 내일부터 사원들은 자기 자리에서 주소창만 치고 들어와 대기업용 샌드박스 AI를 비용 결제 없이 매일 무제한으로 사용하게 될 것입니다!\""
+
             },
             ja: {
                 badge: "NETWORK SETUP",
@@ -758,7 +774,7 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 "s4-title": "方法A: インストール不要のWebブラウザ直接アクセス",
                 "s4-subtitle": "インストール不要 エアギャップ ポータブルブラウザ ライブチャット",
                 "s4-li1": "<strong>社員体感難易度 0%</strong>: 一般社員のPCにはPythonやOllamaなどのソフトウェアを1Byteもインストールする必要がありません。",
-                "s4-li2": "<strong>ブラウザのアドレスバー入力だけ</strong>: 社員は自席でChrome/Edgeブラウザのアドレスバーに **`http://[サーバーIP]:7860`** と入力するだけ！(例: <code>http://192.168.0.50:7860</code>)",
+                "s4-li2": "<strong>ブラウザのアドレスバー入力だけ</strong>: 社員は自席でChrome/Edgeブラウザのアドレスバーに **`http://[サーバーIP]:7860`** と入力するだけ！(例: <code>http://192.168.0.50:7861</code>)",
                 "s4-li3": "<strong>クロスプラットフォーム対応</strong>: Windows PCだけでなく、社内のMacBook、Linux、モバイルタブレット、スマートフォンのブラウザからも社内Wi-Fiを介して完璧に対話・解析機能を利用できます。",
                 "s5-title": "方法B: 既存業務ツールとの連携 (API統合)",
                 "s5-subtitle": "既存社内システムにAI頭脳を移植する高度なオプション",
@@ -769,7 +785,23 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 "s6-subtitle": "外部インターネットと完全隔離された社内専用ネットワークでAIサービスを安全に運用",
                 "s6-li1": "<strong>外部インターネット接続遮断</strong>: サーバー室AIサーバーは外部インターネットに接続せず、全データが社内ネットワーク内部でのみ処理されます。",
                 "s6-li2": "<strong>サーバー ↔ 社員PC接続</strong>: 同一社内ネット（イントラネット）内でサーバーIPとポート番号のみで接続。外部クラウド依存なしで完璧なセキュリティ維持。",
-                "s6-li3": "<strong>ゼロトラスト保証</strong>: データ漏洩0%、外部API課金0円、インターネット障害影響0% — 物理的エアギャップ環境で検証された完璧な社内AIソリューション。"
+                "s6-li3": "<strong>ゼロトラスト保証</strong>: データ漏洩0%、外部API課金0円、インターネット障害影響0% — 物理的エアギャップ環境で検証された完璧な社内AIソリューション。",
+                "s2-code-before": "# --- [変更前] サーバー内部からのみアクセス可能 ---",
+                "s2-code-after": "# 🚀 [変更後] 社内ネットワーク(LAN)内の全端末アクセスを許可",
+                "s3-arrow-ports": "⬇️ 4大管理タワー ポート開放 (8000, 7860, 7861, 7862)",
+                "s3-arrow-time": "⬇️ わずか1秒で起動完了",
+                "s4-ba-before-h": "❌ 従来の手動インストール方式",
+                "s4-ba-before-p": "- 社員PC 50台へ1台ずつ手作業インストール<br>- PythonやCUDAのバージョン衝突で頻繁にエラー発生<br>- ライブラリ容量だけで1台あたり20GB以上浪費",
+                "s4-ba-after-h": "✅ 革新的な1秒即時アクセス",
+                "s4-ba-after-p": "- サーバー室の親機1台を起動するだけ！<br>- 社員は<strong>ブラウザのアドレスバー入力</strong>だけで完了！<br>- デバイス容量の浪費0% ／ 衝突エラー0%",
+                "s5-node-messenger": "社内メッセンジャー (Slack/Teams/独自アプリ)",
+                "s5-arrow-api": "⬇️ API Request (ポート 8000 呼出)",
+                "s5-node-server": "ローカルサーバー室 APIブリッジサーバー",
+                "s5-arrow-masking": "⬇️ 即座に非識別化マスキング後 ローカル推論",
+                "s5-node-response": "二重PIIマスク ＋ ローカルSLM回答",
+                "s6-tip-h": "🛡️ 代表様 セールスクロージングの秘訣",
+                "s6-tip-p": "「サーバー室のPC1台にこのパッケージを展開しダブルクリックするだけです。明日から社員は自席のブラウザから大企業向けセキュアAIを、追加料金なしで毎日無制限に利用できるようになります！」"
+
             },
             en: {
                 badge: "NETWORK SETUP",
@@ -789,7 +821,7 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 "s4-title": "Method A: Zero-Install Web Browser Direct Access",
                 "s4-subtitle": "No-Install Air-Gap Portable Browser Live Chat",
                 "s4-li1": "<strong>Zero Difficulty for Employees</strong>: Regular employee PCs require absolutely zero new software installation — not even 1 byte of Python or Ollama.",
-                "s4-li2": "<strong>Just Type in Browser Address Bar</strong>: Employees simply enter **`http://[ServerIP]:7860`** in their Chrome or Edge browser! (e.g., <code>http://192.168.0.50:7860</code>)",
+                "s4-li2": "<strong>Just Type in Browser Address Bar</strong>: Employees simply enter **`http://[ServerIP]:7860`** in their Chrome or Edge browser! (e.g., <code>http://192.168.0.50:7861</code>)",
                 "s4-li3": "<strong>Cross-Platform Support</strong>: Works not only on Windows PCs but also on MacBooks, Linux, mobile tablets, and smartphones via intranet Wi-Fi.",
                 "s5-title": "Method B: Connect to Existing Work Tools (API Integration)",
                 "s5-subtitle": "Advanced option to embed AI brain into existing enterprise systems",
@@ -800,7 +832,23 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 "s6-subtitle": "Safely operate AI services on a dedicated intranet fully isolated from external internet",
                 "s6-li1": "<strong>External Internet Blocked</strong>: The server room AI server has zero external internet access. All data is processed exclusively within the intranet.",
                 "s6-li2": "<strong>Server ↔ Employee PC Connection</strong>: Connect within the same intranet using only server IP and port number. Perfect security maintained without any cloud dependency.",
-                "s6-li3": "<strong>Zero-Trust Guarantee</strong>: 0% data leakage, 0 yen external API billing, 0% internet outage impact — a fully verified enterprise AI solution under physical air-gap."
+                "s6-li3": "<strong>Zero-Trust Guarantee</strong>: 0% data leakage, 0 yen external API billing, 0% internet outage impact — a fully verified enterprise AI solution under physical air-gap.",
+                "s2-code-before": "# --- [BEFORE] Access restricted to localhost only ---",
+                "s2-code-after": "# 🚀 [AFTER] Allow access from all computers in enterprise LAN",
+                "s3-arrow-ports": "⬇️ Open 4-Tower Ports (8000, 7860, 7861, 7862)",
+                "s3-arrow-time": "⬇️ Boot Completed in 1 Second",
+                "s4-ba-before-h": "❌ Legacy Manual Installation",
+                "s4-ba-before-p": "- Manual install on 50 employee PCs one-by-one<br>- Frequent version conflicts with Python and CUDA<br>- Over 20GB of disk space wasted per device",
+                "s4-ba-after-h": "✅ Revolutionary 1-Second Access",
+                "s4-ba-after-p": "- Just keep 1 server machine running!<br>- Employees connect via <strong>browser address bar</strong>!<br>- 0% device storage waste / 0% conflict crashes",
+                "s5-node-messenger": "Enterprise Messenger (Slack/Teams/Internal Apps)",
+                "s5-arrow-api": "⬇️ API Request (Call Port 8000)",
+                "s5-node-server": "Local Server Room API Bridge Server",
+                "s5-arrow-masking": "⬇️ Instant De-identification Masking & Local Inference",
+                "s5-node-response": "Dual PII Masking + Local SLM Response",
+                "s6-tip-h": "🛡️ Executive Sales Closing Keynote",
+                "s6-tip-p": "\"Simply unzip this package on a single server machine and double-click. Starting tomorrow, employees can access enterprise-grade secure AI from their seats via browser, completely unlimited with zero monthly bills!\""
+
             }
         };
 
