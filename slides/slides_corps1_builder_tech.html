@@ -540,9 +540,9 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                         </p>
                     </div>
                     <div class="card-spec" style="background: rgba(52, 211, 153, 0.02); border-color: rgba(52, 211, 153, 0.15); display: flex; flex-direction: column; justify-content: space-between;">
-                        <h3 id="s5-q3-h" style="color: var(--accent); font-size: 1.05rem; margin-bottom: 10px; line-height: 1.3;">Q3. Notion 및 크롤링 프리미엄 애드온의 동기화 구조?</h3>
+                        <h3 id="s5-q3-h" style="color: var(--accent); font-size: 1.05rem; margin-bottom: 10px; line-height: 1.3;">Q3. Twin-Build 완전 에어갭 물리 격리 컴파일 파이프라인의 구조?</h3>
                         <p id="s5-q3-a" style="color: var(--text-muted); font-size: 0.8rem; line-height: 1.6; flex-grow: 1;">
-                            Notion API의 Webhook 및 폴링 파이프라인을 연동하여, 최종 변경분만 추출하는 증분 동기화(Incremental Sync)를 채택합니다. 중복 데이터 방지를 위해 SHA-256 청크 중복 필터링을 기동하며 로컬 Vector DB에 고속 적재합니다.
+                            외부 인터넷 및 클라우드 통신을 물리적으로 완전 절단하는 에어갭 전용 컴파일러(--mode airgapped)를 가동합니다. 사내 폐쇄망 환경에서도 0.1%의 외부 데이터 송수신 없이 순수 로컬 오프라인 지능으로 동작합니다.
                         </p>
                     </div>
                 </div>
@@ -643,8 +643,8 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 s5_q1_a: "Unsloth 커널은 역전파(Backpropagation) 시 메모리 할당 효율을 수동 최적화하여, 표준 PyTorch 대비 VRAM 사용량을 60% 절약하고 훈련을 2.1배 가속합니다. 이를 통해 보급형 RTX 4060 GPU 환경에서도 OOM 없이 1시간 내에 4비트 미세조정을 완결합니다.",
                 s5_q2_h: "Q2. GGUF 컴파일 가중치 병합 시 정보 손실(Loss) 수준은?",
                 s5_q2_a: "16비트 float 가중치를 4비트 정수형으로 양자화 병합하는 과정에서 수학적 Perplexity(혼잡도) 변화율은 0.5% 미만으로 무시할 만한 수준입니다. 병합 완료된 GGUF 파일은 추가 종속성 라이브러리 없이 로컬 Ollama 서빙 환경에 즉시 로드됩니다.",
-                s5_q3_h: "Q3. Notion 및 크롤링 프리미엄 애드온의 동기화 주기 및 임베딩 파이프라인 구조?",
-                s5_q3_a: "Notion API의 Webhook 및 폴링 파이프라인을 연동하여, 최종 변경분만 추출하는 증분 동기화(Incremental Sync)를 채택합니다. 중복 데이터 방지를 위해 SHA-256 청크 중복 필터링을 기동하며 로컬 Vector DB에 고속 적재합니다.",
+                s5_q3_h: "Q3. Twin-Build 완전 에어갭 물리 격리 컴파일 파이프라인의 구조?",
+                s5_q3_a: "외부 인터넷 및 클라우드 통신을 물리적으로 완전 절단하는 에어갭 전용 컴파일러(--mode airgapped)를 가동합니다. 사내 폐쇄망 환경에서도 0.1%의 외부 데이터 송수신 없이 순수 로컬 오프라인 지능으로 동작합니다.",
                 s6_title: "도입 단가 및 라이선스 정책",
                 s6_subtitle: "대기업용 LLM 구축 대비 90% 이상 절감되는 합리적 가격",
                 th_model: "도입 모델",
@@ -702,8 +702,8 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 s5_q1_a: "Unslothカーネルは逆伝播(Backpropagation)時のメモリ割当を高度に最適化し、標準のPyTorch比でVRAM使用量を60%節約、学習速度を2.1倍に引き上げます。これにより、普及型RTX 4060環境でもOOMを起こさず1時間以内に4bit微調整を完了できます。",
                 s5_q2_h: "Q2. GGUF変換マージ時の精度損失(Loss)はどの程度か？",
                 s5_q2_a: "16bit浮動小数点の重みを4bit整数形式に量子化マージする過程で、Perplexity（困惑度）の変動は0.5%未満に抑えられます。変換後のGGUFファイルは追加のライブラリ依存なしにローカルOllama上で快適に動作します。",
-                s5_q3_h: "Q3. Notionおよびクローラー連携モジュールの同期周期とRAG構造は？",
-                s5_q3_a: "Notion APIのWebhookとURLポーリングを利用し、変更分のみを取り込む増分同期(Incremental Sync)を採用。重複を防ぐためSHA-256でのハッシュ値重複判定を実行してからローカルのベクトルDBに書き込みます。",
+                s5_q3_h: "Q3. Twin-Build 完全エアギャップ物理隔離コンパイルパイプラインの構造は？",
+                s5_q3_a: "外部インターネットおよびクラウド通信を物理的に完全切断するエアギャップ専用コンパイラ(--mode airgapped)を稼働。社内閉域網環境でも0.1%の外部データ送受信なく純粋なオフライン知能として稼働します。",
                 s6_title: "導入コストおよびライセンスポリシー",
                 s6_subtitle: "クラウドAIサーバー導入に比べTCOを最大90%以上削減",
                 th_model: "チューニングモジュール",
@@ -761,15 +761,15 @@ v10.3 | 2026-06-01 17:15 | 개발부장 코다리   | APPROVED   | [v10.3 대수
                 s5_q1_a: "Unsloth manually optimizes backpropagation kernel memory block sizes, cutting VRAM overheads by 60% and speeding up training by 2.1x. This allows under 1-hour 4-bit SFT completions on generic RTX 4060 hardware without running out of memory (OOM).",
                 s5_q2_h: "Q2. Perplexity info loss when merging quantizations into GGUF?",
                 s5_q2_a: "Merging 16-bit floats down to a 4-bit integer format changes mathematical Perplexity by less than 0.5%, keeping performance differences negligible. Compiled GGUF files run natively on local Ollama server managers with zero lag.",
-                s5_q3_h: "Q3. Sync cycle & embedding pipeline structure of Notion/crawler premium add-on?",
-                s5_q3_a: "Integrates Notion API webhooks and polling pipelines to implement incremental sync, extracting only recent modifications. Employs SHA-256 chunk duplicate filtering before loading into the local vector database.",
+                s5_q3_h: "Q3. Architecture of the Twin-Build 100% Air-Gapped Isolation Compiler?",
+                s5_q3_a: "Deploys a physical isolation compiler (--mode airgapped) that strips all external cloud and network dependencies, ensuring 100% offline air-gapped execution with zero data egress.",
                 s6_title: "Pricing & Corporate SLA Policies",
                 s6_subtitle: "Save up to 90% TCO compared to high-end private LLM datacenter hostings",
                 th_model: "Tuning Module",
                 th_desc: "Included Features",
                 th_price: "One-Time Software License",
                 tb_row1: ["Corps 1 SLM Builder License", "Offline SFT trainer engine, synthetic generator, GGUF merger, and Gradio control web dashboard", "$ 10,000 (One-Time Perpetual SW License)"],
-                tb_row2: ["Notion & Web Crawler Premium Add-on", "Seamless synchronization of Notion workspaces & target URLs into local vector databases", "+ $ 4,000 (Optional Premium Option)"]
+                tb_row2: ["Twin-Build Air-Gapped Isolation Build", "Physical eradication of all external cloud and network dependencies", "+ $ 3,000 (Enterprise Add-on)"]
             }
         };
 
