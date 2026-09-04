@@ -4,7 +4,7 @@ chcp 65001 >nul
 title KODARI SYSTEMS - B2B Landing Web Server (Port 8080)
 cls
 echo ==========================================================
-echo  [KODARI SYSTEMS] B2B Landing Web Server (v15.0)
+echo  [KODARI SYSTEMS] B2B Landing Web Server (v2.0 Enterprise)
 echo ==========================================================
 echo   * URL: http://localhost:8080
 echo   * 로컬 브라우저 보안 경고(CORS) 방지 및 완벽한 다국어 전환 테스트

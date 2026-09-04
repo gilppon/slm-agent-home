@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     
     <!-- SEO Meta Tags -->
-    <title>KODARI LOCAL RAG OS (v15.0) - 로컬 AI 비서 빌더 & 자율 치유 OS (Enterprise Gold Master)</title>
+    <title>KODARI LOCAL RAG OS (v2.0) - 로컬 AI 비서 빌더 & 자율 치유 OS (Enterprise Gold Master)</title>
     <meta name="description" content="외부 인터넷을 완전히 격리 차단해도 사내 기밀 유출률 0%로 동작하는 무결점 로컬 온프레미스 AI 패키지. 삼위일체 아키텍처와 10단계 검증 파이프라인.">
     
     <!-- Google Fonts -->
@@ -859,7 +859,7 @@
         <div class="container nav-wrapper">
             <div class="logo-area">
                 <span class="logo-icon">🌀</span>
-                <span class="logo-text">Trinity RAG OS Suite (v10.3)</span>
+                <span class="logo-text">KODARI LOCAL RAG OS (v2.0)</span>
             </div>
             
             <nav class="nav-tabs">
@@ -885,7 +885,7 @@
         <section id="dashboard" class="tab-content active">
             <div class="dashboard-hero">
                 <span class="premium-badge" id="hero-badge">PREMIUM B2B AI PLATFORM</span>
-                <h1 id="hero-title">로컬 AI 비서 빌더 & 자율 치유 OS<br>KODARI LOCAL RAG OS Suite (v15.0)</h1>
+                <h1 id="hero-title">로컬 AI 비서 빌더 & 자율 치유 OS<br>KODARI LOCAL RAG OS Suite (v2.0)</h1>
                 <p id="hero-desc">외부 인터넷을 완전히 격리 차단해도 사내 기밀 유출률 0%로 동작하는 무결점 로컬 온프레미스 AI 패키지. 매달 청구되는 비싼 토큰 요금 고지서를 찢어버리십시오.</p>
                 
                 <!-- CTA buttons inside Dashboard Hero to fix JS innerText references -->
@@ -1258,7 +1258,7 @@
         const i18n = {
             ko: {
                 badge: "PREMIUM B2B AI PLATFORM",
-                title: "로컬 AI 비서 빌더 & 자율 치유 OS<br>KODARI LOCAL RAG OS Suite (v15.0)",
+                title: "로컬 AI 비서 빌더 & 자율 치유 OS<br>KODARI LOCAL RAG OS Suite (v2.0)",
                 desc: "외부 인터넷을 완전히 격리 차단해도 사내 기밀 유출률 0%로 동작하는 무결점 로컬 온프레미스 AI 패키지. 매달 청구되는 비싼 토큰 요금 고지서를 찢어버리십시오.",
                 btn_demo: "1:1 데모 신청하기",
                 btn_spec: "제품 상세 명세서",
@@ -1312,7 +1312,7 @@
             },
             ja: {
                 badge: "PREMIUM B2B AI PLATFORM",
-                title: "ローカルAIアシスタントビルダー & 自律治療OS<br>KODARI LOCAL RAG OS Suite (v15.0)",
+                title: "ローカルAIアシスタントビルダー & 自律治療OS<br>KODARI LOCAL RAG OS Suite (v2.0)",
                 desc: "外部ネットワークを完全に遮断した「100%ローカル隔離環境」で動作し、情報漏洩リスクを原点から遮断する純粋なオンプレミスAIパッケージ。高額なクラウド利用料を削減します。",
                 btn_demo: "1:1 デモを申し込む",
                 btn_spec: "製品詳細スペックシート",
@@ -1366,7 +1366,7 @@
             },
             en: {
                 badge: "PREMIUM B2B AI PLATFORM",
-                title: "Local AI Secretary Builder & Self-Healing OS<br>KODARI LOCAL RAG OS Suite (v15.0)",
+                title: "Local AI Secretary Builder & Self-Healing OS<br>KODARI LOCAL RAG OS Suite (v2.0)",
                 desc: "Flawless local on-premises AI package running with 0% data leaks under air-gapped nets. Tear up those costly cloud token utility bills.",
                 btn_demo: "Request 1:1 Live Demo",
                 btn_spec: "Product Detailed Specification",
@@ -1581,7 +1581,7 @@
         // Live System Logging logic (Dashboard Terminal)
         const logLinesKo = [
             "Initializing Trinity Core OS...",
-            "Loading local inference engine: TinyLlama-1.1B (Air-Gapped Version)",
+            "Loading local inference engine: LLaMA-3-8B / Gemma-2B (Air-Gapped Enterprise SLM)",
             "[제1군단] BOS 토큰 정렬 완료... 환각 제어 시퀀스 정상 작동 중",
             "[제2군단] 이중 PII 필터링 가드 스캔 개시... 민감 정보 검수 모드 ON",
             "[제3군단] 지식 모순성 감지 데몬 기동... Eviction Queue 준비 완료",
@@ -1593,7 +1593,7 @@
         ];
         const logLinesJa = [
             "Initializing Trinity Core OS...",
-            "Loading local inference engine: TinyLlama-1.1B (Air-Gapped Version)",
+            "Loading local inference engine: LLaMA-3-8B / Gemma-2B (Air-Gapped Enterprise SLM)",
             "[第1軍団] BOS整列完了... 幻覚制御ハーネス正常動作中",
             "[第2軍団] 二重PIIフィルタリングスキャン起動... 機密情報監査モード ON",
             "[第3軍団] ナレッジ矛盾検知デーモン起動... エビクションキュー準備完了",
@@ -1605,7 +1605,7 @@
         ];
         const logLinesEn = [
             "Initializing Trinity Core OS...",
-            "Loading local inference engine: TinyLlama-1.1B (Air-Gapped Version)",
+            "Loading local inference engine: LLaMA-3-8B / Gemma-2B (Air-Gapped Enterprise SLM)",
             "[Corps 1] Tokenizer BOS Alignment complete... Hallucination filter ON",
             "[Corps 2] Secure PII scanner initialized... Sensitive data screening mode ACTIVE",
             "[Corps 3] Semantic contradiction checker started... Eviction queue ready",
@@ -1644,10 +1644,11 @@
         }
         setInterval(addTerminalLog, 4500);
 
-        // Simulation Sandbox Logic
+        // Simulation Sandbox Logic (Real-time PII Detection & Dynamic Masking)
         let simInterval = null;
         function runSimulation() {
-            const prompt = document.getElementById('simulator-prompt').value.trim();
+            const promptInput = document.getElementById('simulator-prompt');
+            const prompt = promptInput.value.trim();
             const consoleBox = document.getElementById('simulator-console');
             const runBtn = document.getElementById('btn-run-simulation');
 
@@ -1656,55 +1657,128 @@
                 return;
             }
 
-            // Disable UI
             runBtn.disabled = true;
             consoleBox.innerHTML = '';
-            
-            const simStepsKo = [
-                { text: "[SYSTEM] 모의 시뮬레이터 가동... 사용자 컨셉 로드 완료", color: 'var(--primary)' },
-                { text: `[SYSTEM] 입력 분석: "${prompt}"`, color: 'var(--text-main)' },
-                { text: "[제1군단] BOS Alignment 적용... 환각 제거 모듈 주입 중...", color: 'var(--primary)' },
-                { text: "[제1군단] 5대 회고 각도 텍스트 자율 학습 및 10배 지식 확장 개시", color: 'var(--primary)' },
-                { text: "[제2군단] 이중 PII 필터 통과... 임계값 검수 결과 개인정보 0건 유출 안전 확인", color: 'var(--secondary)' },
-                { text: "[제2군단] 3중 오프라인 UUID 기기 복제방지 락 바인딩", color: 'var(--secondary)' },
-                { text: "[제3군단] 지식베이스 신규 주입 완료... 동기화 확인", color: 'var(--tertiary)' },
-                { text: "[제3군단] 실시간 Eviction 스캔: 모순성 검증 통과 (모순성 0.00%)", color: 'var(--tertiary)' },
-                { text: "[GATE] 10-Stage verify.py 검증 체크 기동: PASS", color: 'var(--tertiary)' },
-                { text: "🌟 [COMPLETED] 로컬망 지식 베이스 격리 구축에 완벽히 성공했습니다!", color: 'var(--tertiary)' }
+
+            // Real-time Regex PII Detectors with Bulletproof Function Maskers
+            const piiRules = [
+                { nameKo: '주민등록번호', nameJa: 'マイナンバー/住民番号', nameEn: 'Resident/ID Number', regex: /\b(\d{6})[- ]?([1-4]\d{6})\b/g, maskFn: (m, p1) => p1 + '-*******' },
+                { nameKo: '주민등록번호(일반)', nameJa: '個人識別番号', nameEn: 'National ID', regex: /\b(\d{6})[- ]?(\d{7})\b/g, maskFn: (m, p1) => p1 + '-*******' },
+                { nameKo: '전화번호', nameJa: '電話番号', nameEn: 'Phone Number', regex: /\b(01[016789]|02|0[3-6][1-5])[- ]?(\d{3,4})[- ]?(\d{4})\b/g, maskFn: (m, p1, p2, p3) => p1 + '-****-' + p3 },
+                { nameKo: '이메일 주소', nameJa: 'メールアドレス', nameEn: 'Email Address', regex: /\b([A-Za-z0-9._%+-]{1,3})[A-Za-z0-9._%+-]*@([A-Za-z0-9.-]+\.[A-Za-z]{2,})\b/g, maskFn: (m, p1, p2) => p1 + '***@' + p2 },
+                { nameKo: '신용카드번호', nameJa: 'クレジットカード番号', nameEn: 'Credit Card', regex: /\b(\d{4})[- ]?(\d{4})[- ]?(\d{4})[- ]?(\d{4})\b/g, maskFn: (m) => m.slice(0, 4) + '-****-****-' + m.slice(-4) },
+                { nameKo: '계좌번호', nameJa: '銀行口座番号', nameEn: 'Bank Account', regex: /\b\d{3,6}[- ]\d{2,6}[- ]\d{3,6}\b/g, maskFn: () => '***-***-******' },
+                { nameKo: 'API 시크릿 키', nameJa: 'APIシークレットキー', nameEn: 'API Secret Key', regex: /\b(sk-[A-Za-z0-9]{8})[A-Za-z0-9]+\b/g, maskFn: (m) => m.slice(0, 8) + '****************' }
             ];
 
-            const simStepsJa = [
-                { text: "[SYSTEM] シミュレーター起動... ユーザーコンセプト読み込み完了", color: 'var(--primary)' },
-                { text: `[SYSTEM] 入力分析: "${prompt}"`, color: 'var(--text-main)' },
-                { text: "[第1軍団] BOS整列適用... 幻覚除去モジュール注入中...", color: 'var(--primary)' },
-                { text: "[第1軍団] 5大回顧プロトコル テキスト自律学習及び10倍知識拡張開始", color: 'var(--primary)' },
-                { text: "[第2軍団] 二重PIIフィルタ通過... 個人情報漏洩検出 0件（安全確認）", color: 'var(--secondary)' },
-                { text: "[第2軍団] 3重オフラインUUIDデバイス複製防止ロックバインド完了", color: 'var(--secondary)' },
-                { text: "[第3軍団] ナレッジベース新規注入完了... 同期を確認", color: 'var(--tertiary)' },
-                { text: "[第3軍団] リアルタイムパージスキャン：矛盾検証通過 (矛盾率 0.00%)", color: 'var(--tertiary)' },
-                { text: "[GATE] 10-Stage verify.py 検証チェック：PASS", color: 'var(--tertiary)' },
-                { text: "🌟 [COMPLETED] ローカル隔離知識ベースの構築に完全に成功しました！", color: 'var(--tertiary)' }
-            ];
+            let detectedList = [];
+            let maskedText = prompt;
 
-            const simStepsEn = [
-                { text: "[SYSTEM] Simulator active... User concept loaded.", color: 'var(--primary)' },
-                { text: `[SYSTEM] Analyzing input: "${prompt}"`, color: 'var(--text-main)' },
-                { text: "[Corps 1] BOS Alignment active...Hallucination blocker injected.", color: 'var(--primary)' },
-                { text: "[Corps 1] 5-Angle Extender: Performing 10x semantic augmentation...", color: 'var(--primary)' },
-                { text: "[Corps 2] Double PII Filter passed... 0 sensitive tokens leaked.", color: 'var(--secondary)' },
-                { text: "[Corps 2] 3-Layer Air-Gap UUID duplication lock bound successfully.", color: 'var(--secondary)' },
-                { text: "[Corps 3] Ingesting new knowledge assets... Synchronization check OK.", color: 'var(--tertiary)' },
-                { text: "[Corps 3] Eviction Loop Scan: Contradiction Check OK (0.00% anomaly).", color: 'var(--tertiary)' },
-                { text: "[GATE] Running 10-Stage verify.py tests: PASS", color: 'var(--tertiary)' },
-                { text: "🌟 [COMPLETED] Secure local-network knowledge base successfully deployed!", color: 'var(--tertiary)' }
-            ];
+            for (const rule of piiRules) {
+                const matches = prompt.match(rule.regex);
+                if (matches) {
+                    matches.forEach(m => {
+                        if (!detectedList.some(item => item.val === m)) {
+                            detectedList.push({
+                                type: currentLang === 'ja' ? rule.nameJa : (currentLang === 'en' ? rule.nameEn : rule.nameKo),
+                                val: m
+                            });
+                        }
+                    });
+                    maskedText = maskedText.replace(rule.regex, rule.maskFn);
+                }
+            }
 
-            const activeSteps = currentLang === 'ja' ? simStepsJa : (currentLang === 'en' ? simStepsEn : simStepsKo);
+            let steps = [];
+            if (detectedList.length > 0) {
+                // PII DETECTED FLOW
+                if (currentLang === 'ja') {
+                    steps = [
+                        { text: `[SYSTEM] 入力データ受信: "${prompt}"`, color: 'var(--text-main)' },
+                        { text: `🚨 [第2軍団 PIIセキュリティガード] 機密個人情報 ${detectedList.length}件 を即時検出！`, color: 'var(--accent)' },
+                        ...detectedList.map(item => ({ text: `   -> [検出対象] ${item.type}: "${item.val}"`, color: 'var(--accent)' })),
+                        { text: `🛡️ [リアルタイムマスキング実行] 非識別化処理完了:`, color: 'var(--primary)' },
+                        { text: `   >> "${maskedText}" <<`, color: 'var(--tertiary)' },
+                        { text: `🔒 [エアギャップ隔離] 原本データはローカル隔離金庫に暗号化保管、外部流出率 0.00% 担保`, color: 'var(--secondary)' },
+                        { text: `⚡ [4大司令タワー連携] マスキング済み安全データのみを第2軍団RAG(Port 7861)へ転送`, color: 'var(--primary)' },
+                        { text: `[第3軍団] ナレッジ整合性スキャン：矛盾検出 0件 (パス)`, color: 'var(--tertiary)' },
+                        { text: `[GATE] 10-Stage verify.py 無欠陥チェック：ALL PASS`, color: 'var(--tertiary)' },
+                        { text: `🌟 [完了] 個人情報完全防衛！安全にローカルナレッジベースへ格納されました。`, color: 'var(--tertiary)' }
+                    ];
+                } else if (currentLang === 'en') {
+                    steps = [
+                        { text: `[SYSTEM] Input Data Received: "${prompt}"`, color: 'var(--text-main)' },
+                        { text: `🚨 [Corps 2 PII Security Guard Alert] Detected ${detectedList.length} sensitive token(s)!`, color: 'var(--accent)' },
+                        ...detectedList.map(item => ({ text: `   -> [Detected]: ${item.type}: "${item.val}"`, color: 'var(--accent)' })),
+                        { text: `🛡️ [Real-Time Masking Applied] De-identification Complete:`, color: 'var(--primary)' },
+                        { text: `   >> "${maskedText}" <<`, color: 'var(--tertiary)' },
+                        { text: `🔒 [Air-Gap Isolation] Raw sensitive data encrypted locally. Zero external leakage (0.00%).`, color: 'var(--secondary)' },
+                        { text: `⚡ [4 Command Towers Sync] Masked vector transferred safely to Corps 2 RAG (Port 7861)`, color: 'var(--primary)' },
+                        { text: `[Corps 3] Semantic contradiction scan: 0 anomalies (PASS)`, color: 'var(--tertiary)' },
+                        { text: `[GATE] 10-Stage verify.py pipeline test: ALL PASS`, color: 'var(--tertiary)' },
+                        { text: `🌟 [COMPLETED] Confidentiality Secured! Ingested into local air-gapped brain.`, color: 'var(--tertiary)' }
+                    ];
+                } else {
+                    steps = [
+                        { text: `[SYSTEM] 입력 데이터 분석: "${prompt}"`, color: 'var(--text-main)' },
+                        { text: `🚨 [제2군단 PII 실시간 가드 경보] 민감 개인정보 ${detectedList.length}건 즉시 탐지!`, color: 'var(--accent)' },
+                        ...detectedList.map(item => ({ text: `   -> [탐지 항목] ${item.type}: "${item.val}"`, color: 'var(--accent)' })),
+                        { text: `🛡️ [실시간 비식별화 마스킹 완료] 안전 변환 텍스트:`, color: 'var(--primary)' },
+                        { text: `   >> "${maskedText}" <<`, color: 'var(--tertiary)' },
+                        { text: `🔒 [물리적 에어갭 격리] 원본 데이터 외부 유출 0.00% 차단 및 사내 비밀 금고 보관`, color: 'var(--secondary)' },
+                        { text: `⚡ [4대 지휘 타워 연동] 비식별화된 안전 벡터만 제2군단 RAG(Port 7861)로 주입`, color: 'var(--primary)' },
+                        { text: `[제3군단] 지식 모순성 검증 스캔: 모순율 0.00% (통과)`, color: 'var(--tertiary)' },
+                        { text: `[GATE] 10-Stage verify.py 무결성 검증: ALL PASS`, color: 'var(--tertiary)' },
+                        { text: `🌟 [완료] 개인정보 유출 원천 차단! 안전하게 로컬 지식베이스에 반영되었습니다.`, color: 'var(--tertiary)' }
+                    ];
+                }
+            } else {
+                // NORMAL KNOWLEDGE INGESTION
+                const shortPrompt = prompt.length > 30 ? prompt.substring(0, 30) + '...' : prompt;
+                if (currentLang === 'ja') {
+                    steps = [
+                        { text: `[SYSTEM] 入力分析: "${shortPrompt}"`, color: 'var(--text-main)' },
+                        { text: `[第1軍団] BOS整列ハーネス適用... 幻覚制御モジュール注入 (Port 7860)`, color: 'var(--primary)' },
+                        { text: `[第1軍団] 5大回顧プロトコル テキスト自律学習及び10倍知識拡張開始`, color: 'var(--primary)' },
+                        { text: `[第2軍団] 二重PIIフィルタ通過... 個人情報漏洩検出 0件（安全確認）`, color: 'var(--secondary)' },
+                        { text: `[第2軍団] 3重オフラインUUIDハードウェア複製防止ロックバインド (Port 7861)`, color: 'var(--secondary)' },
+                        { text: `[第3軍団] ナレッジベース新規注入完了... Multi-LoRA LRU同期を確認 (Port 7862)`, color: 'var(--tertiary)' },
+                        { text: `[第3軍団] リアルタイムパージスキャン：社内規律との矛盾なし (矛盾率 0.00%)`, color: 'var(--tertiary)' },
+                        { text: `[GATE] 10-Stage verify.py 統合検証チェック：PASS`, color: 'var(--tertiary)' },
+                        { text: `🌟 [COMPLETED] ローカル隔離知識ベースの構築に完全に成功しました！`, color: 'var(--tertiary)' }
+                    ];
+                } else if (currentLang === 'en') {
+                    steps = [
+                        { text: `[SYSTEM] Analyzing document input: "${shortPrompt}"`, color: 'var(--text-main)' },
+                        { text: `[Corps 1] BOS Alignment active... Suppressing hallucination (Port 7860)`, color: 'var(--primary)' },
+                        { text: `[Corps 1] 5-Angle Extender: Performing 10x semantic augmentation...`, color: 'var(--primary)' },
+                        { text: `[Corps 2] Double PII Filter passed... 0 sensitive tokens leaked.`, color: 'var(--secondary)' },
+                        { text: `[Corps 2] 3-Layer Air-Gap UUID hardware duplication lock verified (Port 7861)`, color: 'var(--secondary)' },
+                        { text: `[Corps 3] Ingesting knowledge assets... Multi-LoRA LRU sync verified (Port 7862)`, color: 'var(--tertiary)' },
+                        { text: `[Corps 3] Eviction Loop Scan: Contradiction Check OK (0.00% anomaly).`, color: 'var(--tertiary)' },
+                        { text: `[GATE] Running 10-Stage verify.py pipeline tests: PASS`, color: 'var(--tertiary)' },
+                        { text: `🌟 [COMPLETED] Secure local-network knowledge base successfully deployed!`, color: 'var(--tertiary)' }
+                    ];
+                } else {
+                    steps = [
+                        { text: `[SYSTEM] 사내 지식 분석 개시: "${shortPrompt}"`, color: 'var(--text-main)' },
+                        { text: `[제1군단] BOS Alignment 적용... 환각 제거 모듈 주입 중 (Port 7860)`, color: 'var(--primary)' },
+                        { text: `[제1군단] 5대 회고 각도 텍스트 자율 학습 및 10배 지식 확장 개시`, color: 'var(--primary)' },
+                        { text: `[제2군단] 이중 PII 필터 통과... 임계값 검수 결과 개인정보 0건 유출 안전 확인`, color: 'var(--secondary)' },
+                        { text: `[제2군단] 3중 오프라인 UUID 기기 복제방지 락 바인딩 (Port 7861)`, color: 'var(--secondary)' },
+                        { text: `[제3군단] 지식베이스 신규 주입 완료... Multi-LoRA LRU 캐시 동기화 (Port 7862)`, color: 'var(--tertiary)' },
+                        { text: `[제3군단] 실시간 Eviction 스캔: 모순성 검증 통과 (모순성 0.00%)`, color: 'var(--tertiary)' },
+                        { text: `[GATE] 10-Stage verify.py 검증 체크 기동: PASS`, color: 'var(--tertiary)' },
+                        { text: `🌟 [COMPLETED] 로컬망 지식 베이스 격리 구축에 완벽히 성공했습니다!`, color: 'var(--tertiary)' }
+                    ];
+                }
+            }
+
             let stepIdx = 0;
-
+            if (simInterval) clearInterval(simInterval);
             simInterval = setInterval(() => {
-                if (stepIdx < activeSteps.length) {
-                    const step = activeSteps[stepIdx];
+                if (stepIdx < steps.length) {
+                    const step = steps[stepIdx];
                     const div = document.createElement('div');
                     div.style.color = step.color;
                     div.className = 'term-line';
@@ -1716,16 +1790,16 @@
                     clearInterval(simInterval);
                     runBtn.disabled = false;
                 }
-            }, 1200);
+            }, 650);
         }
 
         // Integrity Gate Stage details
         const stageLogs = {
             1: {
                 title: "Stage 01: Auto Binding",
-                ko: "[OK] Auto Binding: 로컬 슬롯 포트 결합 스캔 완료\n-> Port: 8080 binding detected.\n-> Host: localhost local-loopback\n-> Status: PASS",
-                ja: "[OK] Auto Binding: ローカルスロットポートバインドスキャン完了\n-> Port: 8080 binding detected.\n-> Host: localhost local-loopback\n-> Status: PASS",
-                en: "[OK] Auto Binding: Local slot port binding scan completed.\n-> Port: 8080 binding detected.\n-> Host: localhost local-loopback\n-> Status: PASS"
+                ko: "[OK] Auto Binding: 로컬 슬롯 포트 결합 스캔 완료\n-> Ports: 8000, 7860, 7861, 7862 binding detected.\n-> Host: localhost local-loopback\n-> Status: PASS",
+                ja: "[OK] Auto Binding: ローカルスロットポートバインドスキャン完了\n-> Ports: 8000, 7860, 7861, 7862 binding detected.\n-> Host: localhost local-loopback\n-> Status: PASS",
+                en: "[OK] Auto Binding: Local slot port binding scan completed.\n-> Ports: 8000, 7860, 7861, 7862 binding detected.\n-> Host: localhost local-loopback\n-> Status: PASS"
             },
             2: {
                 title: "Stage 02: Second Launch",
@@ -1979,6 +2053,47 @@
                 botWindow.style.display = 'none';
             });
 
+            function getSmartBotResponse(prompt, lang) {
+                const q = prompt.toLowerCase();
+                if (lang === 'ja') {
+                    if (q.includes('価格') || q.includes('ライセンス') || q.includes('費用') || q.includes('いくら')) {
+                        return "KODARI LOCAL RAG OS v2.0 Enterpriseは、1・2・3軍団をすべて含む『オールインワン統合SWパッケージ』がJPY 2,500,000（一括契約時50万円特別割引適用、永久ライセンス）です。月額トークン費用は0円です！";
+                    }
+                    if (q.includes('個人情報') || q.includes('セキュリティ') || q.includes('漏洩') || q.includes('pii')) {
+                        return "第2軍団の二重PIIマスク機能により、マイナンバーや電話番号、個人情報をリアルタイムで自動非識別化します。外部インターネットを完全遮断したエアギャップ環境で動作するため、流出リスクは0.00%です。";
+                    }
+                    if (q.includes('インストール') || q.includes('配布') || q.includes('setup') || q.includes('起動')) {
+                        return "管理者権限(UAC)不要のスマートポータブル圧縮パック(.zip)で納品されます。純粋ASCII 3行のランチャー(launcher.py)により、文字化けやクラッシュなくワンクリックで4大タワーが起動します。";
+                    }
+                    return "ご質問ありがとうございます！KODARI LOCAL RAG OS v2.0は、完全閉域網で動作する法人向けオンプレミスSLM/RAG統合OSです。詳細なデモや見積もりは上部の「1:1 デモを申し込む」よりお気軽にお問い合わせください。";
+                } else if (lang === 'en') {
+                    if (q.includes('price') || q.includes('cost') || q.includes('license')) {
+                        return "KODARI LOCAL RAG OS v2.0 Enterprise flat perpetual license is USD 25,000 (includes all 3 corps with a USD 5,000 bundle discount). Zero monthly token fees!";
+                    }
+                    if (q.includes('pii') || q.includes('security') || q.includes('leak') || q.includes('privacy')) {
+                        return "Corps 2 features dual-layer PII screening that auto-masks SSNs, phone numbers, and emails in real-time. Operating 100% air-gapped guarantees zero external leakage.";
+                    }
+                    if (q.includes('install') || q.includes('launcher') || q.includes('portable')) {
+                        return "Delivered as a zero-install portable zip archive. Our Python Smart Launcher orchestrates 4 command towers without UAC admin privileges or encoding glitches.";
+                    }
+                    return "Thank you for reaching out! KODARI LOCAL RAG OS v2.0 is an enterprise-grade, 100% air-gapped Local SLM/RAG suite. Feel free to request a 1:1 demo using the button above.";
+                } else {
+                    if (q.includes('가격') || q.includes('얼마') || q.includes('라이선스') || q.includes('비용') || q.includes('견적')) {
+                        return "KODARI LOCAL RAG OS v2.0 Enterprise 정식 영구 라이선스는 1·2·3군단이 모두 포함된 『3대 군단 올인원 통합 SW 패키지』가 2,500만 원(일괄 계약 시 500만 원 결합할인 적용, 영구 라이선스)입니다. 매월 청구되는 클라우드 토큰 요금은 0원입니다!";
+                    }
+                    if (q.includes('개인정보') || q.includes('주민번호') || q.includes('보안') || q.includes('유출') || q.includes('pii')) {
+                        return "제2군단 이중 PII 마스킹 하네스를 통해 주민등록번호, 전화번호, 이메일 등을 실시간 자동 비식별화(810309-*******)합니다. 물리적 에어갭(외부망 100% 차단) 환경에서 동작하므로 사내 기밀 유출률은 0.00%입니다.";
+                    }
+                    if (q.includes('설치') || q.includes('배포') || q.includes('포터블') || q.includes('실행') || q.includes('런처')) {
+                        return "기업 보안팀 백신(EDR) 오탐과 관리자 권한(UAC) 충돌이 전혀 없는 '무설치 스마트 포터블 압축팩(.zip)'으로 제공됩니다. 순수 3줄 ASCII 배치와 스마트 런처(launcher.py)를 통해 더블클릭 한 번으로 4대 지휘 타워가 즉시 기동됩니다.";
+                    }
+                    if (q.includes('타워') || q.includes('포트') || q.includes('아키텍처')) {
+                        return "4대 지휘 타워는 Core API(8000), 1군단 SLM 빌더(7860), 2군단 RAG 엔진(7861), 3군단 자가치유 OS(7862)로 구성되며 소켓 헬스체크 완료 후 브라우저가 자동 기동됩니다.";
+                    }
+                    return "안녕하세요! KODARI LOCAL RAG OS v2.0 Enterprise AI 비서입니다. 완벽한 물리적 망분리 환경에서 사내 기밀과 개인정보를 100% 안전하게 보호하는 로컬 SLM 솔루션입니다. 우측 상단의 '1:1 데모 신청하기'를 통해 수석 엔지니어의 맞춤 컨설팅을 받아보실 수 있습니다.";
+                }
+            }
+
             async function handleSend() {
                 const text = chatInput.value.trim();
                 if (!text) return;
@@ -2003,25 +2118,32 @@
                     });
 
                     // 로딩 표시 제거
-                    chatMessages.removeChild(loadingBubble);
+                    if (chatMessages.contains(loadingBubble)) {
+                        chatMessages.removeChild(loadingBubble);
+                    }
 
                     if (response.status === 429) {
                         appendMessage(rateLimitErrors[lang] || rateLimitErrors.ko, 'ai');
                         return;
                     }
 
-                    if (!response.ok) {
-                        throw new Error("API call error");
+                    if (response.ok) {
+                        const data = await response.json();
+                        appendMessage(data.text || getSmartBotResponse(text, lang), 'ai');
+                    } else {
+                        // Offline Smart Fallback
+                        setTimeout(() => {
+                            appendMessage(getSmartBotResponse(text, lang), 'ai');
+                        }, 400);
                     }
-
-                    const data = await response.json();
-                    appendMessage(data.text || "No response.", 'ai');
-
                 } catch (err) {
                     if (chatMessages.contains(loadingBubble)) {
                         chatMessages.removeChild(loadingBubble);
                     }
-                    appendMessage(systemErrors[lang] || systemErrors.ko, 'ai');
+                    // Instant Offline Smart Chatbot Response (Zero 404!)
+                    setTimeout(() => {
+                        appendMessage(getSmartBotResponse(text, lang), 'ai');
+                    }, 300);
                 }
             }
 
@@ -2114,7 +2236,7 @@
                 <div style="font-size: 3.5rem; margin-bottom: 16px;">🎉</div>
                 <h3 style="font-size: 1.5rem; color: #fff; font-weight: 700; margin-bottom: 12px;">신청서가 성공적으로 접수되었습니다!</h3>
                 <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; max-width: 480px; margin: 0 auto 24px;">
-                    등록해 주신 기업 이메일로 <strong>KODARI LOCAL RAG OS (v15.0)</strong> 제품 카탈로그 및 1:1 온라인 데모 안내서를 발송해 드렸습니다.
+                    등록해 주신 기업 이메일로 <strong>KODARI LOCAL RAG OS (v2.0)</strong> 제품 카탈로그 및 1:1 온라인 데모 안내서를 발송해 드렸습니다.
                 </p>
                 <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid var(--border-glow); border-radius: 12px; padding: 16px; max-width: 440px; margin: 0 auto 24px; text-align: left; font-size: 0.85rem; color: var(--text-main);">
                     <div>🏢 <strong>회사명:</strong> <span id="res-company"></span></div>
