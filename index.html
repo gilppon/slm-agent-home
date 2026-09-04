@@ -1000,6 +1000,439 @@
         .lockdown-alert.active {
             display: flex;
         }
+
+        /* ============================================================== */
+        /* 🚀 2026 CYBERNETIC CONTROL TOWERS (PALANTIR-CLASS ENTERPRISE COMMAND) */
+        /* ============================================================== */
+        .cyber-cockpit-container {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
+            width: 100%;
+        }
+
+        .cyber-dock {
+            width: 52px;
+            background: rgba(10, 15, 24, 0.85);
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            border-radius: 12px;
+            padding: 14px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            flex-shrink: 0;
+        }
+
+        .cyber-dock-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.05rem;
+            position: relative;
+        }
+
+        .cyber-dock-btn:hover {
+            color: var(--primary);
+            border-color: rgba(0, 240, 255, 0.3);
+            background: rgba(0, 240, 255, 0.08);
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .cyber-dock-btn.active {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: rgba(0, 240, 255, 0.15);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
+        }
+
+        .cyber-dock-divider {
+            width: 24px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 2px 0;
+        }
+
+        .cyber-main-arena {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cyber-command-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .cyber-command-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            color: #E2E8F0;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cyber-command-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            background: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        .cyber-select-badge {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            color: var(--text-main);
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        /* 4-Tower Cyber Grid */
+        .cyber-grid-4towers {
+            display: grid;
+            grid-template-columns: 1.15fr 1.35fr 1.2fr 1.1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        @media (max-width: 1200px) {
+            .cyber-grid-4towers {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cyber-grid-4towers {
+                grid-template-columns: 1fr;
+            }
+            .cyber-cockpit-container {
+                flex-direction: column;
+            }
+            .cyber-dock {
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+
+        .cyber-card {
+            background: radial-gradient(circle at top left, rgba(15, 25, 45, 0.65) 0%, rgba(6, 10, 18, 0.95) 100%);
+            border: 1px solid rgba(0, 240, 255, 0.18);
+            border-radius: 10px;
+            padding: 14px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.4), transparent);
+        }
+
+        .cyber-card:hover {
+            border-color: rgba(0, 240, 255, 0.45);
+            box-shadow: 0 12px 36px rgba(0, 240, 255, 0.12), inset 0 1px 0 rgba(0, 240, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .cyber-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .cyber-card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #E2E8F0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cyber-card-sub {
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .cyber-card-badge {
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(0, 255, 157, 0.12);
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            color: var(--tertiary);
+        }
+
+        /* Chart 1: Loss Reduction Curve */
+        .chart-loss-wrapper {
+            position: relative;
+            width: 100%;
+            height: 135px;
+            margin: 4px 0 10px 0;
+        }
+
+        .chart-loss-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .model-status-pill {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(10, 16, 26, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.68rem;
+            margin-bottom: 5px;
+        }
+
+        .model-status-pill.active {
+            border-color: rgba(0, 255, 157, 0.3);
+            background: rgba(0, 255, 157, 0.06);
+            color: #A7F3D0;
+        }
+
+        /* 3D RAG Sphere Hologram Canvas */
+        .rag-sphere-box {
+            position: relative;
+            width: 100%;
+            height: 155px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+
+        #ragSphereCanvas {
+            width: 100%;
+            height: 100%;
+            cursor: grab;
+        }
+
+        #ragSphereCanvas:active {
+            cursor: grabbing;
+        }
+
+        .rag-metrics-strip {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 6px;
+            background: rgba(6, 12, 20, 0.75);
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            border-radius: 6px;
+            padding: 6px;
+            text-align: center;
+            font-family: 'Geist Mono', monospace;
+        }
+
+        .rag-m-item-val {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .rag-m-item-lbl {
+            font-size: 0.58rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Self Healing Knowledge Loop Orbit */
+        .orbit-wrapper {
+            position: relative;
+            width: 100%;
+            height: 145px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+        }
+
+        .orbit-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .arc-health-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 48px;
+            margin-top: 2px;
+        }
+
+        /* Panel 4: Metrics & Hologram Shield */
+        .global-metrics-quad {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .quad-metric-tile {
+            background: rgba(8, 14, 24, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 6px;
+            padding: 6px 8px;
+            font-family: 'Geist Mono', monospace;
+        }
+
+        .quad-metric-title {
+            font-size: 0.55rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .quad-metric-val {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #00F0FF;
+            margin-top: 2px;
+        }
+
+        .shield-badge-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 6px;
+            background: radial-gradient(circle at center, rgba(0, 240, 255, 0.1) 0%, rgba(3, 7, 14, 0.8) 80%);
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .shield-icon-svg {
+            width: 54px;
+            height: 60px;
+            filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.5));
+            animation: pulse-glow 2.5s infinite alternate;
+        }
+
+        .shield-title-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #00F0FF;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        .shield-sub-text {
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.58rem;
+            color: var(--tertiary);
+            letter-spacing: 0.8px;
+        }
+
+        .system-status-footer {
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.62rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        /* Bottom Row: Streams & Alert Logs */
+        .cyber-bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .cyber-bottom-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stream-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 7px 10px;
+            background: rgba(6, 11, 18, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 6px;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.7rem;
+            margin-bottom: 5px;
+        }
+
+        .stream-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin-right: 8px;
+            display: inline-block;
+        }
+
+        .log-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 10px;
+            background: rgba(4, 8, 14, 0.85);
+            border-left: 2px solid var(--primary);
+            border-radius: 0 4px 4px 0;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.68rem;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -1042,6 +1475,336 @@
                 <div class="cta-group" style="display: flex; justify-content: center; gap: 16px; margin-top: 32px; margin-bottom: 36px;">
                     <a href="javascript:void(0)" class="btn-run" id="hero-btn-demo" onclick="openLeadModal()" style="text-decoration: none; padding: 12px 28px; cursor: pointer;">1:1 데모 신청하기</a>
                     <a href="javascript:void(0)" class="btn-secondary" id="hero-btn-spec" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: 8px; border: 1px solid var(--border-muted); color: var(--text-main); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border-muted)'">제품 상세 명세서</a>
+                </div>
+            </div>
+
+            <!-- 🚀 2026 CYBERNETIC CONTROL TOWERS COCKPIT -->
+            <div class="cyber-cockpit-container">
+                <!-- Left Cyber Dock -->
+                <div class="cyber-dock">
+                    <button class="cyber-dock-btn active" title="Dashboard Home">🏠</button>
+                    <button class="cyber-dock-btn" title="4-Tower Grid">🎛️</button>
+                    <button class="cyber-dock-btn" title="AI Operators">👤</button>
+                    <button class="cyber-dock-btn" title="Vector Database">🗄️</button>
+                    <button class="cyber-dock-btn" title="Knowledge Graph">🕸️</button>
+                    <div class="cyber-dock-divider"></div>
+                    <button class="cyber-dock-btn" title="Audit Documentation">📄</button>
+                    <button class="cyber-dock-btn" title="Perpetual License">💳</button>
+                    <button class="cyber-dock-btn" title="Air-Gap Shield">🛡️</button>
+                    <div class="cyber-dock-divider"></div>
+                    <button class="cyber-dock-btn" title="System Settings">⚙️</button>
+                    <button class="cyber-dock-btn" title="Disconnect Session">🚪</button>
+                </div>
+
+                <!-- Main Cyber Arena -->
+                <div class="cyber-main-arena">
+                    <!-- Section Top Header -->
+                    <div class="cyber-command-header">
+                        <div class="cyber-command-title">CYBERNETIC CONTROL TOWERS</div>
+                        <div class="cyber-select-badge">
+                            <span>🛡️ Operations Command</span>
+                            <span>▾</span>
+                        </div>
+                    </div>
+
+                    <!-- 4-Tower Grid -->
+                    <div class="cyber-grid-4towers">
+                        <!-- Panel 1: Private SLM Fine-Tuning -->
+                        <div class="cyber-card tilt-card">
+                            <div class="cyber-card-header">
+                                <div>
+                                    <div class="cyber-card-title">1. PRIVATE SLM FINE-TUNING</div>
+                                    <div class="cyber-card-sub">MODEL TRAINING PROGRESS</div>
+                                </div>
+                                <div class="cyber-card-badge" id="tune-progress-badge">87%</div>
+                            </div>
+
+                            <!-- Loss Reduction Curve SVG -->
+                            <div class="chart-loss-wrapper">
+                                <svg class="chart-loss-svg" viewBox="0 0 260 130">
+                                    <defs>
+                                        <linearGradient id="lossGrad" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#00F0FF" stop-opacity="0.45" />
+                                            <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.02" />
+                                        </linearGradient>
+                                        <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+                                            <stop offset="0%" stop-color="#00F0FF" />
+                                            <stop offset="60%" stop-color="#8B5CF6" />
+                                            <stop offset="100%" stop-color="#00FF9D" />
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Grid lines -->
+                                    <line x1="28" y1="15" x2="250" y2="15" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
+                                    <line x1="28" y1="42" x2="250" y2="42" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
+                                    <line x1="28" y1="70" x2="250" y2="70" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
+                                    <line x1="28" y1="98" x2="250" y2="98" stroke="rgba(255,255,255,0.06)" stroke-dasharray="3,3" />
+
+                                    <!-- Y Axis Labels -->
+                                    <text x="5" y="18" fill="#64748B" font-size="8" font-family="'Geist Mono'">1000</text>
+                                    <text x="10" y="45" fill="#64748B" font-size="8" font-family="'Geist Mono'">600</text>
+                                    <text x="10" y="73" fill="#64748B" font-size="8" font-family="'Geist Mono'">400</text>
+                                    <text x="10" y="101" fill="#64748B" font-size="8" font-family="'Geist Mono'">0</text>
+
+                                    <!-- Area Path -->
+                                    <path d="M 30,18 Q 55,85 110,95 T 250,98 L 250,110 L 30,110 Z" fill="url(#lossGrad)" />
+
+                                    <!-- Spline Line -->
+                                    <path d="M 30,18 Q 55,85 110,95 T 250,98" fill="none" stroke="url(#lineGrad)" stroke-width="2.5" filter="drop-shadow(0 0 6px rgba(0,240,255,0.6))" />
+
+                                    <!-- Current Loss Point -->
+                                    <circle cx="250" cy="98" r="4" fill="#00FF9D" filter="drop-shadow(0 0 8px #00FF9D)" />
+                                    <circle cx="250" cy="98" r="7" fill="none" stroke="#00FF9D" stroke-width="1" opacity="0.6">
+                                        <animate attributeName="r" values="4;9;4" dur="2s" repeatCount="indefinite" />
+                                        <animate attributeName="opacity" values="0.8;0.1;0.8" dur="2s" repeatCount="indefinite" />
+                                    </circle>
+
+                                    <!-- X Axis Labels -->
+                                    <text x="30" y="122" fill="#64748B" font-size="8" font-family="'Geist Mono'">0</text>
+                                    <text x="75" y="122" fill="#64748B" font-size="8" font-family="'Geist Mono'">40</text>
+                                    <text x="120" y="122" fill="#64748B" font-size="8" font-family="'Geist Mono'">60</text>
+                                    <text x="165" y="122" fill="#64748B" font-size="8" font-family="'Geist Mono'">80</text>
+                                    <text x="210" y="122" fill="#64748B" font-size="8" font-family="'Geist Mono'">100</text>
+                                    <text x="245" y="122" fill="#64748B" font-size="8" font-family="'Geist Mono'">120</text>
+                                </svg>
+                            </div>
+
+                            <div style="display: flex; justify-content: space-between; font-family: 'Geist Mono'; font-size: 0.65rem; color: #94A3B8; margin-bottom: 8px;">
+                                <span>LOSS REDUCTION</span>
+                                <span style="color: var(--tertiary);">● ACTIVE • US89%</span>
+                            </div>
+
+                            <!-- Model Status Pills -->
+                            <div class="model-status-pill active">
+                                <span>● LLAMA 3-7B</span>
+                                <span style="color: #00FF9D; font-weight: 700;">ACTIVE</span>
+                            </div>
+                            <div class="model-status-pill">
+                                <span>● MISTRAL-7B</span>
+                                <span style="color: #64748B;">L47/A • 3-78</span>
+                            </div>
+                            <div class="model-status-pill">
+                                <span>● LIVE VRAM</span>
+                                <span style="color: #00F0FF;">87% • 9856MB</span>
+                            </div>
+                        </div>
+
+                        <!-- Panel 2: Hybrid RAG Vector Search (3D Knowledge Sphere) -->
+                        <div class="cyber-card tilt-card">
+                            <div class="cyber-card-header">
+                                <div>
+                                    <div class="cyber-card-title">2. HYBRID RAG VECTOR SEARCH</div>
+                                    <div class="cyber-card-sub">MILLIONS 7 NODES, RELATIONSHIPS, & QUERIES</div>
+                                </div>
+                                <div class="cyber-card-badge" style="color: #00F0FF; border-color: rgba(0,240,255,0.3); background: rgba(0,240,255,0.1);">3D CORE</div>
+                            </div>
+
+                            <!-- 3D Hologram Sphere Canvas -->
+                            <div class="rag-sphere-box">
+                                <canvas id="ragSphereCanvas"></canvas>
+                            </div>
+
+                            <!-- RAG Search Metrics Strip -->
+                            <div class="rag-metrics-strip">
+                                <div>
+                                    <div class="rag-m-item-val">1.2ms</div>
+                                    <div class="rag-m-item-lbl">SEARCH LATENCY</div>
+                                </div>
+                                <div>
+                                    <div class="rag-m-item-val" style="color: #00FF9D;">94%</div>
+                                    <div class="rag-m-item-lbl">HIT RATE</div>
+                                </div>
+                                <div>
+                                    <div class="rag-m-item-val" style="font-size: 0.82rem; color: #C084FC;">CHROMA+BM25</div>
+                                    <div class="rag-m-item-lbl">VECTOR STORE</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 3: Self-Healing Knowledge Loop -->
+                        <div class="cyber-card tilt-card">
+                            <div class="cyber-card-header">
+                                <div>
+                                    <div class="cyber-card-title">3. SELF-HEALING KNOWLEDGE LOOP</div>
+                                    <div class="cyber-card-sub">DATA INGESTION & CONFLICT RESOLUTION</div>
+                                </div>
+                                <div class="cyber-card-badge" style="color: #C084FC; border-color: rgba(192,132,252,0.3); background: rgba(192,132,252,0.1);">HEALER</div>
+                            </div>
+
+                            <!-- Circular 4-Stage Knowledge Loop Orbit -->
+                            <div class="orbit-wrapper">
+                                <svg class="orbit-svg" viewBox="0 0 200 145">
+                                    <defs>
+                                        <linearGradient id="orbitGrad" x1="0" y1="0" x2="1" y2="1">
+                                            <stop offset="0%" stop-color="#00F0FF" />
+                                            <stop offset="50%" stop-color="#C084FC" />
+                                            <stop offset="100%" stop-color="#00FF9D" />
+                                        </linearGradient>
+                                    </defs>
+
+                                    <!-- Main Circular Orbit Track -->
+                                    <circle cx="100" cy="72" r="50" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" stroke-dasharray="4,4" />
+                                    <circle cx="100" cy="72" r="50" fill="none" stroke="url(#orbitGrad)" stroke-width="2.5" stroke-dasharray="35, 125" stroke-linecap="round">
+                                        <animateTransform attributeName="transform" type="rotate" from="0 100 72" to="360 100 72" dur="6s" repeatCount="indefinite" />
+                                    </circle>
+
+                                    <!-- Inner Center Node -->
+                                    <circle cx="100" cy="72" r="14" fill="rgba(6,12,22,0.9)" stroke="#C084FC" stroke-width="1.5" filter="drop-shadow(0 0 8px rgba(192,132,252,0.5))" />
+                                    <text x="100" y="76" fill="#FFFFFF" font-size="10" text-anchor="middle">⚙️</text>
+
+                                    <!-- Stage 1: Data Ingestion (Top) -->
+                                    <g transform="translate(100, 22)">
+                                        <circle cx="0" cy="0" r="12" fill="#0A1626" stroke="#00F0FF" stroke-width="1.5" />
+                                        <text x="0" y="3" fill="#00F0FF" font-size="8" text-anchor="middle">🗄️</text>
+                                        <text x="0" y="-14" fill="#E2E8F0" font-size="6.5" font-family="'Geist Mono'" font-weight="700" text-anchor="middle">DATA INGESTION</text>
+                                    </g>
+
+                                    <!-- Stage 2: Context Enrichment (Right) -->
+                                    <g transform="translate(150, 72)">
+                                        <circle cx="0" cy="0" r="12" fill="#0A1626" stroke="#00FF9D" stroke-width="1.5" />
+                                        <text x="0" y="3" fill="#00FF9D" font-size="8" text-anchor="middle">🔍</text>
+                                        <text x="16" y="3" fill="#E2E8F0" font-size="6.5" font-family="'Geist Mono'" font-weight="700" text-anchor="start">CONTEXT</text>
+                                    </g>
+
+                                    <!-- Stage 3: Knowledge Distillation (Bottom) -->
+                                    <g transform="translate(100, 122)">
+                                        <circle cx="0" cy="0" r="12" fill="#0A1626" stroke="#C084FC" stroke-width="1.5" />
+                                        <text x="0" y="3" fill="#C084FC" font-size="8" text-anchor="middle">🧠</text>
+                                        <text x="0" y="16" fill="#E2E8F0" font-size="6.5" font-family="'Geist Mono'" font-weight="700" text-anchor="middle">DISTILLATION</text>
+                                    </g>
+
+                                    <!-- Stage 4: Feedback / Eviction (Left) -->
+                                    <g transform="translate(50, 72)">
+                                        <circle cx="0" cy="0" r="12" fill="#0A1626" stroke="#F59E0B" stroke-width="1.5" />
+                                        <text x="0" y="3" fill="#F59E0B" font-size="8" text-anchor="middle">⚡</text>
+                                        <text x="-16" y="3" fill="#E2E8F0" font-size="6.5" font-family="'Geist Mono'" font-weight="700" text-anchor="end">FEEDBACK</text>
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <!-- Arc Health Gauge -->
+                            <div class="arc-health-box">
+                                <svg viewBox="0 0 160 55" style="width: 140px; overflow: visible;">
+                                    <!-- Background Arc -->
+                                    <path d="M 20,45 A 60,60 0 0,1 140,45" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="7" stroke-linecap="round" />
+                                    <!-- Value Arc (98%) -->
+                                    <path d="M 20,45 A 60,60 0 0,1 138,43" fill="none" stroke="url(#lineGrad)" stroke-width="7" stroke-linecap="round" filter="drop-shadow(0 0 6px #00FF9D)" />
+                                    <text x="80" y="42" fill="#00FF9D" font-family="'Geist Mono'" font-size="11" font-weight="800" text-anchor="middle">HEALTH SCORE: 98%</text>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Panel 4: Global Performance & Security Shield -->
+                        <div class="cyber-card tilt-card">
+                            <div class="cyber-card-header">
+                                <div>
+                                    <div class="cyber-card-title">4. GLOBAL PERFORMANCE METRICS</div>
+                                    <div class="cyber-card-sub">ZERO-LEAK DEFENSE BADGE</div>
+                                </div>
+                                <div class="cyber-card-badge" style="color: #38BDF8;">METRICS</div>
+                            </div>
+
+                            <!-- 4-Split Performance Metrics -->
+                            <div class="global-metrics-quad">
+                                <div class="quad-metric-tile">
+                                    <div class="quad-metric-title">API REQ/MIN</div>
+                                    <div class="quad-metric-val">45K</div>
+                                </div>
+                                <div class="quad-metric-tile">
+                                    <div class="quad-metric-title">RAG THROUGHPUT</div>
+                                    <div class="quad-metric-val" style="color: #00FF9D;">3.1K <span style="font-size: 0.6rem; color: #64748B;">t/sec</span></div>
+                                </div>
+                                <div class="quad-metric-tile">
+                                    <div class="quad-metric-title">CPU USAGE</div>
+                                    <div class="quad-metric-val">68%</div>
+                                </div>
+                                <div class="quad-metric-tile">
+                                    <div class="quad-metric-title">RAM USAGE</div>
+                                    <div class="quad-metric-val" style="color: #C084FC;">128GB</div>
+                                </div>
+                            </div>
+
+                            <!-- Glowing Security Shield Badge -->
+                            <div class="shield-badge-container">
+                                <svg class="shield-icon-svg" viewBox="0 0 60 70">
+                                    <defs>
+                                        <linearGradient id="shieldGrad" x1="0" y1="0" x2="1" y2="1">
+                                            <stop offset="0%" stop-color="#00F0FF" />
+                                            <stop offset="50%" stop-color="#3B82F6" />
+                                            <stop offset="100%" stop-color="#8B5CF6" />
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Outer Shield Outline -->
+                                    <path d="M 30,4 L 54,14 C 54,42 30,64 30,64 C 30,64 6,42 6,14 Z" fill="rgba(6,12,24,0.85)" stroke="url(#shieldGrad)" stroke-width="2.5" />
+                                    <!-- Inner Shield Glow Line -->
+                                    <path d="M 30,10 L 48,18 C 48,39 30,57 30,57 C 30,57 12,39 12,18 Z" fill="none" stroke="rgba(0,240,255,0.4)" stroke-width="1" />
+                                    <!-- Emblem 'K' in center -->
+                                    <text x="30" y="40" fill="#00F0FF" font-family="'Space Grotesk'" font-size="22" font-weight="800" text-anchor="middle" filter="drop-shadow(0 0 5px #00F0FF)">K</text>
+                                    <!-- Lock Indicator -->
+                                    <circle cx="44" cy="46" r="7" fill="#060C16" stroke="#00FF9D" stroke-width="1.5" />
+                                    <text x="44" y="49" fill="#00FF9D" font-size="7" text-anchor="middle">🔒</text>
+                                </svg>
+                                <div class="shield-title-text">100% AIR-GAPPED</div>
+                                <div class="shield-sub-text">ZERO LEAK DEFENSE</div>
+                            </div>
+
+                            <!-- System Status Footer -->
+                            <div class="system-status-footer">
+                                <div>NETWORK ISOLATION: <strong style="color: #00FF9D;">SECURE</strong></div>
+                                <div>DATA ENCRYPTION: <strong style="color: #00F0FF;">AES-256</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Row: Activity Streams & Alert Logs -->
+                    <div class="cyber-bottom-grid">
+                        <!-- Live Activity Streams -->
+                        <div class="cyber-card">
+                            <div class="cyber-card-header">
+                                <div class="cyber-card-title">LIVE ACTIVITY STREAMS</div>
+                                <div class="cyber-card-badge" style="color: #00FF9D;">STREAMS</div>
+                            </div>
+                            <div class="stream-item">
+                                <div><span class="stream-dot" style="background: #00FF9D; box-shadow: 0 0 6px #00FF9D;"></span>Private LoRA weight checkpoint committed</div>
+                                <span style="color: #64748B;">17s ago</span>
+                            </div>
+                            <div class="stream-item">
+                                <div><span class="stream-dot" style="background: #00F0FF; box-shadow: 0 0 6px #00F0FF;"></span>Hybrid RAG Vector query: Top-k=5 routed</div>
+                                <span style="color: #64748B;">8m ago</span>
+                            </div>
+                            <div class="stream-item">
+                                <div><span class="stream-dot" style="background: #C084FC; box-shadow: 0 0 6px #C084FC;"></span>Self-healing contradiction evicted (Doc #412)</div>
+                                <span style="color: #64748B;">25m ago</span>
+                            </div>
+                            <div class="stream-item">
+                                <div><span class="stream-dot" style="background: #00FF9D; box-shadow: 0 0 6px #00FF9D;"></span>Hardware binding verified via Registry Trophy</div>
+                                <span style="color: #64748B;">3m ago</span>
+                            </div>
+                        </div>
+
+                        <!-- Alert Logs -->
+                        <div class="cyber-card">
+                            <div class="cyber-card-header">
+                                <div class="cyber-card-title">ALERT & TELEMETRY LOGS</div>
+                                <div class="cyber-card-badge">INFO</div>
+                            </div>
+                            <div class="log-item">
+                                <span><strong style="color: #94A3B8;">10:39 AM</strong> Knowledge graph is compiled: LLaMA-3-8B / Gemma-2B</span>
+                                <span class="cyber-card-badge" style="font-size: 0.6rem; padding: 1px 5px;">INFO</span>
+                            </div>
+                            <div class="log-item">
+                                <span><strong style="color: #94A3B8;">10:33 AM</strong> Alert measurements in the corporate static RAG vault</span>
+                                <span class="cyber-card-badge" style="font-size: 0.6rem; padding: 1px 5px;">INFO</span>
+                            </div>
+                            <div class="log-item">
+                                <span><strong style="color: #94A3B8;">10:30 AM</strong> Responsive config retargeting slots for Multi-LoRA</span>
+                                <span class="cyber-card-badge" style="font-size: 0.6rem; padding: 1px 5px;">INFO</span>
+                            </div>
+                            <div class="log-item">
+                                <span><strong style="color: #94A3B8;">10:27 AM</strong> Knowledge graph is created across ChromaDB collections</span>
+                                <span class="cyber-card-badge" style="font-size: 0.6rem; padding: 1px 5px;">INFO</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -2859,9 +3622,215 @@
             });
         }
 
+        // ==============================================================
+        // 🌐 [START] 3D HYBRID RAG SPHERE HOLOGRAM CANVAS ENGINE
+        // ==============================================================
+        function initRagSphereCanvas() {
+            const canvas = document.getElementById('ragSphereCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            function resizeSphereCanvas() {
+                const rect = canvas.getBoundingClientRect();
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = rect.width * dpr;
+                canvas.height = rect.height * dpr;
+                ctx.scale(dpr, dpr);
+            }
+            resizeSphereCanvas();
+            window.addEventListener('resize', resizeSphereCanvas);
+
+            // Generate Fibonacci Sphere Nodes (65 knowledge points)
+            const numNodes = 65;
+            const radius = 52;
+            const nodes = [];
+            const phi = Math.PI * (3 - Math.sqrt(5)); // Golden angle
+
+            for (let i = 0; i < numNodes; i++) {
+                const y = 1 - (i / (numNodes - 1)) * 2; // y goes from 1 to -1
+                const r = Math.sqrt(1 - y * y); // radius at y
+                const theta = phi * i;
+
+                const x = Math.cos(theta) * r;
+                const z = Math.sin(theta) * r;
+
+                // Alternate colors: Cyan, Purple, Emerald
+                let color = '#00F0FF';
+                if (i % 3 === 1) color = '#C084FC';
+                if (i % 3 === 2) color = '#00FF9D';
+
+                nodes.push({
+                    x: x * radius,
+                    y: y * radius,
+                    z: z * radius,
+                    baseRadius: (i % 4 === 0) ? 3 : 2,
+                    color: color
+                });
+            }
+
+            let angleX = 0.2;
+            let angleY = 0;
+            let isDragging = false;
+            let lastMouseX = 0;
+            let lastMouseY = 0;
+            let rotSpeedX = 0.003;
+            let rotSpeedY = 0.007;
+
+            canvas.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                lastMouseX = e.clientX;
+                lastMouseY = e.clientY;
+            });
+
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    const dx = e.clientX - lastMouseX;
+                    const dy = e.clientY - lastMouseY;
+                    angleY += dx * 0.01;
+                    angleX += dy * 0.01;
+                    lastMouseX = e.clientX;
+                    lastMouseY = e.clientY;
+                }
+            });
+
+            let ringAngle = 0;
+
+            function renderSphere() {
+                const w = canvas.getBoundingClientRect().width;
+                const h = canvas.getBoundingClientRect().height;
+                ctx.clearRect(0, 0, w, h);
+
+                const cx = w / 2;
+                const cy = h / 2 - 4;
+
+                if (!isDragging) {
+                    angleY += rotSpeedY;
+                    angleX += rotSpeedX;
+                }
+                ringAngle += 0.02;
+
+                const cosY = Math.cos(angleY);
+                const sinY = Math.sin(angleY);
+                const cosX = Math.cos(angleX);
+                const sinX = Math.sin(angleX);
+
+                // 1. Draw Hologram Pedestal Projection Rings (Under the sphere)
+                ctx.save();
+                const pedY = cy + radius + 14;
+                // Outer ring
+                ctx.beginPath();
+                ctx.ellipse(cx, pedY, radius * 0.95, radius * 0.22, 0, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(0, 240, 255, 0.25)';
+                ctx.lineWidth = 1.2;
+                ctx.stroke();
+
+                // Inner pulsing ring
+                ctx.beginPath();
+                ctx.ellipse(cx, pedY, radius * 0.65, radius * 0.15, 0, 0, Math.PI * 2);
+                ctx.strokeStyle = 'rgba(192, 132, 252, 0.4)';
+                ctx.lineWidth = 1;
+                ctx.setLineDash([6, 6]);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                ctx.restore();
+
+                // 2. Transform 3D Coordinates
+                const projected = [];
+                nodes.forEach((n, idx) => {
+                    // Rotate Y
+                    let x1 = n.x * cosY + n.z * sinY;
+                    let z1 = -n.x * sinY + n.z * cosY;
+
+                    // Rotate X
+                    let y2 = n.y * cosX - z1 * sinX;
+                    let z2 = n.y * sinX + z1 * cosX;
+
+                    // Perspective projection
+                    const distance = 170;
+                    const fov = 150;
+                    const scale = fov / (distance + z2);
+
+                    const px = cx + x1 * scale;
+                    const py = cy + y2 * scale;
+                    const alpha = Math.max(0.15, (z2 + radius) / (2 * radius));
+
+                    projected.push({
+                        idx,
+                        px, py, scale, z: z2, alpha,
+                        color: n.color,
+                        baseRadius: n.baseRadius
+                    });
+                });
+
+                // Sort by depth (Z-buffer for painter's algorithm)
+                projected.sort((a, b) => a.z - b.z);
+
+                // 3. Draw Connecting Holographic Edges
+                ctx.save();
+                const maxDistSq = 28 * 28;
+                for (let i = 0; i < projected.length; i++) {
+                    const p1 = projected[i];
+                    for (let j = i + 1; j < projected.length; j++) {
+                        const p2 = projected[j];
+                        const dx = p1.px - p2.px;
+                        const dy = p1.py - p2.py;
+                        const distSq = dx * dx + dy * dy;
+
+                        if (distSq < maxDistSq) {
+                            const lineAlpha = (1 - Math.sqrt(distSq) / 28) * Math.min(p1.alpha, p2.alpha) * 0.4;
+                            ctx.beginPath();
+                            ctx.moveTo(p1.px, p1.py);
+                            ctx.lineTo(p2.px, p2.py);
+                            ctx.strokeStyle = `rgba(0, 240, 255, ${lineAlpha.toFixed(2)})`;
+                            ctx.lineWidth = 0.8;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                ctx.restore();
+
+                // 4. Draw Central Luminous Core
+                ctx.save();
+                const coreGrad = ctx.createRadialGradient(cx, cy, 2, cx, cy, 14);
+                coreGrad.addColorStop(0, '#FFFFFF');
+                coreGrad.addColorStop(0.3, '#00F0FF');
+                coreGrad.addColorStop(1, 'rgba(0, 240, 255, 0)');
+                ctx.fillStyle = coreGrad;
+                ctx.beginPath();
+                ctx.arc(cx, cy, 14, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+
+                // 5. Draw 3D Nodes
+                projected.forEach(p => {
+                    ctx.save();
+                    const nodeR = p.baseRadius * p.scale;
+                    ctx.beginPath();
+                    ctx.arc(p.px, p.py, Math.max(1.2, nodeR), 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.globalAlpha = p.alpha;
+                    if (p.z > 0) {
+                        ctx.shadowColor = p.color;
+                        ctx.shadowBlur = 8 * p.scale;
+                    }
+                    ctx.fill();
+                    ctx.restore();
+                });
+
+                requestAnimationFrame(renderSphere);
+            }
+
+            requestAnimationFrame(renderSphere);
+        }
+
         // Launch engines on window load
         window.addEventListener('DOMContentLoaded', () => {
             initTopologyCanvas();
+            initRagSphereCanvas();
             initMotionEffects();
         });
     
