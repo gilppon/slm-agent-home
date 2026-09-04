@@ -15,22 +15,24 @@
 
     <style>
         :root {
-            --bg-base: #080B10;
-            --bg-surface: rgba(15, 22, 36, 0.7);
-            --bg-surface-opaque: #0F1624;
-            --border-glow: rgba(56, 189, 248, 0.15);
+            --bg-base: #06090E;
+            --bg-surface: rgba(10, 15, 26, 0.78);
+            --bg-surface-opaque: #0A0F1A;
+            --border-glow: rgba(0, 240, 255, 0.3);
             --border-muted: rgba(255, 255, 255, 0.08);
             
-            --primary: #38BDF8;      /* Neon Blue */
-            --primary-glow: rgba(56, 189, 248, 0.4);
-            --secondary: #A855F7;    /* Purple */
-            --secondary-glow: rgba(168, 85, 247, 0.4);
-            --tertiary: #10B981;     /* Emerald Green */
-            --accent: #F43F5E;       /* Rose Red */
+            --primary: #00F0FF;      /* Cyber Neon Cyan */
+            --primary-glow: rgba(0, 240, 255, 0.45);
+            --secondary: #8B5CF6;    /* Deep Cyber Purple */
+            --secondary-glow: rgba(139, 92, 246, 0.45);
+            --tertiary: #00FF9D;     /* Defense Emerald */
+            --tertiary-glow: rgba(0, 255, 157, 0.45);
+            --accent: #FF3B30;       /* Air-gap Alert Red */
+            --accent-glow: rgba(255, 59, 48, 0.5);
             
-            --text-main: #F3F4F6;
-            --text-muted: #9CA3AF;
-            --text-dark: #6B7280;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --text-dark: #64748B;
         }
 
         * {
@@ -46,8 +48,12 @@
             overflow-x: hidden;
             line-height: 1.5;
             background-image: 
-                radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.08) 0%, transparent 45%);
+                radial-gradient(circle 600px at var(--mouse-x, 50%) var(--mouse-y, 30%), rgba(0, 240, 255, 0.06), transparent 80%),
+                radial-gradient(circle 800px at 90% 10%, rgba(139, 92, 246, 0.07), transparent 70%),
+                radial-gradient(circle 800px at 10% 90%, rgba(0, 255, 157, 0.05), transparent 70%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
             background-attachment: fixed;
         }
 
@@ -78,11 +84,25 @@
         /* Glassmorphism utility */
         .glass-card {
             background: var(--bg-surface);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-muted);
             border-radius: 12px;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+            transition: transform 0.15s ease-out, border-color 0.25s, box-shadow 0.25s;
+            position: relative;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.35), transparent);
+            pointer-events: none;
+            border-radius: 12px 12px 0 0;
         }
 
         .glass-card:hover {
@@ -850,6 +870,136 @@
                 grid-template-columns: 1fr;
             }
         }
+    
+        /* 4-Tower Interactive Topology Canvas */
+        .topology-wrapper {
+            position: relative;
+            width: 100%;
+            height: 270px;
+            background: radial-gradient(circle at center, rgba(10, 20, 35, 0.7) 0%, rgba(3, 6, 11, 0.95) 100%);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.9);
+        }
+
+        #towerTopologyCanvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: crosshair;
+        }
+
+        .topology-hud-overlay {
+            position: absolute;
+            top: 10px;
+            left: 14px;
+            pointer-events: none;
+            display: flex;
+            gap: 10px;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.5px;
+            z-index: 5;
+        }
+
+        .topology-hud-item {
+            background: rgba(6, 12, 20, 0.85);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            color: var(--primary);
+            padding: 3px 9px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            backdrop-filter: blur(8px);
+        }
+
+        .topology-hud-item.emerald {
+            border-color: rgba(0, 255, 157, 0.3);
+            color: var(--tertiary);
+        }
+
+        /* Cyber Security Vault Simulator Styling */
+        .simulator-panel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .laser-scanner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--tertiary), var(--primary), transparent);
+            box-shadow: 0 0 15px var(--primary), 0 0 30px var(--tertiary);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .simulator-panel.scanning .laser-scanner {
+            opacity: 1;
+            animation: laserScan 1.4s infinite ease-in-out;
+        }
+
+        @keyframes laserScan {
+            0% { top: 0%; opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { top: 100%; opacity: 0.2; }
+        }
+
+        .sim-presets {
+            display: flex;
+            gap: 8px;
+            margin-top: -12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .preset-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-family: inherit;
+            padding: 5px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .preset-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary-glow);
+            background: rgba(0, 240, 255, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .lockdown-alert {
+            display: none;
+            background: rgba(255, 59, 48, 0.15);
+            border: 1px solid var(--accent);
+            color: #FF6B6B;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            animation: pulse-glow 1s infinite alternate;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lockdown-alert.active {
+            display: flex;
+        }
     </style>
 </head>
 <body>
@@ -889,9 +1039,34 @@
                 <p id="hero-desc">외부 인터넷을 완전히 격리 차단해도 사내 기밀 유출률 0%로 동작하는 무결점 로컬 온프레미스 AI 패키지. 매달 청구되는 비싼 토큰 요금 고지서를 찢어버리십시오.</p>
                 
                 <!-- CTA buttons inside Dashboard Hero to fix JS innerText references -->
-                <div class="cta-group" style="display: flex; justify-content: center; gap: 16px; margin-top: 32px;">
+                <div class="cta-group" style="display: flex; justify-content: center; gap: 16px; margin-top: 32px; margin-bottom: 36px;">
                     <a href="javascript:void(0)" class="btn-run" id="hero-btn-demo" onclick="openLeadModal()" style="text-decoration: none; padding: 12px 28px; cursor: pointer;">1:1 데모 신청하기</a>
                     <a href="javascript:void(0)" class="btn-secondary" id="hero-btn-spec" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: 8px; border: 1px solid var(--border-muted); color: var(--text-main); font-weight: 600; transition: all 0.3s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border-muted)'">제품 상세 명세서</a>
+                </div>
+            </div>
+
+            <!-- 🛡️ 4-TOWER AIR-GAP TOPOLOGY CANVAS PANEL -->
+            <div class="glass-card tilt-card" style="margin-bottom: 24px; padding: 22px;">
+                <div class="panel-header" style="margin-bottom: 12px;">
+                    <div class="panel-title" id="topology-panel-title">🛡️ 4-Tower Air-Gap Command Matrix (Real-time Topology)</div>
+                    <div class="live-indicator">
+                        <span class="live-dot"></span><span id="topology-live-badge">AIR-GAP ACTIVE</span>
+                    </div>
+                </div>
+                <div class="topology-wrapper">
+                    <div class="topology-hud-overlay">
+                        <div class="topology-hud-item">⚡ 0.12ms INTRA-BUS</div>
+                        <div class="topology-hud-item emerald">🔒 ZERO-LEAK ENCLAVE</div>
+                        <div class="topology-hud-item">🛡️ VRAM 100% ISOLATED</div>
+                    </div>
+                    <canvas id="towerTopologyCanvas"></canvas>
+                </div>
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-family: 'Geist Mono', monospace; font-size: 0.75rem; color: var(--text-muted); padding: 4px 8px;">
+                    <span><strong style="color: var(--primary);">CORE</strong>: Air-Gap Quantum Enclave</span>
+                    <span><strong style="color: var(--primary);">T1</strong>: Port 8000 (FastAPI Bridge)</span>
+                    <span><strong style="color: var(--secondary);">T2</strong>: Port 7860 (SLM Builder)</span>
+                    <span><strong style="color: var(--tertiary);">T3</strong>: Port 7861 (ChromaDB Vault)</span>
+                    <span><strong style="color: #F59E0B;">T4</strong>: Port 7862 (Self-Healing Sentry)</span>
                 </div>
             </div>
 
@@ -906,22 +1081,22 @@
                     </div>
                     
                     <div class="status-cards-row" style="grid-template-columns: repeat(4, 1fr);">
-                        <div class="status-card">
+                        <div class="status-card tilt-card">
                             <span class="status-card-label">Tower 1 (Port 8000)</span>
                             <span class="status-card-val" style="color: var(--primary);">ACTIVE</span>
                             <span class="status-card-footer">FastAPI SLM Bridge</span>
                         </div>
-                        <div class="status-card">
+                        <div class="status-card tilt-card">
                             <span class="status-card-label">Tower 2 (Port 7860)</span>
                             <span class="status-card-val" style="color: var(--secondary);">ONLINE</span>
                             <span class="status-card-footer">SLM Builder Studio</span>
                         </div>
-                        <div class="status-card">
+                        <div class="status-card tilt-card">
                             <span class="status-card-label">Tower 3 (Port 7861)</span>
                             <span class="status-card-val" style="color: var(--tertiary);">AIR-GAPPED</span>
                             <span class="status-card-footer">ChromaDB + BM25 RRF</span>
                         </div>
-                        <div class="status-card">
+                        <div class="status-card tilt-card">
                             <span class="status-card-label">Tower 4 (Port 7862)</span>
                             <span class="status-card-val" style="color: #F59E0B;">GUARDING</span>
                             <span class="status-card-footer">Self-Healing Runtime</span>
@@ -934,10 +1109,10 @@
                 </div>
 
                 <!-- Live Metrics Summary -->
-                <div class="glass-card stats-panel">
+                <div class="glass-card stats-panel tilt-card">
                     <div>
-                        <div class="panel-title" style="margin-bottom: 8px;">📊 Resource Allocation</div>
-                        <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Real-time memory allocation map of dynamic Multi-LoRA adapters in Corps 3 database node.</p>
+                        <div class="panel-title" id="stats-panel-title" style="margin-bottom: 8px;">📊 Enclave VRAM & Air-Gap Defense</div>
+                        <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;" id="stats-panel-desc">Real-time memory allocation map of dynamic Multi-LoRA adapters in Corps 3 database node with isolated enclave protection.</p>
                     </div>
                     <div class="chart-box">
                         <div class="chart-bar-wrapper">
@@ -957,7 +1132,7 @@
                             <span class="chart-label">Swap</span>
                         </div>
                     </div>
-                    <div style="font-size: 0.75rem; color: var(--text-dark); margin-top: 12px; text-align: center;">
+                    <div style="font-size: 0.75rem; color: var(--text-dark); margin-top: 12px; text-align: center;" id="stats-footer-text">
                         Memory Eviction Rate: 0.01s interval | Cache Hit Ratio: 99.85%
                     </div>
                 </div>
@@ -974,7 +1149,7 @@
 
             <div class="corps-grid">
                 <!-- 1st Corps -->
-                <div class="glass-card corps-detail-card c1-card">
+                <div class="glass-card corps-detail-card c1-card tilt-card">
                     <div class="corps-header">
                         <div class="corps-icon">🧠</div>
                         <h3 class="corps-name" id="c1-h">제1군단 [로컬 AI 비서 제조 SW]</h3>
@@ -984,7 +1159,7 @@
                 </div>
 
                 <!-- 2nd Corps -->
-                <div class="glass-card corps-detail-card c2-card">
+                <div class="glass-card corps-detail-card c2-card tilt-card">
                     <div class="corps-header">
                         <div class="corps-icon">🛡️</div>
                         <h3 class="corps-name" id="c2-h">제2군단 [비밀 금고형 RAG SW]</h3>
@@ -994,7 +1169,7 @@
                 </div>
 
                 <!-- 3rd Corps -->
-                <div class="glass-card corps-detail-card c3-card">
+                <div class="glass-card corps-detail-card c3-card tilt-card">
                     <div class="corps-header">
                         <div class="corps-icon">🌀</div>
                         <h3 class="corps-name" id="c3-h">제3군단 [자율 청소 지식 OS SW]</h3>
@@ -1262,6 +1437,8 @@
                 desc: "외부 인터넷을 완전히 격리 차단해도 사내 기밀 유출률 0%로 동작하는 무결점 로컬 온프레미스 AI 패키지. 매달 청구되는 비싼 토큰 요금 고지서를 찢어버리십시오.",
                 btn_demo: "1:1 데모 신청하기",
                 btn_spec: "제품 상세 명세서",
+                topology_title: "🛡️ 4-Tower Air-Gap Command Matrix (Real-time Topology)",
+                topology_badge: "AIR-GAP ACTIVE",
                 corps_title: "RAG 연합군 3대 군단 삼위일체 아키텍처",
                 corps_subtitle: "단순히 묻고 지식을 대답하는 것을 넘어, 스스로 지식을 정제하고 복제를 철저히 영구 방어합니다.",
                 c1_h: "🧠 제1군단 [로컬 AI 비서 제조 SW]",
@@ -1316,6 +1493,8 @@
                 desc: "外部ネットワークを完全に遮断した「100%ローカル隔離環境」で動作し、情報漏洩リスクを原点から遮断する純粋なオンプレミスAIパッケージ。高額なクラウド利用料を削減します。",
                 btn_demo: "1:1 デモを申し込む",
                 btn_spec: "製品詳細スペックシート",
+                topology_title: "🛡️ 4基のエアギャップ指揮タワー トポロジー (Real-time Topology)",
+                topology_badge: "エアギャップ作動中",
                 corps_title: "RAG連合軍 3大軍団 三位一体アーキテクチャ",
                 corps_subtitle: "単なる知識の回答を超え、自ら矛盾を排除し無断複製を永久防衛する社内頭脳。",
                 c1_h: "🧠 第1軍団 [ローカルAIアシスタント製造SW]",
@@ -1370,6 +1549,8 @@
                 desc: "Flawless local on-premises AI package running with 0% data leaks under air-gapped nets. Tear up those costly cloud token utility bills.",
                 btn_demo: "Request 1:1 Live Demo",
                 btn_spec: "Product Detailed Specification",
+                topology_title: "🛡️ 4-Tower Air-Gap Command Matrix (Real-time Topology)",
+                topology_badge: "AIR-GAP ACTIVE",
                 corps_title: "Trinity Architecture: 3 Corps Allied Forces",
                 corps_subtitle: "An intranet brain that sweeps semantic anomalies and locks unauthorized duplication.",
                 c1_h: "🧠 Corps 1 [Local AI Builder SW]",
@@ -1435,6 +1616,9 @@
                 tab.classList.add('active');
                 const target = tab.getAttribute('data-target');
                 document.getElementById(target).classList.add('active');
+                if (target === 'dashboard') {
+                    window.dispatchEvent(new Event('resize'));
+                }
             });
         });
 
@@ -1460,6 +1644,11 @@
             if (btnDemo) btnDemo.innerText = data.btn_demo;
             const btnSpec = document.getElementById('hero-btn-spec');
             if (btnSpec) btnSpec.innerText = data.btn_spec;
+
+            const topoTitle = document.getElementById('topology-panel-title');
+            if (topoTitle && data.topology_title) topoTitle.innerText = data.topology_title;
+            const topoBadge = document.getElementById('topology-live-badge');
+            if (topoBadge && data.topology_badge) topoBadge.innerText = data.topology_badge;
 
             document.getElementById('corps-title').innerText = data.corps_title;
             document.getElementById('corps-subtitle').innerText = data.corps_subtitle;
@@ -1660,6 +1849,11 @@
             runBtn.disabled = true;
             consoleBox.innerHTML = '';
 
+            const simContainer = document.getElementById('simulator-panel-container');
+            const lockdownAlert = document.getElementById('sim-lockdown-alert');
+            if (simContainer) simContainer.classList.add('scanning');
+            if (lockdownAlert) lockdownAlert.classList.remove('active');
+
             // Real-time Regex PII Detectors with Bulletproof Function Maskers
             const piiRules = [
                 { nameKo: '주민등록번호', nameJa: 'マイナンバー/住民番号', nameEn: 'Resident/ID Number', regex: /\b(\d{6})[- ]?([1-4]\d{6})\b/g, maskFn: (m, p1) => p1 + '-*******' },
@@ -1692,6 +1886,7 @@
             let steps = [];
             if (detectedList.length > 0) {
                 // PII DETECTED FLOW
+                if (lockdownAlert) lockdownAlert.classList.add('active');
                 if (currentLang === 'ja') {
                     steps = [
                         { text: `[SYSTEM] 入力データ受信: "${prompt}"`, color: 'var(--text-main)' },
@@ -1789,6 +1984,7 @@
                 } else {
                     clearInterval(simInterval);
                     runBtn.disabled = false;
+                    if (simContainer) simContainer.classList.remove('scanning');
                 }
             }, 650);
         }
@@ -2313,6 +2509,362 @@
             const modal = document.getElementById('b2b-lead-modal');
             if (e.target === modal) closeLeadModal();
         });
+
+        // Preset applicator for simulator
+        function applyPreset(type) {
+            const promptInput = document.getElementById('simulator-prompt');
+            if (!promptInput) return;
+            if (type === 'rrn') {
+                promptInput.value = currentLang === 'ja'
+                    ? '重要人事ファイル: マイナンバー 1234-5678-9012, 銀行口座 三井住友 110-234-567890'
+                    : (currentLang === 'en'
+                        ? 'Confidential HR Record: Resident ID 810309-1380463, Wire Account 110-234-567890'
+                        : '기밀 인사 기록: 성명 홍길동, 주민등록번호 810309-1380463, 급여 계좌 국민 110-234-567890');
+            } else if (type === 'apikey') {
+                promptInput.value = 'OPENAI_API_KEY=sk-proj-abc1234567890defgh 및 사내 DB 마스터 비밀번호 password1234!';
+            } else {
+                promptInput.value = currentLang === 'ja'
+                    ? '社内情報セキュリティ規定第15条：完全隔離環境におけるSLM推論およびライセンス整合性管理方針'
+                    : (currentLang === 'en'
+                        ? 'Corporate Security Standard Sec.15: Air-Gapped SLM Inference & Offline Integrity Assurance'
+                        : '사내 보안 규정 제15조: 완전 에어갭 환경 하에서의 로컬 SLM 인퍼런스 및 라이선스 무결성 보장 지침');
+            }
+            promptInput.focus();
+        }
+
+        // ==============================================================
+        // 🛡️ [START] 4-TOWER INTERACTIVE TOPOLOGY CANVAS ENGINE
+        // ==============================================================
+        function initTopologyCanvas() {
+            const canvas = document.getElementById('towerTopologyCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let animFrameId = null;
+
+            function resizeCanvas() {
+                const rect = canvas.getBoundingClientRect();
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = rect.width * dpr;
+                canvas.height = rect.height * dpr;
+                ctx.scale(dpr, dpr);
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            // Nodes definition (Central Air-Gap Core + 4 Command Towers)
+            function getNodes() {
+                const w = canvas.getBoundingClientRect().width;
+                const h = canvas.getBoundingClientRect().height;
+                const cx = w / 2;
+                const cy = h / 2;
+
+                return [
+                    {
+                        id: 'core',
+                        name: 'AIR-GAP CORE',
+                        sub: 'Zero Leak Enclave',
+                        port: 'Air-Gapped',
+                        x: cx,
+                        y: cy,
+                        radius: 28,
+                        color: '#00F0FF',
+                        glowColor: 'rgba(0, 240, 255, 0.4)',
+                        status: '100% ISOLATED',
+                        latency: '0.00ms',
+                        leak: '0.00%'
+                    },
+                    {
+                        id: 't1',
+                        name: 'TOWER 1',
+                        sub: 'FastAPI Bridge',
+                        port: 'Port 8000',
+                        x: cx - w * 0.32,
+                        y: cy - h * 0.22,
+                        radius: 20,
+                        color: '#00F0FF',
+                        glowColor: 'rgba(0, 240, 255, 0.35)',
+                        status: 'ACTIVE',
+                        latency: '0.12ms',
+                        leak: '0.00%'
+                    },
+                    {
+                        id: 't2',
+                        name: 'TOWER 2',
+                        sub: 'SLM Studio',
+                        port: 'Port 7860',
+                        x: cx + w * 0.32,
+                        y: cy - h * 0.22,
+                        radius: 20,
+                        color: '#8B5CF6',
+                        glowColor: 'rgba(139, 92, 246, 0.35)',
+                        status: 'ONLINE',
+                        latency: '0.18ms',
+                        leak: '0.00%'
+                    },
+                    {
+                        id: 't3',
+                        name: 'TOWER 3',
+                        sub: 'RAG Vault',
+                        port: 'Port 7861',
+                        x: cx + w * 0.24,
+                        y: cy + h * 0.26,
+                        radius: 20,
+                        color: '#00FF9D',
+                        glowColor: 'rgba(0, 255, 157, 0.35)',
+                        status: 'AIR-GAPPED',
+                        latency: '0.08ms',
+                        leak: '0.00%'
+                    },
+                    {
+                        id: 't4',
+                        name: 'TOWER 4',
+                        sub: 'Healer Sentry',
+                        port: 'Port 7862',
+                        x: cx - w * 0.24,
+                        y: cy + h * 0.26,
+                        radius: 20,
+                        color: '#F59E0B',
+                        glowColor: 'rgba(245, 158, 11, 0.35)',
+                        status: 'GUARDING',
+                        latency: '0.15ms',
+                        leak: '0.00%'
+                    }
+                ];
+            }
+
+            // Photon Data Packets traveling along conduits
+            const packets = [
+                { from: 'core', to: 't1', progress: 0.1, speed: 0.007, color: '#00F0FF' },
+                { from: 't1', to: 'core', progress: 0.6, speed: 0.008, color: '#00F0FF' },
+                { from: 'core', to: 't2', progress: 0.3, speed: 0.006, color: '#8B5CF6' },
+                { from: 't2', to: 'core', progress: 0.8, speed: 0.007, color: '#8B5CF6' },
+                { from: 'core', to: 't3', progress: 0.2, speed: 0.009, color: '#00FF9D' },
+                { from: 't3', to: 'core', progress: 0.7, speed: 0.006, color: '#00FF9D' },
+                { from: 'core', to: 't4', progress: 0.4, speed: 0.008, color: '#F59E0B' },
+                { from: 't4', to: 'core', progress: 0.9, speed: 0.007, color: '#F59E0B' },
+                { from: 't1', to: 't2', progress: 0.5, speed: 0.005, color: 'rgba(255,255,255,0.7)' },
+                { from: 't4', to: 't3', progress: 0.2, speed: 0.005, color: 'rgba(0, 255, 157, 0.7)' }
+            ];
+
+            let mouseX = -999;
+            let mouseY = -999;
+            let hoveredNode = null;
+
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                mouseX = e.clientX - rect.left;
+                mouseY = e.clientY - rect.top;
+            });
+
+            canvas.addEventListener('mouseleave', () => {
+                mouseX = -999;
+                mouseY = -999;
+                hoveredNode = null;
+            });
+
+            let angle = 0;
+
+            function render() {
+                const w = canvas.getBoundingClientRect().width;
+                const h = canvas.getBoundingClientRect().height;
+                ctx.clearRect(0, 0, w, h);
+
+                const nodes = getNodes();
+                const nodeMap = {};
+                nodes.forEach(n => nodeMap[n.id] = n);
+
+                angle += 0.015;
+
+                // 1. Draw subtle background radar circles around center
+                const core = nodeMap['core'];
+                if (core) {
+                    ctx.save();
+                    ctx.strokeStyle = 'rgba(0, 240, 255, 0.08)';
+                    ctx.lineWidth = 1;
+                    ctx.setLineDash([4, 6]);
+                    [55, 110, 160].forEach(r => {
+                        ctx.beginPath();
+                        ctx.arc(core.x, core.y, r, 0, Math.PI * 2);
+                        ctx.stroke();
+                    });
+                    ctx.setLineDash([]);
+                    ctx.restore();
+                }
+
+                // 2. Draw Network Conduits
+                const links = [
+                    ['core', 't1'], ['core', 't2'], ['core', 't3'], ['core', 't4'],
+                    ['t1', 't2'], ['t4', 't3']
+                ];
+
+                links.forEach(([fromId, toId]) => {
+                    const n1 = nodeMap[fromId];
+                    const n2 = nodeMap[toId];
+                    if (!n1 || !n2) return;
+
+                    ctx.save();
+                    const isCoreLink = fromId === 'core' || toId === 'core';
+                    ctx.strokeStyle = isCoreLink ? 'rgba(0, 240, 255, 0.18)' : 'rgba(255, 255, 255, 0.06)';
+                    ctx.lineWidth = isCoreLink ? 1.5 : 1;
+                    ctx.beginPath();
+                    ctx.moveTo(n1.x, n1.y);
+                    ctx.lineTo(n2.x, n2.y);
+                    ctx.stroke();
+                    ctx.restore();
+                });
+
+                // 3. Draw Moving Photon Packets
+                packets.forEach(p => {
+                    const n1 = nodeMap[p.from];
+                    const n2 = nodeMap[p.to];
+                    if (!n1 || !n2) return;
+
+                    p.progress += p.speed;
+                    if (p.progress > 1) p.progress = 0;
+
+                    const px = n1.x + (n2.x - n1.x) * p.progress;
+                    const py = n1.y + (n2.y - n1.y) * p.progress;
+
+                    ctx.save();
+                    ctx.fillStyle = p.color;
+                    ctx.shadowColor = p.color;
+                    ctx.shadowBlur = 8;
+                    ctx.beginPath();
+                    ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                });
+
+                // 4. Draw Nodes
+                hoveredNode = null;
+                nodes.forEach(node => {
+                    const dx = mouseX - node.x;
+                    const dy = mouseY - node.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const isHovered = dist < node.radius + 8;
+                    if (isHovered) hoveredNode = node;
+
+                    ctx.save();
+
+                    // Outer pulse halo
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, node.radius + 6, 0, Math.PI * 2);
+                    ctx.strokeStyle = isHovered ? node.color : node.glowColor;
+                    ctx.lineWidth = isHovered ? 2.5 : 1.2;
+                    ctx.stroke();
+
+                    // Filled node circle
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = isHovered ? 'rgba(15, 25, 45, 0.95)' : 'rgba(7, 13, 22, 0.9)';
+                    ctx.fill();
+                    ctx.strokeStyle = node.color;
+                    ctx.lineWidth = 2;
+                    ctx.shadowColor = node.color;
+                    ctx.shadowBlur = isHovered ? 20 : 10;
+                    ctx.stroke();
+
+                    // Central core rotating crosshair
+                    if (node.id === 'core') {
+                        ctx.save();
+                        ctx.translate(node.x, node.y);
+                        ctx.rotate(angle);
+                        ctx.strokeStyle = 'rgba(0, 240, 255, 0.6)';
+                        ctx.lineWidth = 1.5;
+                        ctx.beginPath();
+                        ctx.arc(0, 0, 14, 0, Math.PI * 1.5);
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+
+                    // Node Title & Subtitle
+                    ctx.shadowBlur = 0;
+                    ctx.font = 'bold 10px "Geist Mono", monospace';
+                    ctx.fillStyle = '#FFFFFF';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(node.name, node.x, node.y + node.radius + 14);
+
+                    ctx.font = '9px "Space Grotesk", sans-serif';
+                    ctx.fillStyle = node.color;
+                    ctx.fillText(node.port, node.x, node.y + node.radius + 25);
+
+                    ctx.restore();
+                });
+
+                // 5. Draw Interactive Inspection HUD Tooltip
+                if (hoveredNode) {
+                    ctx.save();
+                    const tx = Math.min(Math.max(hoveredNode.x, 110), w - 110);
+                    const ty = Math.max(hoveredNode.y - 65, 45);
+
+                    const boxW = 200;
+                    const boxH = 58;
+                    const bx = tx - boxW / 2;
+                    const by = ty - boxH / 2;
+
+                    ctx.fillStyle = 'rgba(5, 10, 18, 0.95)';
+                    ctx.strokeStyle = hoveredNode.color;
+                    ctx.lineWidth = 1.5;
+                    ctx.shadowColor = hoveredNode.color;
+                    ctx.shadowBlur = 15;
+                    ctx.beginPath();
+                    ctx.roundRect(bx, by, boxW, boxH, 6);
+                    ctx.fill();
+                    ctx.stroke();
+
+                    ctx.shadowBlur = 0;
+                    ctx.font = 'bold 10px "Geist Mono", monospace';
+                    ctx.fillStyle = hoveredNode.color;
+                    ctx.textAlign = 'left';
+                    ctx.fillText(`⚡ [NODE: ${hoveredNode.port}] ${hoveredNode.sub}`, bx + 10, by + 16);
+
+                    ctx.font = '9px "Geist Mono", monospace';
+                    ctx.fillStyle = '#94A3B8';
+                    ctx.fillText(`• STATUS: ${hoveredNode.status}`, bx + 10, by + 30);
+                    ctx.fillText(`• LATENCY: ${hoveredNode.latency} | WAN LEAK: ${hoveredNode.leak}`, bx + 10, by + 44);
+
+                    ctx.restore();
+                }
+
+                animFrameId = requestAnimationFrame(render);
+            }
+
+            animFrameId = requestAnimationFrame(render);
+        }
+
+        // ==============================================================
+        // 🔮 [START] 3D CARD TILT & AMBIENT MOUSE SPOTLIGHT ENGINE
+        // ==============================================================
+        function initMotionEffects() {
+            // Ambient mouse cursor spotlight
+            document.addEventListener('mousemove', (e) => {
+                document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+                document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+            });
+
+            // 3D Perspective Tilt on .tilt-card
+            const cards = document.querySelectorAll('.tilt-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    const tiltX = -(y / (rect.height / 2)) * 6;
+                    const tiltY = (x / (rect.width / 2)) * 6;
+                    card.style.transform = `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) translateY(-2px)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+                });
+            });
+        }
+
+        // Launch engines on window load
+        window.addEventListener('DOMContentLoaded', () => {
+            initTopologyCanvas();
+            initMotionEffects();
+        });
+    
     </script>
     <!-- ============================================================== -->
     <!-- 📋 [END] KODARI B2B LEAD GENERATION INTERACTIVE MODAL -->
