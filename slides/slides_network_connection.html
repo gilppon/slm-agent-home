@@ -24,10 +24,19 @@
     li+li { margin-top:8px; }
     .foot { margin-top:28px; color:#91a2b6; font-size:.86rem; }
     @media(max-width:700px) { .grid { grid-template-columns:1fr; } section:last-child { grid-column:auto; } main { padding-top:38px; } }
+      .language-nav { display:flex; justify-content:flex-end; gap:8px; width:min(1080px,92vw); margin:14px auto 0; }
+    .language-nav button { border:1px solid var(--line); border-radius:999px; padding:7px 12px; background:var(--panel); color:var(--muted); font:inherit; font-size:.85rem; cursor:pointer; }
+    .language-nav button:hover, .language-nav button:focus-visible { border-color:var(--accent); color:var(--text); outline:none; }
+    .language-nav button.active { border-color:var(--accent); color:var(--text); background:#183238; }
   </style>
 </head>
 <body>
   <div class="notice" role="note"><strong>검증 단계 자료</strong> — 범위 협의용 초안입니다. 정식 판매 제안·보안 인증·운영 보장을 의미하지 않으며, 외부 평가 전 서면 범위와 승인이 필요합니다.</div>
+  <nav class="language-nav" data-language-switch aria-label="언어 선택">
+    <button type="button" data-language="ko" aria-pressed="true">KO</button>
+    <button type="button" data-language="ja" aria-pressed="false">日本語</button>
+    <button type="button" data-language="en" aria-pressed="false">EN</button>
+  </nav>
   <main>
     <div class="eyebrow">NETWORK & DEPLOYMENT REVIEW</div>
     <h1>네트워크·배포 | 사전 검토 안내</h1>
@@ -46,7 +55,9 @@
           <li>기본 차단 정책, 예외 승인, 중단·복구 절차</li></ul></section>
       <section><h2>다음 판단</h2><p>실제 네트워크 요구사항을 목록화하고 제한된 환경에서 측정한 뒤 구성별 결과를 검토합니다. 검증 전에는 외부 접속 차단이나 사내망 공개 설정을 안내하지 않습니다.</p></section>
     </div>
-    <p class="foot">기준 문서: E:\진짜배기\slm-agent\docs\b2b_sales\PRODUCT_CURRENT_STATUS.md · 검토일 2026-10-08</p>
+    <p class="foot">기준 문서: 제품 현황 문서 · 검토일 2026-10-08</p>
   </main>
+  <script type="application/json" id="slide-locales">{"en":{"documentTitle":"Network and Deployment | Preliminary Review","description":"Only a local Worker dry run has been checked. Production deployment and closed-network operation have not been verified.","languageLabel":"Language","noticeTitle":"Validation-stage material","notice":"This is a draft for scope discussions, not a production sales offer, security certification, or operational guarantee. Written scope and approval are required before an external evaluation.","eyebrow":"NETWORK AND DEPLOYMENT REVIEW","title":"Network and Deployment | Preliminary Review","lead":"Only a local Worker dry run has been checked. Production deployment and closed-network operation have not been verified.","status":"Current status: Internal Windows x64 portable validation build","sections":[{"title":"Verified Facts","items":["The Worker configuration was checked with a local Wrangler dry run.","Cloudflare production deployment, customer domains/routing, and operational secret registration were not performed.","Local execution alone does not prove that the complete system sends no external traffic."]},{"title":"Not Yet Verified","items":["The full product's network connections and outbound volume have not been independently tracked.","Customer deployment procedures for firewall exceptions and external bindings are unverified.","There is no air-gap certification, zero-egress result, or zero-leakage guarantee."]},{"title":"Agree Before Evaluation","items":["Required hosts, ports, protocols, direction, and purpose","Model/package downloads and optional API routes","Packet and process observation on an approved test network","Default-deny policy, exception approval, stop, and recovery procedures"]},{"title":"Next Decision","text":"Inventory actual network requirements and measure them in a restricted environment before reviewing results by configuration. Do not advise disabling external access or exposing internal services before validation."}],"foot":"Source: Product Status Document · Reviewed 2026-10-08"},"ja":{"documentTitle":"ネットワーク・デプロイ | 事前確認","description":"確認済みなのはローカル Worker の dry-run までです。本番デプロイや閉域網での運用は未検証です。","languageLabel":"言語","noticeTitle":"検証段階の資料","notice":"範囲協議用の草案です。正式な販売提案、セキュリティ認証、運用保証を意味しません。 外部評価の前に、範囲を書面で合意し承認を得てください。","eyebrow":"ネットワーク・デプロイ確認","title":"ネットワーク・デプロイ | 事前確認","lead":"確認済みなのはローカル Worker の dry-run までです。本番デプロイや閉域網での運用は未検証です。","status":"現在の状態：社内向け Windows x64 ポータブル検証ビルド","sections":[{"title":"確認済みの事実","items":["Worker 設定はローカル Wrangler dry-run で確認しました。","Cloudflare 本番デプロイ、顧客ドメイン・ルーティング、運用シークレット登録は実施していません。","ローカル実行だけでは、システム全体に外部通信がないとは判断できません。"]},{"title":"未検証の項目","items":["製品全体のネットワーク接続先と外部送信量は独立して追跡していません。","ファイアウォール例外や外部バインディングを含む顧客デプロイ手順は未検証です。","エアギャップ認証、外部送信ゼロの測定結果、無漏えい保証はありません。"]},{"title":"評価前に合意する範囲","items":["必要なホスト・ポート・プロトコル・方向・目的","モデル／パッケージの取得と任意 API 経路","承認済み試験ネットワークでのパケット・プロセス観測","デフォルト拒否、例外承認、中止、復旧手順"]},{"title":"次の判断","text":"実際のネットワーク要件を一覧化し、制限環境で測定した後に構成別の結果を確認してください。検証前に外部通信の遮断や社内サービスの公開を案内しません。"}],"foot":"参照資料：製品状況資料 · 確認日 2026-10-08"}}</script>
+  <script src="./slide-i18n.js" defer></script>
 </body>
 </html>

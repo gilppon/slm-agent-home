@@ -24,10 +24,19 @@
     li+li { margin-top:8px; }
     .foot { margin-top:28px; color:#91a2b6; font-size:.86rem; }
     @media(max-width:700px) { .grid { grid-template-columns:1fr; } section:last-child { grid-column:auto; } main { padding-top:38px; } }
+      .language-nav { display:flex; justify-content:flex-end; gap:8px; width:min(1080px,92vw); margin:14px auto 0; }
+    .language-nav button { border:1px solid var(--line); border-radius:999px; padding:7px 12px; background:var(--panel); color:var(--muted); font:inherit; font-size:.85rem; cursor:pointer; }
+    .language-nav button:hover, .language-nav button:focus-visible { border-color:var(--accent); color:var(--text); outline:none; }
+    .language-nav button.active { border-color:var(--accent); color:var(--text); background:#183238; }
   </style>
 </head>
 <body>
   <div class="notice" role="note"><strong>검증 단계 자료</strong> — 범위 협의용 초안입니다. 정식 판매 제안·보안 인증·운영 보장을 의미하지 않으며, 외부 평가 전 서면 범위와 승인이 필요합니다.</div>
+  <nav class="language-nav" data-language-switch aria-label="언어 선택">
+    <button type="button" data-language="ko" aria-pressed="true">KO</button>
+    <button type="button" data-language="ja" aria-pressed="false">日本語</button>
+    <button type="button" data-language="en" aria-pressed="false">EN</button>
+  </nav>
   <main>
     <div class="eyebrow">TECHNICAL SCOPE</div>
     <h1>KODARI 로컬 AI 검증 빌드 | 기술 경계</h1>
@@ -46,7 +55,9 @@
           <li>관찰 가능한 로그와 합격/중단 조건</li></ul></section>
       <section><h2>다음 판단</h2><p>기술 검토에서는 데이터 흐름과 의존성을 먼저 확정하고, 실측 전에는 폐쇄망·무유출·성능 보장을 문서화하지 않습니다.</p></section>
     </div>
-    <p class="foot">기준 문서: E:\진짜배기\slm-agent\docs\b2b_sales\PRODUCT_CURRENT_STATUS.md · 검토일 2026-10-08</p>
+    <p class="foot">기준 문서: 제품 현황 문서 · 검토일 2026-10-08</p>
   </main>
+  <script type="application/json" id="slide-locales">{"en":{"documentTitle":"KODARI Local AI Validation Build | Technical Boundaries","description":"Separates verified packaging and licensing facts from integrations that have not yet been tested.","languageLabel":"Language","noticeTitle":"Validation-stage material","notice":"This is a draft for scope discussions, not a production sales offer, security certification, or operational guarantee. Written scope and approval are required before an external evaluation.","eyebrow":"TECHNICAL BOUNDARIES","title":"KODARI Local AI Validation Build | Technical Boundaries","lead":"Separates verified packaging and licensing facts from integrations that have not yet been tested.","status":"Current status: Internal Windows x64 portable validation build","sections":[{"title":"Verified Facts","items":["The portable artifact targets Windows x64 and bundles Python 3.13.16.","The license verifier checks the signature, edition, validity period, and device identifier.","The Worker was checked only with a local Wrangler dry run; it has not been deployed to production."]},{"title":"Not Yet Verified","items":["The complete builder, model, RAG, API, and launcher workflow has not been tested in a customer environment.","Supported model/API combinations, GPU performance, concurrency, and recovery criteria are undecided.","There are no independent measurements showing or blocking outbound traffic."]},{"title":"Agree Before Evaluation","items":["Component versions and hashes","Runtime processes, files, services, and port flows","Model repositories and optional external API dependencies","Observable logs and pass/stop criteria"]},{"title":"Next Decision","text":"Technical review should establish data flows and dependencies first. Do not document air-gap, zero-leakage, or performance guarantees before measurement."}],"foot":"Source: Product Status Document · Reviewed 2026-10-08"},"ja":{"documentTitle":"KODARI ローカル AI 検証ビルド | 技術上の境界","description":"確認済みのパッケージング・ライセンス情報と、未検証の統合範囲を区別します。","languageLabel":"言語","noticeTitle":"検証段階の資料","notice":"範囲協議用の草案です。正式な販売提案、セキュリティ認証、運用保証を意味しません。 外部評価の前に、範囲を書面で合意し承認を得てください。","eyebrow":"技術上の境界","title":"KODARI ローカル AI 検証ビルド | 技術上の境界","lead":"確認済みのパッケージング・ライセンス情報と、未検証の統合範囲を区別します。","status":"現在の状態：社内向け Windows x64 ポータブル検証ビルド","sections":[{"title":"確認済みの事実","items":["ポータブル成果物は Windows x64 向けで、Python 3.13.16 を同梱します。","ライセンス検証器は署名、エディション、有効期間、デバイス識別値を確認します。","Worker はローカル Wrangler dry-run のみ確認済みで、本番環境にはデプロイしていません。"]},{"title":"未検証の項目","items":["ビルダー、モデル、RAG、API、ランチャーを含む全体の動作は顧客環境で未検証です。","対応モデル/API の組み合わせ、GPU 性能、同時実行、復旧基準は未決定です。","外部通信を独立して測定・遮断した結果はありません。"]},{"title":"評価前に合意する範囲","items":["構成要素のバージョンとハッシュ一覧","実行プロセス、ファイル、サービス、ポートの流れ","モデル取得元と任意の外部 API 依存","観測可能なログと合格・中止条件"]},{"title":"次の判断","text":"技術レビューでは、まずデータフローと依存関係を確定します。実測前にエアギャップ、情報漏えいゼロ、性能を保証する表現は使用しません。"}],"foot":"参照資料：製品状況資料 · 確認日 2026-10-08"}}</script>
+  <script src="./slide-i18n.js" defer></script>
 </body>
 </html>

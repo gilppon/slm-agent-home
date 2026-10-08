@@ -24,10 +24,19 @@
     li+li { margin-top:8px; }
     .foot { margin-top:28px; color:#91a2b6; font-size:.86rem; }
     @media(max-width:700px) { .grid { grid-template-columns:1fr; } section:last-child { grid-column:auto; } main { padding-top:38px; } }
+      .language-nav { display:flex; justify-content:flex-end; gap:8px; width:min(1080px,92vw); margin:14px auto 0; }
+    .language-nav button { border:1px solid var(--line); border-radius:999px; padding:7px 12px; background:var(--panel); color:var(--muted); font:inherit; font-size:.85rem; cursor:pointer; }
+    .language-nav button:hover, .language-nav button:focus-visible { border-color:var(--accent); color:var(--text); outline:none; }
+    .language-nav button.active { border-color:var(--accent); color:var(--text); background:#183238; }
   </style>
 </head>
 <body>
   <div class="notice" role="note"><strong>검증 단계 자료</strong> — 범위 협의용 초안입니다. 정식 판매 제안·보안 인증·운영 보장을 의미하지 않으며, 외부 평가 전 서면 범위와 승인이 필요합니다.</div>
+  <nav class="language-nav" data-language-switch aria-label="언어 선택">
+    <button type="button" data-language="ko" aria-pressed="true">KO</button>
+    <button type="button" data-language="ja" aria-pressed="false">日本語</button>
+    <button type="button" data-language="en" aria-pressed="false">EN</button>
+  </nav>
   <main>
     <div class="eyebrow">DATA & QUALITY VALIDATION</div>
     <h1>문서 업무 평가 | 기술 검증 계획</h1>
@@ -46,7 +55,9 @@
           <li>수동 승인과 실패 격리/재처리 절차</li></ul></section>
       <section><h2>다음 판단</h2><p>시험 결과는 범위·데이터셋·버전과 함께 기록합니다. 제한된 시험을 보안 인증이나 모든 고객 문서에 대한 품질 보증으로 확대 해석하지 않습니다.</p></section>
     </div>
-    <p class="foot">기준 문서: E:\진짜배기\slm-agent\docs\b2b_sales\PRODUCT_CURRENT_STATUS.md · 검토일 2026-10-08</p>
+    <p class="foot">기준 문서: 제품 현황 문서 · 검토일 2026-10-08</p>
   </main>
+  <script type="application/json" id="slide-locales">{"en":{"documentTitle":"Document Workflows | Technical Validation Plan","description":"Plans measurements for data paths, error types, and retention from document ingestion through answer review.","languageLabel":"Language","noticeTitle":"Validation-stage material","notice":"This is a draft for scope discussions, not a production sales offer, security certification, or operational guarantee. Written scope and approval are required before an external evaluation.","eyebrow":"DOCUMENT DATA AND QUALITY","title":"Document Workflows | Technical Validation Plan","lead":"Plans measurements for data paths, error types, and retention from document ingestion through answer review.","status":"Current status: Internal Windows x64 portable validation build","sections":[{"title":"Verified Facts","items":["Current artifact checks cover ZIP archives and runtime files.","End-to-end customer testing of parsing, embeddings, retrieval, answers, and audit logs is incomplete.","PII protection, complete deletion, and audit certification results are not available."]},{"title":"Not Yet Verified","items":["Parsing accuracy by supported format, including large or corrupted documents","Retrieval recall/precision, answer grounding, error rates, and the evaluation dataset","Data retention/deletion scope across storage, caches, logs, and backups"]},{"title":"Agree Before Evaluation","items":["Document types, languages, volume, and a de-identified evaluation set","Ground-truth labels and acceptable error thresholds","Data-flow diagram and checks for storage, logs, and deletion","Manual approval and failure isolation/reprocessing procedures"]},{"title":"Next Decision","text":"Record test results together with scope, dataset, and version. Do not generalize a limited test into security certification or a quality guarantee for all customer documents."}],"foot":"Source: Product Status Document · Reviewed 2026-10-08"},"ja":{"documentTitle":"文書ワークフロー | 技術検証計画","description":"文書取り込みから回答確認までのデータ経路、エラー種別、保管条件を測定する計画です。","languageLabel":"言語","noticeTitle":"検証段階の資料","notice":"範囲協議用の草案です。正式な販売提案、セキュリティ認証、運用保証を意味しません。 外部評価の前に、範囲を書面で合意し承認を得てください。","eyebrow":"文書データ・品質","title":"文書ワークフロー | 技術検証計画","lead":"文書取り込みから回答確認までのデータ経路、エラー種別、保管条件を測定する計画です。","status":"現在の状態：社内向け Windows x64 ポータブル検証ビルド","sections":[{"title":"確認済みの事実","items":["現在確認済みの成果物検査は ZIP とランタイムファイルの範囲です。","解析・埋め込み・検索・回答・監査ログを含む顧客環境の全工程試験は未完了です。","PII 保護、完全削除、監査認証の結果は提供されていません。"]},{"title":"未検証の項目","items":["対応形式ごとの解析精度と、大容量・破損文書の動作","検索再現率・適合率、回答の根拠性、誤り率、評価データセット","保存先・キャッシュ・ログ・バックアップにおける保管と削除の範囲"]},{"title":"評価前に合意する範囲","items":["文書の種類・言語・量と、非識別化した評価セット","正解ラベルと許容できるエラー基準","データフロー図と保存・ログ・削除の確認","手動承認、失敗の隔離、再処理の手順"]},{"title":"次の判断","text":"試験結果は対象範囲、データセット、バージョンと併せて記録してください。限定試験をセキュリティ認証や全顧客文書への品質保証として一般化しません。"}],"foot":"参照資料：製品状況資料 · 確認日 2026-10-08"}}</script>
+  <script src="./slide-i18n.js" defer></script>
 </body>
 </html>

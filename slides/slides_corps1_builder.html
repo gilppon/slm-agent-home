@@ -24,10 +24,19 @@
     li+li { margin-top:8px; }
     .foot { margin-top:28px; color:#91a2b6; font-size:.86rem; }
     @media(max-width:700px) { .grid { grid-template-columns:1fr; } section:last-child { grid-column:auto; } main { padding-top:38px; } }
+      .language-nav { display:flex; justify-content:flex-end; gap:8px; width:min(1080px,92vw); margin:14px auto 0; }
+    .language-nav button { border:1px solid var(--line); border-radius:999px; padding:7px 12px; background:var(--panel); color:var(--muted); font:inherit; font-size:.85rem; cursor:pointer; }
+    .language-nav button:hover, .language-nav button:focus-visible { border-color:var(--accent); color:var(--text); outline:none; }
+    .language-nav button.active { border-color:var(--accent); color:var(--text); background:#183238; }
   </style>
 </head>
 <body>
   <div class="notice" role="note"><strong>검증 단계 자료</strong> — 범위 협의용 초안입니다. 정식 판매 제안·보안 인증·운영 보장을 의미하지 않으며, 외부 평가 전 서면 범위와 승인이 필요합니다.</div>
+  <nav class="language-nav" data-language-switch aria-label="언어 선택">
+    <button type="button" data-language="ko" aria-pressed="true">KO</button>
+    <button type="button" data-language="ja" aria-pressed="false">日本語</button>
+    <button type="button" data-language="en" aria-pressed="false">EN</button>
+  </nav>
   <main>
     <div class="eyebrow">PORTABLE BUILD</div>
     <h1>Windows 포터블 빌드 | 평가 안내</h1>
@@ -46,7 +55,9 @@
           <li>설치·실행·제거·복구에 필요한 관리자 권한</li></ul></section>
       <section><h2>다음 판단</h2><p>포터블 ZIP은 내부 검증 산출물입니다. 고객 제공 전 대표 장비에서 설치·실행과 복구를 확인해야 합니다.</p></section>
     </div>
-    <p class="foot">기준 문서: E:\진짜배기\slm-agent\docs\b2b_sales\PRODUCT_CURRENT_STATUS.md · 검토일 2026-10-08</p>
+    <p class="foot">기준 문서: 제품 현황 문서 · 검토일 2026-10-08</p>
   </main>
+  <script type="application/json" id="slide-locales">{"en":{"documentTitle":"Windows Portable Build | Evaluation Guide","description":"The archive contents and integrity have been checked. Product functionality on customer PCs is a separate, unfinished validation step.","languageLabel":"Language","noticeTitle":"Validation-stage material","notice":"This is a draft for scope discussions, not a production sales offer, security certification, or operational guarantee. Written scope and approval are required before an external evaluation.","eyebrow":"WINDOWS PORTABLE BUILD","title":"Windows Portable Build | Evaluation Guide","lead":"The archive contents and integrity have been checked. Product functionality on customer PCs is a separate, unfinished validation step.","status":"Current status: Internal Windows x64 portable validation build","sections":[{"title":"Verified Facts","items":["The Windows x64 portable package includes the Python 3.13.16 embeddable runtime.","All three KO, EN, and JA ZIP archives passed integrity checks.","When using the bundled runtime, the portable launcher clears user-site and PYTHONPATH contamination."]},{"title":"Not Yet Verified","items":["Installation and execution on customer PCs, GPU compatibility, and model download/loading have not been verified.","A standalone Setup.exe, signed installer, and automatic updater are not verified deliverables.","The minimum Windows version and supported GPU list are not finalized."]},{"title":"Agree Before Evaluation","items":["Windows build and security-update level","CPU/GPU models, VRAM, RAM, and storage","Model file source and size","Administrator permissions required to install, run, remove, and recover"]},{"title":"Next Decision","text":"The portable ZIP is an internally checked artifact. Before providing it to customers, verify installation, operation, and recovery on representative devices."}],"foot":"Source: Product Status Document · Reviewed 2026-10-08"},"ja":{"documentTitle":"Windows ポータブルビルド | 評価ガイド","description":"配布アーカイブの構成と整合性は確認済みです。顧客 PC での製品機能検証は別途必要で、まだ完了していません。","languageLabel":"言語","noticeTitle":"検証段階の資料","notice":"範囲協議用の草案です。正式な販売提案、セキュリティ認証、運用保証を意味しません。 外部評価の前に、範囲を書面で合意し承認を得てください。","eyebrow":"WINDOWS ポータブルビルド","title":"Windows ポータブルビルド | 評価ガイド","lead":"配布アーカイブの構成と整合性は確認済みです。顧客 PC での製品機能検証は別途必要で、まだ完了していません。","status":"現在の状態：社内向け Windows x64 ポータブル検証ビルド","sections":[{"title":"確認済みの事実","items":["Windows x64 ポータブルパッケージには Python 3.13.16 の埋め込みランタイムが含まれます。","KO・EN・JA の ZIP 3点はそれぞれ整合性検査に合格しました。","同梱ランタイムを使用する際、ランチャーはユーザー site と PYTHONPATH の混入を除去します。"]},{"title":"未検証の項目","items":["顧客 PC でのインストール・実行、GPU 互換性、モデルのダウンロード・読み込みは未検証です。","単体 Setup.exe、署名済みインストーラー、自動更新機能は確認済みの提供物ではありません。","最小 Windows バージョンと対応 GPU の一覧は未確定です。"]},{"title":"評価前に合意する範囲","items":["Windows のビルドとセキュリティ更新レベル","CPU/GPU 型番、VRAM、RAM、ストレージ","モデルファイルの入手元と容量","インストール・実行・削除・復旧に必要な管理者権限"]},{"title":"次の判断","text":"ポータブル ZIP は社内で確認した成果物です。顧客に提供する前に、代表的な機器でインストール、動作、復旧を検証してください。"}],"foot":"参照資料：製品状況資料 · 確認日 2026-10-08"}}</script>
+  <script src="./slide-i18n.js" defer></script>
 </body>
 </html>

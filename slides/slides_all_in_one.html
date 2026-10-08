@@ -24,10 +24,19 @@
     li+li { margin-top:8px; }
     .foot { margin-top:28px; color:#91a2b6; font-size:.86rem; }
     @media(max-width:700px) { .grid { grid-template-columns:1fr; } section:last-child { grid-column:auto; } main { padding-top:38px; } }
+      .language-nav { display:flex; justify-content:flex-end; gap:8px; width:min(1080px,92vw); margin:14px auto 0; }
+    .language-nav button { border:1px solid var(--line); border-radius:999px; padding:7px 12px; background:var(--panel); color:var(--muted); font:inherit; font-size:.85rem; cursor:pointer; }
+    .language-nav button:hover, .language-nav button:focus-visible { border-color:var(--accent); color:var(--text); outline:none; }
+    .language-nav button.active { border-color:var(--accent); color:var(--text); background:#183238; }
   </style>
 </head>
 <body>
   <div class="notice" role="note"><strong>검증 단계 자료</strong> — 범위 협의용 초안입니다. 정식 판매 제안·보안 인증·운영 보장을 의미하지 않으며, 외부 평가 전 서면 범위와 승인이 필요합니다.</div>
+  <nav class="language-nav" data-language-switch aria-label="언어 선택">
+    <button type="button" data-language="ko" aria-pressed="true">KO</button>
+    <button type="button" data-language="ja" aria-pressed="false">日本語</button>
+    <button type="button" data-language="en" aria-pressed="false">EN</button>
+  </nav>
   <main>
     <div class="eyebrow">EVALUATION OVERVIEW</div>
     <h1>KODARI 로컬 AI 검증 빌드 | 평가 개요</h1>
@@ -46,7 +55,9 @@
           <li>기간·성공 기준·로그/오류 처리 방식</li></ul></section>
       <section><h2>다음 판단</h2><p>평가 가능성은 위 조건을 서면으로 합의한 뒤 별도로 판단합니다. 현재 자료는 가격 제안, 출시 약속 또는 보안 인증을 의미하지 않습니다.</p></section>
     </div>
-    <p class="foot">기준 문서: E:\진짜배기\slm-agent\docs\b2b_sales\PRODUCT_CURRENT_STATUS.md · 검토일 2026-10-08</p>
+    <p class="foot">기준 문서: 제품 현황 문서 · 검토일 2026-10-08</p>
   </main>
+  <script type="application/json" id="slide-locales">{"en":{"documentTitle":"KODARI Local AI Validation Build | Evaluation Overview","description":"Summarizes the current Windows x64 portable local-AI build and the checks needed for a scoped evaluation.","languageLabel":"Language","noticeTitle":"Validation-stage material","notice":"This is a draft for scope discussions, not a production sales offer, security certification, or operational guarantee. Written scope and approval are required before an external evaluation.","eyebrow":"EVALUATION OVERVIEW","title":"KODARI Local AI Validation Build | Evaluation Overview","lead":"Summarizes the current Windows x64 portable local-AI build and the checks needed for a scoped evaluation.","status":"Current status: Internal Windows x64 portable validation build","sections":[{"title":"Verified Facts","items":["The Windows x64 portable package includes the Python 3.13.16 embeddable runtime.","The KO, EN, and JA ZIP archives passed integrity checks. This confirms archive readability only.","Licensing uses Ed25519-signed tokens tied to a device identifier."]},{"title":"Not Yet Verified","items":["Customer-device installation, model loading, inference, training, and recovery have not been completed.","Performance, supported hardware, outbound network behavior, and commercial support terms are not settled.","End-to-end integration in a customer environment remains unverified."]},{"title":"Agree Before Evaluation","items":["Target Windows version and CPU/GPU/memory configuration","Models, business workflows, and approved evaluation data","Network policy and permitted or blocked routes","Evaluation period, acceptance criteria, and log/error handling"]},{"title":"Next Decision","text":"Evaluation eligibility is decided separately after the scope is agreed in writing. This material is not a price quote, launch commitment, or security certification."}],"foot":"Source: Product Status Document · Reviewed 2026-10-08"},"ja":{"documentTitle":"KODARI ローカル AI 検証ビルド | 評価概要","description":"Windows x64 ポータブル版ローカル AI ビルドの現状と、範囲を限定した評価に必要な確認事項をまとめます。","languageLabel":"言語","noticeTitle":"検証段階の資料","notice":"範囲協議用の草案です。正式な販売提案、セキュリティ認証、運用保証を意味しません。 外部評価の前に、範囲を書面で合意し承認を得てください。","eyebrow":"評価概要","title":"KODARI ローカル AI 検証ビルド | 評価概要","lead":"Windows x64 ポータブル版ローカル AI ビルドの現状と、範囲を限定した評価に必要な確認事項をまとめます。","status":"現在の状態：社内向け Windows x64 ポータブル検証ビルド","sections":[{"title":"確認済みの事実","items":["Windows x64 ポータブルパッケージには Python 3.13.16 の埋め込みランタイムが含まれます。","KO・EN・JA の ZIP は整合性検査に合格しました。確認したのはアーカイブの読み取り可能性のみです。","ライセンスには、デバイス識別値に紐づく Ed25519 署名トークンを使用します。"]},{"title":"未検証の項目","items":["顧客機器でのインストール、モデル読み込み、推論、学習、復旧は完了していません。","性能、対応ハードウェア、外部通信の動作、商用サポート条件は未確定です。","顧客環境でのエンドツーエンド統合は未検証です。"]},{"title":"評価前に合意する範囲","items":["対象 Windows バージョンと CPU/GPU・メモリ構成","モデル、業務ワークフロー、承認済みの評価データ","ネットワークポリシーと許可・遮断する通信経路","評価期間、合格基準、ログ・エラー処理"]},{"title":"次の判断","text":"評価の可否は、範囲を書面で合意した後に別途判断します。この資料は価格提示、発売の約束、セキュリティ認証を意味しません。"}],"foot":"参照資料：製品状況資料 · 確認日 2026-10-08"}}</script>
+  <script src="./slide-i18n.js" defer></script>
 </body>
 </html>

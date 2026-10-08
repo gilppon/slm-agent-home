@@ -24,17 +24,26 @@
     li+li { margin-top:8px; }
     .foot { margin-top:28px; color:#91a2b6; font-size:.86rem; }
     @media(max-width:700px) { .grid { grid-template-columns:1fr; } section:last-child { grid-column:auto; } main { padding-top:38px; } }
+      .language-nav { display:flex; justify-content:flex-end; gap:8px; width:min(1080px,92vw); margin:14px auto 0; }
+    .language-nav button { border:1px solid var(--line); border-radius:999px; padding:7px 12px; background:var(--panel); color:var(--muted); font:inherit; font-size:.85rem; cursor:pointer; }
+    .language-nav button:hover, .language-nav button:focus-visible { border-color:var(--accent); color:var(--text); outline:none; }
+    .language-nav button.active { border-color:var(--accent); color:var(--text); background:#183238; }
   </style>
 </head>
 <body>
   <div class="notice" role="note"><strong>검증 단계 자료</strong> — 범위 협의용 초안입니다. 정식 판매 제안·보안 인증·운영 보장을 의미하지 않으며, 외부 평가 전 서면 범위와 승인이 필요합니다.</div>
+  <nav class="language-nav" data-language-switch aria-label="언어 선택">
+    <button type="button" data-language="ko" aria-pressed="true">KO</button>
+    <button type="button" data-language="ja" aria-pressed="false">日本語</button>
+    <button type="button" data-language="en" aria-pressed="false">EN</button>
+  </nav>
   <main>
     <div class="eyebrow">LICENSE TECHNICAL NOTES</div>
     <h1>라이선스 | 서명·검증 기술 경계</h1>
     <p class="lead">현재 구현된 토큰 검증 항목과 발급자 키 관리의 운영 위험을 함께 공개합니다.</p>
     <div class="status">현재 상태: 내부 Windows x64 포터블 검증 빌드</div>
     <div class="grid">
-      <section><h2>확인된 사실</h2><ul>          <li>토큰은 KODARI2.<payload>.<signature> 형식입니다.</li>
+      <section><h2>확인된 사실</h2><ul>          <li>토큰은 KODARI2.&lt;payload&gt;.&lt;signature&gt; 형식입니다.</li>
           <li>서명, 에디션, 발급/만료 시각, 장치 ID 파생값을 검증합니다.</li>
           <li>Windows 컴퓨터 제품 UUID를 우선 사용하고 MachineGuid를 대체값으로 사용합니다.</li></ul></section>
       <section><h2>아직 검증되지 않은 점</h2><ul>          <li>잘못된 서명·만료·다른 장치·에디션 불일치·키 교체를 포함한 전체 수명주기 시험이 남아 있습니다.</li>
@@ -46,7 +55,9 @@
           <li>검증 실패 시 fail-closed 동작과 운영 지원</li></ul></section>
       <section><h2>다음 판단</h2><p>발급 키는 제품 밖에서 제한된 접근으로 보관합니다. 고객에게 복사·역공학 방지가 보장된다고 설명하지 않습니다.</p></section>
     </div>
-    <p class="foot">기준 문서: E:\진짜배기\slm-agent\docs\b2b_sales\PRODUCT_CURRENT_STATUS.md · 검토일 2026-10-08</p>
+    <p class="foot">기준 문서: 제품 현황 문서 · 검토일 2026-10-08</p>
   </main>
+  <script type="application/json" id="slide-locales">{"en":{"documentTitle":"Licensing | Signature and Verification Boundaries","description":"Describes the implemented token checks alongside operational risks in issuer-key management.","languageLabel":"Language","noticeTitle":"Validation-stage material","notice":"This is a draft for scope discussions, not a production sales offer, security certification, or operational guarantee. Written scope and approval are required before an external evaluation.","eyebrow":"LICENSE TECHNICAL NOTES","title":"Licensing | Signature and Verification Boundaries","lead":"Describes the implemented token checks alongside operational risks in issuer-key management.","status":"Current status: Internal Windows x64 portable validation build","sections":[{"title":"Verified Facts","items":["Tokens use the KODARI2.\u003cpayload>.\u003csignature> format.","The verifier checks the signature, edition, issue/expiry times, and a derived device ID.","Windows computer product UUID is preferred, with MachineGuid as a fallback."]},{"title":"Not Yet Verified","items":["Full lifecycle testing remains open for invalid signatures, expiry, other devices, edition mismatch, and key rotation.","The issuer PEM is read in unencrypted form, so operating-system account and file-access protection matter.","A local administrator or modified client may bypass the checks; that risk has not been eliminated."]},{"title":"Agree Before Evaluation","items":["Valid, tampered, expired, wrong-device, and wrong-edition test cases","Behavior when the system clock or device identifier changes","Private-key permissions, protected backup, rotation, and revocation","Fail-closed behavior and support when verification fails"]},{"title":"Next Decision","text":"Keep issuer keys outside the product with restricted access. Do not claim that copying or reverse engineering is prevented."}],"foot":"Source: Product Status Document · Reviewed 2026-10-08"},"ja":{"documentTitle":"ライセンス | 署名・検証の技術的境界","description":"実装済みのトークン検証項目と、発行鍵管理に伴う運用リスクを説明します。","languageLabel":"言語","noticeTitle":"検証段階の資料","notice":"範囲協議用の草案です。正式な販売提案、セキュリティ認証、運用保証を意味しません。 外部評価の前に、範囲を書面で合意し承認を得てください。","eyebrow":"ライセンス技術ノート","title":"ライセンス | 署名・検証の技術的境界","lead":"実装済みのトークン検証項目と、発行鍵管理に伴う運用リスクを説明します。","status":"現在の状態：社内向け Windows x64 ポータブル検証ビルド","sections":[{"title":"確認済みの事実","items":["トークン形式は KODARI2.\u003cpayload>.\u003csignature> です。","署名、エディション、発行・有効期限、派生したデバイス ID を検証します。","Windows のコンピューター製品 UUID を優先し、MachineGuid を代替値として使います。"]},{"title":"未検証の項目","items":["不正署名、期限切れ、別デバイス、エディション不一致、鍵交換を含む全ライフサイクル試験が残っています。","発行者 PEM は暗号化されない形式で読み込むため、OS アカウントとファイルアクセスの保護が重要です。","ローカル管理者や改変クライアントが検査を回避する可能性を排除できていません。"]},{"title":"評価前に合意する範囲","items":["有効・改ざん・期限切れ・別デバイス・異なるエディションの試験","システム時刻またはデバイス識別値を変更した場合の動作","秘密鍵の権限、保護バックアップ、ローテーション、失効手順","検証失敗時の fail-closed 動作と運用サポート"]},{"title":"次の判断","text":"発行鍵は製品外でアクセスを制限して保管してください。コピーやリバースエンジニアリングを防止できるとは説明しません。"}],"foot":"参照資料：製品状況資料 · 確認日 2026-10-08"}}</script>
+  <script src="./slide-i18n.js" defer></script>
 </body>
 </html>

@@ -24,10 +24,19 @@
     li+li { margin-top:8px; }
     .foot { margin-top:28px; color:#91a2b6; font-size:.86rem; }
     @media(max-width:700px) { .grid { grid-template-columns:1fr; } section:last-child { grid-column:auto; } main { padding-top:38px; } }
+      .language-nav { display:flex; justify-content:flex-end; gap:8px; width:min(1080px,92vw); margin:14px auto 0; }
+    .language-nav button { border:1px solid var(--line); border-radius:999px; padding:7px 12px; background:var(--panel); color:var(--muted); font:inherit; font-size:.85rem; cursor:pointer; }
+    .language-nav button:hover, .language-nav button:focus-visible { border-color:var(--accent); color:var(--text); outline:none; }
+    .language-nav button.active { border-color:var(--accent); color:var(--text); background:#183238; }
   </style>
 </head>
 <body>
   <div class="notice" role="note"><strong>검증 단계 자료</strong> — 범위 협의용 초안입니다. 정식 판매 제안·보안 인증·운영 보장을 의미하지 않으며, 외부 평가 전 서면 범위와 승인이 필요합니다.</div>
+  <nav class="language-nav" data-language-switch aria-label="언어 선택">
+    <button type="button" data-language="ko" aria-pressed="true">KO</button>
+    <button type="button" data-language="ja" aria-pressed="false">日本語</button>
+    <button type="button" data-language="en" aria-pressed="false">EN</button>
+  </nav>
   <main>
     <div class="eyebrow">BUILD VALIDATION</div>
     <h1>Windows 포터블 빌드 | 기술 검증 항목</h1>
@@ -46,7 +55,9 @@
           <li>실패 로그, 정리·복구, 데이터 보존 확인</li></ul></section>
       <section><h2>다음 판단</h2><p>출시 전에는 의존성을 고정하고 대표 장비 행렬에서 기능·복구 시나리오를 재실행해야 합니다.</p></section>
     </div>
-    <p class="foot">기준 문서: E:\진짜배기\slm-agent\docs\b2b_sales\PRODUCT_CURRENT_STATUS.md · 검토일 2026-10-08</p>
+    <p class="foot">기준 문서: 제품 현황 문서 · 검토일 2026-10-08</p>
   </main>
+  <script type="application/json" id="slide-locales">{"en":{"documentTitle":"Windows Portable Build | Technical Validation Plan","description":"The bundled runtime and archive checks are complete, but reproducible installation validation including model workflows remains open.","languageLabel":"Language","noticeTitle":"Validation-stage material","notice":"This is a draft for scope discussions, not a production sales offer, security certification, or operational guarantee. Written scope and approval are required before an external evaluation.","eyebrow":"BUILD TECHNICAL VALIDATION","title":"Windows Portable Build | Technical Validation Plan","lead":"The bundled runtime and archive checks are complete, but reproducible installation validation including model workflows remains open.","status":"Current status: Internal Windows x64 portable validation build","sections":[{"title":"Verified Facts","items":["The bundled runtime is Python 3.13.16.","The integrity of all three language ZIPs and the presence of bundled runtime files were checked.","Python 3.13 does not support Windows 7 or earlier."]},{"title":"Not Yet Verified","items":["The supported OS baseline and GPU/driver combinations are not finalized.","The ML dependency/API combinations have not been validated through model training and inference.","Installation, updates, rollback, and recovery have not been performed in a customer environment."]},{"title":"Agree Before Evaluation","items":["Pin OS, driver, and runtime versions","Extract and run from a clean Windows account","Reproduce model loading, inference, and training","Review failure logs, cleanup/recovery, and data retention"]},{"title":"Next Decision","text":"Before release, pin dependencies and rerun functional and recovery scenarios across representative hardware configurations."}],"foot":"Source: Product Status Document · Reviewed 2026-10-08"},"ja":{"documentTitle":"Windows ポータブルビルド | 技術検証計画","description":"同梱ランタイムとアーカイブ検査は完了していますが、モデル機能を含む再現可能なインストール検証は未完了です。","languageLabel":"言語","noticeTitle":"検証段階の資料","notice":"範囲協議用の草案です。正式な販売提案、セキュリティ認証、運用保証を意味しません。 外部評価の前に、範囲を書面で合意し承認を得てください。","eyebrow":"ビルド技術検証","title":"Windows ポータブルビルド | 技術検証計画","lead":"同梱ランタイムとアーカイブ検査は完了していますが、モデル機能を含む再現可能なインストール検証は未完了です。","status":"現在の状態：社内向け Windows x64 ポータブル検証ビルド","sections":[{"title":"確認済みの事実","items":["同梱ランタイムは Python 3.13.16 です。","3言語の ZIP の整合性と、ランタイムファイルの同梱を確認しました。","Python 3.13 は Windows 7 以前をサポートしません。"]},{"title":"未検証の項目","items":["対応 OS の基準と GPU/ドライバーの組み合わせは未確定です。","ML 依存関係/API の組み合わせは、モデルの学習・推論まで互換性を検証していません。","顧客環境でのインストール、更新、ロールバック、復旧は未実施です。"]},{"title":"評価前に合意する範囲","items":["OS・ドライバー・ランタイムのバージョン固定","クリーンな Windows アカウントで展開して実行","モデル読み込み・推論・学習の再現","失敗ログ、クリーンアップ・復旧、データ保管の確認"]},{"title":"次の判断","text":"リリース前に依存関係を固定し、代表的なハードウェア構成で機能と復旧のシナリオを再実行してください。"}],"foot":"参照資料：製品状況資料 · 確認日 2026-10-08"}}</script>
+  <script src="./slide-i18n.js" defer></script>
 </body>
 </html>

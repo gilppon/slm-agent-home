@@ -24,10 +24,19 @@
     li+li { margin-top:8px; }
     .foot { margin-top:28px; color:#91a2b6; font-size:.86rem; }
     @media(max-width:700px) { .grid { grid-template-columns:1fr; } section:last-child { grid-column:auto; } main { padding-top:38px; } }
+      .language-nav { display:flex; justify-content:flex-end; gap:8px; width:min(1080px,92vw); margin:14px auto 0; }
+    .language-nav button { border:1px solid var(--line); border-radius:999px; padding:7px 12px; background:var(--panel); color:var(--muted); font:inherit; font-size:.85rem; cursor:pointer; }
+    .language-nav button:hover, .language-nav button:focus-visible { border-color:var(--accent); color:var(--text); outline:none; }
+    .language-nav button.active { border-color:var(--accent); color:var(--text); background:#183238; }
   </style>
 </head>
 <body>
   <div class="notice" role="note"><strong>검증 단계 자료</strong> — 범위 협의용 초안입니다. 정식 판매 제안·보안 인증·운영 보장을 의미하지 않으며, 외부 평가 전 서면 범위와 승인이 필요합니다.</div>
+  <nav class="language-nav" data-language-switch aria-label="언어 선택">
+    <button type="button" data-language="ko" aria-pressed="true">KO</button>
+    <button type="button" data-language="ja" aria-pressed="false">日本語</button>
+    <button type="button" data-language="en" aria-pressed="false">EN</button>
+  </nav>
   <main>
     <div class="eyebrow">WORKFLOW DISCOVERY</div>
     <h1>문서 업무 평가 | 적용 가능성 검토</h1>
@@ -46,7 +55,9 @@
           <li>사람 검토, 기록 보존, 데이터 삭제 방법</li></ul></section>
       <section><h2>다음 판단</h2><p>초기 평가는 비민감 시험 데이터와 사람이 판정하는 기준으로 설계합니다. 검증 전에는 자율 치유·무결점 답변을 약속하지 않습니다.</p></section>
     </div>
-    <p class="foot">기준 문서: E:\진짜배기\slm-agent\docs\b2b_sales\PRODUCT_CURRENT_STATUS.md · 검토일 2026-10-08</p>
+    <p class="foot">기준 문서: 제품 현황 문서 · 검토일 2026-10-08</p>
   </main>
+  <script type="application/json" id="slide-locales">{"en":{"documentTitle":"Document Workflows | Applicability Review","description":"First define customer data and success criteria, then assess whether the product fits document search and question-answering workflows.","languageLabel":"Language","noticeTitle":"Validation-stage material","notice":"This is a draft for scope discussions, not a production sales offer, security certification, or operational guarantee. Written scope and approval are required before an external evaluation.","eyebrow":"DOCUMENT WORKFLOW EVALUATION","title":"Document Workflows | Applicability Review","lead":"First define customer data and success criteria, then assess whether the product fits document search and question-answering workflows.","status":"Current status: Internal Windows x64 portable validation build","sections":[{"title":"Verified Facts","items":["The current product is a Windows x64 local-AI validation build.","The portable ZIP and runtime were checked, but customer document workflows were not.","The landing page is not configured to store or transmit inquiries."]},{"title":"Not Yet Verified","items":["Search accuracy, source citations, document updates, conflict handling, and automatic cleanup have not been quality-validated.","There are no test results supporting guarantees about sensitive-data masking, deletion, or retention.","Customer-operator approvals, audits, and support procedures are not agreed."]},{"title":"Agree Before Evaluation","items":["Representative work questions and answer/judgment criteria","Test data or documents explicitly approved for evaluation","Handling criteria for incorrect, missing, outdated, or unauthorized results","Human review, record retention, and data deletion process"]},{"title":"Next Decision","text":"Design an initial evaluation with non-sensitive test data and human-reviewed results. Do not promise autonomous healing or error-free answers before validation."}],"foot":"Source: Product Status Document · Reviewed 2026-10-08"},"ja":{"documentTitle":"文書ワークフロー | 適用可能性の確認","description":"顧客データと成功基準を先に定め、文書検索・質問応答業務に適用できるかを評価します。","languageLabel":"言語","noticeTitle":"検証段階の資料","notice":"範囲協議用の草案です。正式な販売提案、セキュリティ認証、運用保証を意味しません。 外部評価の前に、範囲を書面で合意し承認を得てください。","eyebrow":"文書ワークフロー評価","title":"文書ワークフロー | 適用可能性の確認","lead":"顧客データと成功基準を先に定め、文書検索・質問応答業務に適用できるかを評価します。","status":"現在の状態：社内向け Windows x64 ポータブル検証ビルド","sections":[{"title":"確認済みの事実","items":["現在の製品は Windows x64 ローカル AI の検証ビルドです。","ポータブル ZIP とランタイムは確認しましたが、顧客文書の処理フローは未検証です。","ランディングページには問い合わせを保存・送信する機能はありません。"]},{"title":"未検証の項目","items":["検索精度、出典表示、文書更新、競合処理、自動クリーンアップの品質は未検証です。","機密情報のマスキング、削除、保管を保証する試験結果はありません。","顧客運用者の承認・監査手順とサポート方法は未合意です。"]},{"title":"評価前に合意する範囲","items":["代表的な業務質問と回答・判定基準","評価用として明示的に承認された試験データまたは文書","誤り・欠落・旧版・権限外の結果を扱う基準","人による確認、記録保管、データ削除の方法"]},{"title":"次の判断","text":"初期評価は非機密の試験データと人による判定を前提に設計してください。検証前に自律修復や誤りのない回答を約束しません。"}],"foot":"参照資料：製品状況資料 · 確認日 2026-10-08"}}</script>
+  <script src="./slide-i18n.js" defer></script>
 </body>
 </html>
